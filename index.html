@@ -1,706 +1,2516 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101712">
-<meta name="description" content="The Paper Lanterns. Seven worlds, original stories, and a new adventure every day.">
-<title>The Paper Lanterns | Stories You Can Feel</title>
-
+<meta name="theme-color" content="#111812">
+<title>The Paper Lanterns | A Storytelling Universe</title>
+<meta name="description" content="Enter The Paper Lanterns, an immersive universe of original mystery, romance, thriller, fantasy, science fiction and horror stories.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --ink:#111711;
-  --forest:#172b22;
-  --gold:#e8c47b;
-  --cream:#f6f0e5;
-  --muted:#c3c7bd;
-  --serif:"Playfair Display",Georgia,serif;
-  --sans:"DM Sans",Arial,sans-serif;
+  --ink: #101710;
+  --cream: #f8f2e7;
+  --gold: #e9c783;
+  --muted: #c4c5b9;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--sans);overflow-x:hidden}
-button,input{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer}
-::selection{background:var(--gold);color:var(--ink)}
-img{display:block;width:100%;height:100%;object-fit:cover}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.grain{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E")}
-header{height:78px;padding:0 5.5%;display:flex;align-items:center;justify-content:space-between;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,22,17,.86);backdrop-filter:blur(18px);border-bottom:1px solid #ffffff12}
-.brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:22px;white-space:nowrap}
-.lantern{width:29px;height:39px;position:relative;display:inline-flex;align-items:center;justify-content:center;animation:fly 3.6s ease-in-out infinite;filter:drop-shadow(0 0 9px #e8b96355)}
-.lantern svg{width:29px;height:39px}
-@keyframes fly{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-9px) rotate(5deg)}}
-nav{display:flex;align-items:center;gap:27px;font-size:12px;color:#d5d7d0}
-nav a{transition:color .25s}
-nav a:hover{color:var(--gold)}
-.nav-actions{display:flex;align-items:center;gap:10px}
-.icon-button,.menu-button{background:transparent;color:white;border:1px solid #ffffff2b;border-radius:50%;width:39px;height:39px;font-size:17px}
-.menu-button{display:none;border-radius:8px}
-.hero{height:min(900px,100svh);min-height:690px;position:relative;display:flex;align-items:center;overflow:hidden;isolation:isolate}
-.hero-bg{position:absolute;inset:-6%;z-index:-3;background-image:url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=90");background-size:cover;background-position:center 48%;transform:scale(1.05);will-change:transform}
-.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(10,17,12,.91),rgba(10,17,12,.49) 52%,rgba(10,17,12,.08)),linear-gradient(0deg,var(--ink),transparent 28%,rgba(0,0,0,.08))}
-.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 72% 35%,transparent,rgba(0,0,0,.16) 72%)}
-.hero-content{width:min(790px,88%);margin-left:10%;padding-top:72px;animation:appear 1.1s ease both}
-.eyebrow{text-transform:uppercase;letter-spacing:4px;font-size:10px;font-weight:700;color:var(--gold)}
-.hero h1{font-family:var(--serif);font-size:clamp(54px,7.6vw,105px);font-weight:400;line-height:1.04;letter-spacing:-3px;margin:27px 0}
-.hero h1 em{color:var(--gold);font-weight:400}
-.hero p{max-width:420px;color:#e0e1db;line-height:1.9;font-size:14px}
-.hero-buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
-.btn{border:1px solid transparent;padding:15px 23px;font-size:11px;font-weight:700;letter-spacing:.6px;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:transform .25s,background .25s,border-color .25s}
-.btn:hover{transform:translateY(-3px)}
-.btn-gold{background:var(--gold);color:#17170f}
-.btn-outline{border-color:#ffffff70;color:white;background:#ffffff09}
-.hero-note{display:flex;align-items:center;gap:15px;margin-top:55px;font-size:9px;letter-spacing:2px;color:#d4d4ca;text-transform:uppercase}
-.hero-note span{width:4px;height:4px;border-radius:50%;background:var(--gold)}
-.scroll-cue{position:absolute;right:5.5%;bottom:64px;writing-mode:vertical-rl;font-size:9px;letter-spacing:3px;color:#deded5;display:flex;gap:14px;align-items:center}
-.scroll-cue:after{content:"";height:48px;width:1px;background:var(--gold)}
-section{padding:110px 7%}
-.section-top{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:38px}
-.section-top h2{font-family:var(--serif);font-size:clamp(34px,4.5vw,56px);font-weight:400;line-height:1.15;margin:12px 0 0}
-.section-top p{color:#aeb4a9;font-size:12px;line-height:1.8;max-width:310px}
-.text-link{font-size:11px;color:var(--gold);border-bottom:1px solid #e8c47b70;padding-bottom:6px;white-space:nowrap}
-.genres-section{background:linear-gradient(180deg,#111711,#17231b 48%,#111711)}
-.genre-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
-.genre-card{height:335px;position:relative;overflow:hidden;background:#242c25;cursor:pointer;isolation:isolate;border:1px solid #ffffff0b;transition:border-color .35s,transform .35s}
-.genre-card:hover{border-color:#e8c47b8c;transform:translateY(-5px)}
-.genre-card img{position:absolute;inset:0;z-index:-2;transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .6s}
-.genre-card:hover img{transform:scale(1.09);filter:saturate(1.12)}
-.genre-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(8,13,10,.97),transparent 75%),linear-gradient(180deg,#10171038,transparent 45%)}
-.genre-info{position:absolute;left:20px;right:15px;bottom:21px}
-.genre-number{font-size:9px;letter-spacing:2px;color:var(--gold)}
-.genre-info h3{font-family:var(--serif);font-size:25px;font-weight:400;line-height:1.15;margin:9px 0}
-.genre-info p{font-size:10px;line-height:1.7;color:#e0e1db;margin:0;max-width:230px}
-.genre-arrow{position:absolute;right:18px;top:17px;border:1px solid #ffffff60;border-radius:50%;width:33px;height:33px;display:grid;place-items:center;color:white;font-size:15px;transition:background .3s,color .3s}
-.genre-card:hover .genre-arrow{background:var(--gold);color:var(--ink)}
-.featured{background:var(--cream);color:#1c241d}
-.featured .section-top p{color:#62685f}
-.feature-story{display:grid;grid-template-columns:1.2fr .8fr;min-height:470px;background:#1a281f;color:white}
-.feature-image{position:relative;min-height:430px;overflow:hidden}
-.feature-image img{transition:transform 1.2s}
-.feature-story:hover .feature-image img{transform:scale(1.035)}
-.feature-copy{padding:clamp(30px,5vw,65px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:linear-gradient(145deg,#22382a,#101711)}
-.tag{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--gold)}
-.feature-copy h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.15;margin:17px 0}
-.feature-copy p{font-size:12px;line-height:1.9;color:#d1d7ce}
-.meta{font-size:10px;color:#b4b9ae;margin:14px 0 25px}
-.trending{background:#111711}
-.story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.story-card{cursor:pointer;min-width:0}
-.story-cover{height:280px;position:relative;overflow:hidden;background:#263127}
-.story-cover img{transition:transform .7s,filter .5s}
-.story-card:hover img{transform:scale(1.055);filter:brightness(1.1)}
-.story-cover .tag{position:absolute;top:15px;left:15px;background:#101711d9;padding:9px 11px}
-.story-copy{padding:19px 2px}
-.story-copy h3{font-family:var(--serif);font-weight:400;font-size:25px;margin:9px 0}
-.story-copy p{font-size:12px;color:#aeb4a9;line-height:1.8}
-.story-meta{font-size:10px;color:var(--gold)}
-.empty-state{color:#aeb4a9;line-height:1.8}
-.community{background:linear-gradient(120deg,#26392c,#18271f 55%,#342d20);position:relative;overflow:hidden}
-.community-inner{max-width:800px;margin:auto;text-align:center;position:relative}
-.community h2{font-family:var(--serif);font-size:clamp(37px,5vw,65px);font-weight:400;line-height:1.16}
-.community p{font-size:13px;line-height:2;color:#d5dbd1;max-width:520px;margin:20px auto}
-.review-note{font-size:10px!important;color:#e8c47b!important}
-.newsletter{display:flex;max-width:480px;margin:30px auto 0;gap:8px}
-.newsletter input{min-width:0;flex:1;padding:15px;background:#1017117a;border:1px solid #ffffff48;color:white;border-radius:0}
-.newsletter input::placeholder{color:#c6cbbf}
-.newsletter-message{font-size:11px!important;color:var(--gold)!important;min-height:20px}
-footer{padding:55px 7% 30px;background:#0b100c;border-top:1px solid #ffffff12}
-.footer-top{display:flex;align-items:start;justify-content:space-between;gap:35px;flex-wrap:wrap}
-.footer-description{max-width:300px;color:#a9b0a6;font-size:11px;line-height:1.9}
-.footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:11px;color:#d2d6ce}
-.footer-links a:hover{color:var(--gold)}
-.footer-bottom{margin-top:45px;padding-top:20px;border-top:1px solid #ffffff15;color:#808980;font-size:10px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
 
-/* Search */
-.search-overlay{position:fixed;inset:0;z-index:200;background:#0b100cf5;backdrop-filter:blur(20px);padding:13vh 8%;display:none;overflow-y:auto}
-.search-overlay.open{display:block;animation:appear .25s ease}
-.search-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px}
-.search-head h2{font-family:var(--serif);font-size:40px;font-weight:400}
-.search-input{width:100%;padding:20px 0;border:0;border-bottom:1px solid #ffffff55;background:transparent;color:white;font-family:var(--serif);font-size:clamp(25px,4vw,45px);outline:none}
-.search-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:25px}
-.search-result{padding:18px;border:1px solid #ffffff1e;cursor:pointer}
-.search-result:hover{border-color:var(--gold)}
-.search-result h3{font-family:var(--serif);font-size:22px;font-weight:400;margin:8px 0}
-.search-result p{font-size:11px;color:#bfc5ba;line-height:1.7}
+* { box-sizing: border-box; }
 
-/* Reader */
-.reader{position:fixed;inset:0;z-index:180;background:var(--cream);color:#272b25;overflow-y:auto;display:none}
-.reader.open{display:block;animation:appear .4s ease}
-.reader-bar{position:sticky;top:0;z-index:3;padding:15px 5%;background:#f6f0e5ed;backdrop-filter:blur(15px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #24242417}
-.reader-brand{font-family:var(--serif);font-size:15px}
-.reader-controls{display:flex;align-items:center;gap:9px}
-.reader-controls button{background:transparent;border:1px solid #bdb9ae;padding:8px 11px;color:#272b25}
-.reader-hero{height:48vh;min-height:280px;position:relative;background:#202a20;overflow:hidden}
-.reader-hero img{position:absolute;inset:0}
-.reader-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#131812b8,transparent 80%)}
-.reader-hero-title{position:absolute;z-index:1;bottom:35px;left:10%;color:white}
-.reader-hero-title .tag{color:var(--gold)}
-.reader-hero-title h1{font-family:var(--serif);font-size:clamp(35px,6vw,65px);font-weight:400;margin:12px 0}
-.reading-progress{height:3px;background:#e1d9c8;position:sticky;top:64px;z-index:4}
-.reading-progress div{height:100%;background:#bb9150;width:0}
-.reader-body{max-width:710px;padding:55px 25px 90px;margin:auto}
-.reader-synopsis{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.8;color:#66695e;padding-bottom:30px;border-bottom:1px solid #d6d0c2}
-.reader-text{font-family:var(--serif);font-size:19px;line-height:2}
-.reader-text p{margin:26px 0}
-.reader-text h2{font-weight:400;font-size:29px;margin-top:45px}
-.reader-question{padding:22px;margin-top:45px;background:#eae2d2;line-height:1.8;font-size:13px}
-.reader-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.reader-actions button{background:transparent;border:1px solid #a7a192;padding:12px 16px;color:#272b25}
-.reader-actions button:hover{background:#e4d8bd}
-.reader-navigation{display:flex;justify-content:space-between;gap:12px;margin-top:55px;padding-top:25px;border-top:1px solid #d6d0c2}
-.reader-navigation button{background:transparent;border:0;text-align:left;color:#343a30;cursor:pointer}
-.reader-navigation button:last-child{text-align:right}
-.reader-navigation small{display:block;color:#797c71;margin-bottom:6px}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
 
-/* Toasts, reveals, and responsive effects */
-.toast{position:fixed;z-index:300;bottom:25px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--gold);color:#111711;padding:13px 20px;font-size:12px;transition:.3s}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:1000px){
-  nav{gap:14px}
-  nav a{font-size:11px}
-  .genre-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .genre-card{height:330px}
-  section{padding:85px 5%}
-  .hero-content{margin-left:7%}
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--sans);
+  overflow-x: hidden;
 }
-@media(max-width:700px){
-  header{height:68px;padding:0 5%}
-  .brand{font-size:19px}
-  nav{display:none;position:absolute;top:68px;left:0;right:0;padding:20px 6% 26px;background:#101711f7;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid #ffffff24}
-  nav.open{display:flex}
-  nav a{padding:13px 0;font-size:13px;border-bottom:1px solid #ffffff0e}
-  .menu-button{display:block}
-  .hero{min-height:740px;height:95svh}
-  .hero-content{margin-left:6%;width:88%;padding-top:40px}
-  .hero h1{font-size:clamp(51px,12vw,76px);letter-spacing:-2px}
-  .hero p{font-size:13px}
-  .hero-bg{background-position:58% center}
-  .scroll-cue{display:none}
-  section{padding:70px 5%}
-  .section-top{align-items:start;flex-direction:column}
-  .genre-grid{gap:10px}
-  .genre-card{height:260px}
-  .genre-info{left:12px;right:8px;bottom:14px}
-  .genre-info h3{font-size:20px}
-  .genre-info p{font-size:9px}
-  .genre-arrow{right:9px;top:9px;width:28px;height:28px}
-  .feature-story{grid-template-columns:1fr}
-  .feature-image{min-height:270px;height:300px}
-  .feature-copy{padding:30px 24px}
-  .story-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-  .story-cover{height:210px}
-  .story-copy h3{font-size:20px}
-  .story-copy p{font-size:11px}
-  .newsletter{flex-direction:column}
-  .search-results{grid-template-columns:1fr}
-  .reader-hero{height:38vh}
-  .reader-hero-title{left:6%;right:5%}
-  .reader-body{padding:35px 22px 70px}
-  .reader-text{font-size:18px}
+
+body.reader-open { overflow: hidden; }
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+::selection {
+  color: #172016;
+  background: var(--gold);
 }
-@media(max-width:390px){
-  .genre-card{height:225px}
-  .genre-info h3{font-size:18px}
-  .story-cover{height:175px}
-  .hero-buttons .btn{padding:13px 14px}
+
+/* Flying lantern brand */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--serif);
+  font-size: 21px;
+  white-space: nowrap;
 }
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  .reveal{opacity:1;transform:none}
+
+.lantern-mark {
+  width: 39px;
+  height: 47px;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px #e9c78355);
+  animation: lantern-float 3.8s ease-in-out infinite;
+}
+
+.lantern-mark .flame {
+  transform-origin: center;
+  animation: flame-flicker 1.8s ease-in-out infinite;
+}
+
+@keyframes lantern-float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-7px) rotate(3deg); }
+}
+
+@keyframes flame-flicker {
+  0%, 100% { opacity: .8; transform: scale(.92); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* Navigation */
+
+header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 5.5%;
+  background: linear-gradient(#101710ed, #101710a8);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #ffffff0d;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+nav a {
+  color: #e2e0d6;
+  font-size: 13px;
+  transition: color .25s;
+}
+
+nav a:hover { color: var(--gold); }
+
+.nav-search {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid #ffffff35;
+  border-radius: 30px;
+  padding: 9px 15px;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: 26px;
+}
+
+/* Cinematic hero */
+
+.hero {
+  position: relative;
+  min-height: 750px;
+  height: 100svh;
+  max-height: 1050px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-image {
+  position: absolute;
+  inset: -5%;
+  z-index: -3;
+  background:
+    linear-gradient(90deg, #0c130fe8 0%, #1017109c 43%, #10171012 100%),
+    linear-gradient(0deg, #101710 0%, transparent 40%),
+    url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=2200&q=90")
+    center 53% / cover;
+  transform: scale(1.06);
+  animation: hero-drift 24s ease-in-out infinite alternate;
+}
+
+@keyframes hero-drift {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.14) translate3d(-1%, -1%, 0); }
+}
+
+.hero-content {
+  max-width: 760px;
+  padding: 120px 8% 80px;
+  animation: rise-in 1.2s ease both;
+}
+
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(48px, 7.3vw, 94px);
+  letter-spacing: -3px;
+  line-height: 1.04;
+  margin-bottom: 25px;
+}
+
+.hero h1 .feel { color: var(--gold); }
+
+.hero-description {
+  color: #e3e3d8;
+  line-height: 1.9;
+  max-width: 445px;
+  font-size: 15px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+
+.btn {
+  border: 1px solid #ffffff4a;
+  padding: 14px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  transition: transform .25s, background .25s, color .25s;
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+
+.btn:hover { transform: translateY(-3px); }
+
+.btn-primary {
+  color: #171b12;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.btn-primary:hover { background: #f7dda5; }
+
+.btn-secondary { background: #ffffff0a; }
+
+.hero-note {
+  margin-top: 43px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #e5d8b8;
+}
+
+/* General sections */
+
+section { padding: 92px 7%; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.section-heading h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 49px);
+  margin-bottom: 8px;
+}
+
+.section-heading p {
+  font-size: 13px;
+  color: #b9c0b5;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.text-link {
+  color: var(--gold);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.text-link:hover { text-decoration: underline; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Seven unique cinematic genre worlds */
+
+#genres {
+  background:
+    radial-gradient(ellipse at 10% 10%, #36452b44, transparent 38%),
+    linear-gradient(160deg, #182019, #111710 70%);
+}
+
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.genre-card {
+  position: relative;
+  min-height: 300px;
+  height: clamp(280px, 30vw, 390px);
+  border-radius: 5px;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  background: #222c25;
+  border: 1px solid #ffffff10;
+  transform: translateZ(0);
+}
+
+.genre-card:nth-child(5),
+.genre-card:nth-child(6),
+.genre-card:nth-child(7) {
+  min-height: 320px;
+}
+
+.genre-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--genre-image);
+  background-size: cover;
+  background-position: center;
+  transition: transform .85s cubic-bezier(.2,.65,.3,1);
+}
+
+.genre-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(0deg, #0a100ded 0%, #0a100d55 43%, #0a100d00 100%),
+    linear-gradient(135deg, var(--genre-tint), transparent 75%);
+  transition: opacity .4s;
+}
+
+.genre-card:hover::before {
+  transform: scale(1.1);
+}
+
+.genre-card:hover::after { opacity: .83; }
+
+.genre-content {
+  position: absolute;
+  inset: auto 21px 22px;
+  transition: transform .35s;
+}
+
+.genre-card:hover .genre-content { transform: translateY(-5px); }
+
+.genre-number {
+  display: block;
+  font-size: 10px;
+  color: var(--genre-accent);
+  letter-spacing: 2px;
+  margin-bottom: 9px;
+}
+
+.genre-content h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(22px, 2.1vw, 30px);
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #fff9ed;
+  text-shadow: 0 2px 15px #000b;
+}
+
+.genre-content p {
+  color: #f1ede2;
+  font-size: 11px;
+  line-height: 1.7;
+  margin-bottom: 13px;
+  max-width: 260px;
+}
+
+.genre-explore {
+  font-size: 10px;
+  color: var(--genre-accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.genre-card:nth-child(1) { grid-column: span 2; }
+.genre-card:nth-child(2) { grid-column: span 2; }
+
+/* Featured story */
+
+.featured {
+  position: relative;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 40px;
+  background:
+    radial-gradient(ellipse at 20% 50%, #4b5a3938, transparent 60%),
+    #151d16;
+}
+
+.featured-image {
+  min-height: 380px;
+  height: 100%;
+  background:
+    linear-gradient(0deg, #10171032, transparent),
+    url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=85")
+    center / cover;
+  border-radius: 3px;
+  box-shadow: 0 25px 70px #0005;
+  transition: transform .6s;
+}
+
+.featured-image:hover { transform: scale(1.015); }
+
+.featured-copy h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 57px);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.featured-copy p {
+  color: #c6c9bd;
+  line-height: 1.9;
+  font-size: 14px;
+  max-width: 470px;
+}
+
+.story-meta {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  margin: 20px 0;
+}
+
+/* Story library */
+
+#stories {
+  background:
+    radial-gradient(ellipse at 90% 20%, #392e2533, transparent 42%),
+    #101710;
+}
+
+.story-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.story-tools input,
+.story-tools select {
+  background: #ffffff08;
+  color: var(--cream);
+  border: 1px solid #ffffff27;
+  padding: 12px 14px;
+  min-width: 180px;
+  border-radius: 2px;
+  outline: none;
+}
+
+.story-tools input:focus,
+.story-tools select:focus { border-color: var(--gold); }
+
+.story-tools select option { background: #182019; }
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.story-card {
+  background: #ffffff05;
+  border: 1px solid #ffffff10;
+  transition: transform .3s, border-color .3s;
+  overflow: hidden;
+}
+
+.story-card:hover {
+  transform: translateY(-5px);
+  border-color: #e9c78370;
+}
+
+.story-cover {
+  height: 235px;
+  position: relative;
+  overflow: hidden;
+  background: #263026;
+}
+
+.story-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s;
+}
+
+.story-card:hover .story-cover img { transform: scale(1.07); }
+
+.story-card-body { padding: 23px; }
+
+.story-card-body h3 {
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.story-card-body p {
+  color: #c1c6bb;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.story-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 13px;
+  border-top: 1px solid #ffffff15;
+  color: #d6c69f;
+  font-size: 10px;
+}
+
+.read-link {
+  background: none;
+  border: 0;
+  color: var(--gold);
+  padding: 5px 0;
+}
+
+.empty-state {
+  display: none;
+  color: #c9c7bc;
+  padding: 35px 0;
+}
+
+/* Reader experiences */
+
+#experiences {
+  background:
+    linear-gradient(135deg, #252c21, #151c15 65%, #28201b);
+  text-align: center;
+}
+
+.experience-inner {
+  max-width: 760px;
+  margin: auto;
+}
+
+.experience-inner h2 {
+  font: 400 clamp(34px, 5vw, 54px)/1.2 var(--serif);
+}
+
+.experience-inner > p {
+  color: #d2d3c7;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.experience-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.experience-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  background: #ffffff0b;
+  color: white;
+  border: 1px solid #ffffff30;
+}
+
+.form-message {
+  margin-top: 15px;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+/* Footer */
+
+footer {
+  padding: 50px 7% 28px;
+  background: #0b100c;
+  border-top: 1px solid #ffffff13;
+}
+
+.footer-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 35px;
+  padding-bottom: 35px;
+}
+
+.footer-copy {
+  color: #adb4a9;
+  font-size: 12px;
+  line-height: 1.8;
+  max-width: 300px;
+  margin-top: 15px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 23px;
+  font-size: 12px;
+  color: #d2d4c8;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid #ffffff13;
+  padding-top: 20px;
+  color: #8f978c;
+  font-size: 10px;
+}
+
+/* Story reader with unique, full-screen genre environment */
+
+.reader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #101710;
+}
+
+.reader.open {
+  display: block;
+  animation: reader-enter .55s ease both;
+}
+
+@keyframes reader-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reader-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.04);
+  animation: reader-drift 30s ease-in-out infinite alternate;
+}
+
+@keyframes reader-drift {
+  from { transform: scale(1.04) translateY(0); }
+  to { transform: scale(1.14) translateY(-1%); }
+}
+
+.reader-shade {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, #0b100bbd 0%, #101710e8 45%, #101710 85%),
+    linear-gradient(90deg, #101710aa, transparent);
+}
+
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 17px 5%;
+  background: #101710c9;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #ffffff13;
+}
+
+.reader-close {
+  background: #ffffff0c;
+  color: white;
+  border: 1px solid #ffffff36;
+  padding: 10px 15px;
+}
+
+.reader-main {
+  max-width: 780px;
+  padding: 65px 25px 110px;
+  margin: auto;
+}
+
+.reader-main h1 {
+  font: 400 clamp(39px, 7vw, 70px)/1.1 var(--serif);
+  letter-spacing: -1.5px;
+  margin: 20px 0;
+}
+
+.reader-synopsis {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #d1d4c8;
+}
+
+.reader-settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 28px 0 42px;
+  padding: 15px 0;
+  border-block: 1px solid #ffffff20;
+}
+
+.reader-settings button {
+  background: #ffffff0b;
+  border: 1px solid #ffffff26;
+  color: #f6e8c8;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+
+.reader-settings button:hover { background: #ffffff18; }
+
+#readerText {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 2;
+  color: #eee8db;
+  white-space: pre-line;
+}
+
+#readerText p { margin-bottom: 1.7em; }
+
+.reader-end {
+  margin-top: 55px;
+  padding-top: 30px;
+  border-top: 1px solid #ffffff26;
+}
+
+.reader-end h3 {
+  font: 400 28px var(--serif);
+}
+
+.reader-end p {
+  color: #c6c9bc;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 120;
+  height: 3px;
+  width: 0%;
+  background: var(--gold);
+}
+
+/* Floating lanterns and mouse-following fireflies */
+
+.ambient-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.firefly {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--size, 5px);
+  height: var(--size, 5px);
+  border-radius: 50%;
+  background: #fff4bb;
+  box-shadow:
+    0 0 5px 2px #fff0a866,
+    0 0 15px 4px #f4d57466;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+}
+
+.firefly.active { animation: firefly-glow 1.5s ease-in-out infinite alternate; }
+
+@keyframes firefly-glow {
+  from { opacity: .35; }
+  to { opacity: .95; }
+}
+
+.floating-lantern {
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+  width: 25px;
+  height: 34px;
+  opacity: .45;
+  filter: drop-shadow(0 0 9px #f4d58b);
+  animation: distant-lantern 14s linear forwards;
+}
+
+@keyframes distant-lantern {
+  0% { transform: translateY(0) rotate(-5deg); opacity: 0; }
+  12% { opacity: .45; }
+  85% { opacity: .4; }
+  100% { transform: translateY(-115vh) rotate(8deg); opacity: 0; }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Accessibility */
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .firefly, .floating-lantern { display: none !important; }
+
+  .reveal { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1000px) {
+  nav { gap: 15px; }
+  nav a { font-size: 12px; }
+  .genre-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .story-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  header { padding: 12px 5%; }
+  .brand { font-size: 18px; }
+  .lantern-mark { width: 32px; }
+  .menu-toggle { display: block; }
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 22px 6%;
+    background: #101710f7;
+    border-bottom: 1px solid #ffffff18;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 20px;
+  }
+  nav.open { display: flex; }
+  .hero { min-height: 690px; height: 92svh; }
+  .hero-image {
+    background-position: 58% center;
+    background-image:
+      linear-gradient(90deg, #0c130fdc, #10171050),
+      linear-gradient(0deg, #101710, transparent 50%),
+      url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=85");
+  }
+  .hero-content { padding: 110px 7% 60px; }
+  .hero h1 { letter-spacing: -1.5px; }
+  section { padding: 68px 6%; }
+  .section-heading { align-items: start; flex-direction: column; }
+  .genre-grid { gap: 11px; }
+  .genre-card,
+  .genre-card:nth-child(n) {
+    grid-column: span 1;
+    height: 290px;
+    min-height: 290px;
+  }
+  .genre-content { inset: auto 13px 15px; }
+  .genre-content h3 { font-size: 22px; }
+  .genre-content p { font-size: 10px; }
+  .featured { grid-template-columns: 1fr; }
+  .featured-image { min-height: 280px; }
+  .story-grid { grid-template-columns: 1fr; }
+  .story-cover { height: 260px; }
+  .experience-form { flex-direction: column; }
+  .reader-main { padding: 40px 22px 80px; }
+  #readerText { font-size: 18px; line-height: 1.9; }
+  .reader-nav .brand { font-size: 15px; }
+}
+
+@media (max-width: 380px) {
+  .genre-grid { grid-template-columns: 1fr; }
+  .genre-card,
+  .genre-card:nth-child(n) {
+    height: 330px;
+    grid-column: span 1;
+  }
 }
 </style>
 </head>
+
 <body>
-<div class="grain" aria-hidden="true"></div>
+
+<div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
+<div class="progress-track" id="progressTrack"></div>
 
 <header>
-  <a href="#" class="brand" aria-label="The Paper Lanterns home" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-    <span class="lantern" aria-hidden="true">
-      <svg viewBox="0 0 32 43" fill="none">
-        <path d="M16 1v5" stroke="#e8c47b" stroke-width="1.4"/>
-        <path d="M8 9Q16 4 24 9L27 24Q16 32 5 24L8 9Z" fill="#e8c47b" fill-opacity=".19" stroke="#e8c47b" stroke-width="1.4"/>
-        <path d="M8 10L16 15L24 10M5 24L16 20L27 24M16 15V30M10 30H22" stroke="#f5d79a" stroke-width="1"/>
-        <path d="M12 34H20L18 38H14L12 34Z" fill="#e8c47b"/>
-        <path d="M16 39v3" stroke="#e8c47b" stroke-width="1.3"/>
-      </svg>
-    </span>
-    The Paper Lanterns
+  <a class="brand" href="#home" aria-label="The Paper Lanterns home">
+    <svg class="lantern-mark" viewBox="0 0 48 58" fill="none" aria-hidden="true">
+      <path d="M24 2 C20 7 20 10 24 13 C28 10 28 7 24 2Z" fill="#FFE8A7" class="flame"/>
+      <path d="M24 12V17" stroke="#E9C783" stroke-width="1.5"/>
+      <path d="M13 17 Q24 11 35 17 L32 43 Q24 50 16 43Z" fill="#D99D50" stroke="#FFE4A1" stroke-width="1.5"/>
+      <path d="M17 19 Q24 15 31 19 L29 40 Q24 44 19 40Z" fill="#FFF0BC"/>
+      <path d="M21 20 L21 41 M27 20 L27 41" stroke="#E9C783" stroke-width="1"/>
+      <path d="M13 17L35 17 M16 43L32 43" stroke="#FFE4A1" stroke-width="2"/>
+      <path d="M24 48V53 M18 53H30" stroke="#E9C783" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="37" cy="12" r="1.5" fill="#FFF0BC"/>
+      <circle cx="10" cy="28" r="1" fill="#FFF0BC"/>
+    </svg>
+    <span>The Paper Lanterns</span>
   </a>
 
-  <nav id="navigation" aria-label="Main navigation">
-    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});closeMenu();return false;">Home</a>
-    <a href="#genres" onclick="closeMenu()">Genres</a>
-    <a href="#stories" onclick="closeMenu()">Stories</a>
-    <a href="#community" onclick="closeMenu()">Reader Reviews</a>
-    <a href="#community" onclick="closeMenu()">Experiences</a>
-    <a href="#about" onclick="closeMenu()">About</a>
-  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
 
-  <div class="nav-actions">
-    <button class="icon-button" aria-label="Search stories" onclick="openSearch()">⌕</button>
-    <button class="menu-button" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-  </div>
+  <nav id="mainNav">
+    <a href="#home">Home</a>
+    <a href="#genres">Genres</a>
+    <a href="#stories">Stories</a>
+    <a href="#experiences">Experiences</a>
+    <a href="#about">About</a>
+    <button class="nav-search" id="searchJump">⌕ Search stories</button>
+  </nav>
 </header>
 
 <main>
-<section class="hero" id="home">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-content">
-    <div class="eyebrow">An independent storytelling universe</div>
-    <h1>Stories you can<br>see, hear and <em>feel.</em></h1>
-    <p>Some stories stay on the page. Others follow you into the night. Step into new worlds, meet unforgettable characters, and find a reason to return tomorrow.</p>
-    <div class="hero-buttons">
-      <a class="btn btn-gold" href="#genres">Explore stories <span>↗</span></a>
-      <button class="btn btn-outline" onclick="openStory('lanterns')">Read today's episode <span>→</span></button>
+  <section class="hero" id="home">
+    <div class="hero-image" id="heroImage"></div>
+    <div class="hero-content">
+      <div class="eyebrow">An independent storytelling universe</div>
+      <h1>Stories you can<br>see, hear and <span class="feel">feel.</span></h1>
+      <p class="hero-description">
+        Some stories stay on the page. Others follow you into the night.
+        Step into new worlds, meet unforgettable characters, and find a
+        reason to return tomorrow.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#genres">Explore stories ↗</a>
+        <button class="btn btn-secondary" id="todayButton">Read today's episode ↓</button>
+      </div>
+      <div class="hero-note">SEVEN WORLDS &nbsp; · &nbsp; ORIGINAL FICTION &nbsp; · &nbsp; A NEW ADVENTURE EVERY DAY</div>
     </div>
-    <div class="hero-note"><span></span> Seven worlds <span></span> Original fiction <span></span> A new adventure every day</div>
-  </div>
-  <div class="scroll-cue">SCROLL TO DISCOVER</div>
-</section>
+  </section>
 
-<section class="genres-section" id="genres">
-  <div class="section-top reveal">
-    <div>
-      <div class="eyebrow">Choose your world</div>
-      <h2>Seven doors.<br>Infinite possibilities.</h2>
+  <section id="genres">
+    <div class="section-heading reveal">
+      <div>
+        <div class="eyebrow">Choose your world</div>
+        <h2>Seven ways to disappear.</h2>
+        <p>Every genre has its own atmosphere. Find the one that calls to you.</p>
+      </div>
     </div>
-    <p>Every genre has its own atmosphere, its own secrets, and a different way of keeping you awake long after the final sentence.</p>
-  </div>
-  <div class="genre-grid" id="genreGrid"></div>
-</section>
 
-<section class="featured" id="today">
-  <div class="section-top reveal">
-    <div>
-      <div class="eyebrow">Your story for today</div>
-      <h2>One more page.</h2>
-    </div>
-    <p>A new discovery is waiting. Settle in, take your time, and let the outside world become a little quieter.</p>
-  </div>
-  <article class="feature-story reveal">
-    <div class="feature-image">
-      <img id="featuredImage" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=85" alt="A remote lakeside cabin beneath dramatic mountains">
-    </div>
-    <div class="feature-copy">
-      <div class="tag" id="featuredGenre">Mystery · Episode 01</div>
-      <h3 id="featuredTitle">The Lantern at the End of the Lake</h3>
-      <p id="featuredSynopsis">Every night at 11:17, a light appears across the lake. Nobody in the village admits to seeing it. Tonight, someone has left a letter at Mara's door.</p>
-      <div class="meta" id="featuredMeta">8 min read · Original story</div>
-      <button class="btn btn-gold" onclick="openStory('lanterns')">Enter the story ↗</button>
-    </div>
-  </article>
-</section>
+    <div class="genre-grid" id="genreGrid"></div>
+  </section>
 
-<section class="trending" id="stories">
-  <div class="section-top reveal">
-    <div>
-      <div class="eyebrow">Find your next obsession</div>
-      <h2>Stories worth staying for.</h2>
+  <section class="featured reveal" id="featured">
+    <div class="featured-image" id="featuredImage" role="img" aria-label="Atmospheric mystery landscape"></div>
+    <div class="featured-copy">
+      <div class="eyebrow">A story worth staying up for</div>
+      <h2 id="featuredTitle">The Last Light at Bellweather</h2>
+      <div class="story-meta" id="featuredMeta">MYSTERY · 8 MIN READ</div>
+      <p id="featuredSynopsis">Every night at 11:17, the lighthouse flashes once toward a town that has forgotten why it was built.</p>
+      <button class="btn btn-primary" id="featuredRead">Enter the story ↗</button>
     </div>
-    <a class="text-link" href="#genres">Explore all seven genres ↗</a>
-  </div>
-  <div class="story-grid" id="storyGrid"></div>
-</section>
+  </section>
 
-<section class="community" id="community">
-  <div class="community-inner reveal">
-    <div class="eyebrow">The world beyond the last page</div>
-    <h2>Every story leaves<br>a little light behind.</h2>
-    <p>Which fictional world would you return to? What line stayed with you? This is a place for thoughtful recommendations and reader-submitted experiences, shared honestly and with care.</p>
-    <p class="review-note">Reader contributions will appear here when real submissions are available. No invented reviews or ratings.</p>
-    <form class="newsletter" id="newsletterForm">
-      <input type="email" id="newsletterEmail" placeholder="Your email address" aria-label="Your email address" required>
-      <button type="submit" class="btn btn-gold">Join the journey ↗</button>
-    </form>
-    <p class="newsletter-message" id="newsletterMessage" aria-live="polite"></p>
-  </div>
-</section>
+  <section id="stories">
+    <div class="section-heading reveal">
+      <div>
+        <div class="eyebrow">The story library</div>
+        <h2>Find your next obsession.</h2>
+        <p>Follow a clue, fall in love, or travel somewhere impossible.</p>
+      </div>
+    </div>
+
+    <div class="story-tools reveal">
+      <input type="search" id="storySearch" placeholder="Search titles and stories..." aria-label="Search stories">
+      <select id="genreFilter" aria-label="Filter by genre">
+        <option value="all">All genres</option>
+      </select>
+      <select id="sortStories" aria-label="Sort stories">
+        <option value="featured">Featured first</option>
+        <option value="title">Title A–Z</option>
+      </select>
+    </div>
+
+    <div class="story-grid" id="storyGrid"></div>
+    <p class="empty-state" id="emptyState">No stories found. Try a different title or genre.</p>
+  </section>
+
+  <section id="experiences">
+    <div class="experience-inner reveal">
+      <div class="eyebrow">Leave a little light behind</div>
+      <h2>What did the story make you feel?</h2>
+      <p>Stories become more meaningful when we share what stayed with us.
+      Write down a thought, a favourite moment, or a question for other readers.</p>
+      <form class="experience-form" id="experienceForm">
+        <input id="experienceInput" maxlength="500" placeholder="A moment I can't stop thinking about..." aria-label="Your reader experience" required>
+        <button class="btn btn-primary" type="submit">Share your thought ↗</button>
+      </form>
+      <div class="form-message" id="experienceMessage" role="status"></div>
+    </div>
+  </section>
 </main>
 
 <footer id="about">
   <div class="footer-top">
     <div>
-      <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">The Paper Lanterns</a>
-      <p class="footer-description">A growing universe of original fiction. Seven genres, unexpected journeys, and stories made to be felt.</p>
+      <a class="brand" href="#home">
+        <svg class="lantern-mark" viewBox="0 0 48 58" fill="none" aria-hidden="true">
+          <path d="M24 2 C20 7 20 10 24 13 C28 10 28 7 24 2Z" fill="#FFE8A7" class="flame"/>
+          <path d="M24 12V17" stroke="#E9C783" stroke-width="1.5"/>
+          <path d="M13 17 Q24 11 35 17 L32 43 Q24 50 16 43Z" fill="#D99D50" stroke="#FFE4A1" stroke-width="1.5"/>
+          <path d="M17 19 Q24 15 31 19 L29 40 Q24 44 19 40Z" fill="#FFF0BC"/>
+          <path d="M21 20 L21 41 M27 20 L27 41" stroke="#E9C783"/>
+          <path d="M13 17L35 17 M16 43L32 43" stroke="#FFE4A1" stroke-width="2"/>
+        </svg>
+        <span>The Paper Lanterns</span>
+      </a>
+      <p class="footer-copy">An independent storytelling universe.<br>Leave the ordinary world at the door.</p>
     </div>
     <div class="footer-links">
-      <a href="#about">About</a>
+      <a href="#genres">Genres</a>
+      <a href="#stories">Stories</a>
+      <a href="#experiences">Reader experiences</a>
       <a href="mailto:hello@thepaperlanterns.example">Contact</a>
-      <a href="#privacy" onclick="showLegal('privacy');return false;">Privacy</a>
-      <a href="#terms" onclick="showLegal('terms');return false;">Terms</a>
-      <a href="#genres">Discover stories</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© <span id="year"></span> The Paper Lanterns</span>
-    <span>Made for the love of a good story.</span>
-  </div>
+  <div class="footer-bottom">© 2026 The Paper Lanterns · Original fictional storytelling</div>
 </footer>
 
-<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search stories">
-  <div class="search-head">
-    <h2>Find a story.</h2>
-    <button class="icon-button" onclick="closeSearch()" aria-label="Close search">✕</button>
-  </div>
-  <input id="searchInput" class="search-input" placeholder="A title, a character, a feeling..." autocomplete="off" aria-label="Search by story title, genre, or keyword">
-  <div id="searchResults" class="search-results"></div>
-</div>
+<!-- Full-screen story reader -->
+<div class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+  <div class="reader-backdrop" id="readerBackdrop"></div>
+  <div class="reader-shade"></div>
 
-<div class="reader" id="reader" role="dialog" aria-modal="true" aria-label="Story reader">
-  <div class="reader-bar">
-    <a href="#" class="reader-brand" onclick="closeReader();return false;">✦ The Paper Lanterns</a>
-    <div class="reader-controls">
-      <button onclick="changeFont(-1)" aria-label="Decrease text size">A−</button>
-      <button onclick="changeFont(1)" aria-label="Increase text size">A+</button>
-      <button onclick="toggleBookmark()" id="bookmarkButton">♡ Save</button>
-      <button onclick="closeReader()" aria-label="Close story">✕</button>
-    </div>
+  <div class="reader-nav">
+    <a class="brand" href="#home">
+      <svg class="lantern-mark" viewBox="0 0 48 58" fill="none" aria-hidden="true">
+        <path d="M24 2 C20 7 20 10 24 13 C28 10 28 7 24 2Z" fill="#FFE8A7" class="flame"/>
+        <path d="M24 12V17" stroke="#E9C783" stroke-width="1.5"/>
+        <path d="M13 17 Q24 11 35 17 L32 43 Q24 50 16 43Z" fill="#D99D50" stroke="#FFE4A1" stroke-width="1.5"/>
+        <path d="M17 19 Q24 15 31 19 L29 40 Q24 44 19 40Z" fill="#FFF0BC"/>
+        <path d="M21 20 L21 41 M27 20 L27 41" stroke="#E9C783"/>
+      </svg>
+      <span>The Paper Lanterns</span>
+    </a>
+    <button class="reader-close" id="closeReader" aria-label="Close story">✕ Close story</button>
   </div>
-  <div class="reading-progress"><div id="progressBar"></div></div>
-  <div class="reader-hero">
-    <img id="readerImage" src="" alt="">
-    <div class="reader-hero-title">
-      <div class="tag" id="readerGenre"></div>
-      <h1 id="readerTitle"></h1>
-      <div id="readerMeta" class="meta"></div>
-    </div>
-  </div>
-  <article class="reader-body">
+
+  <article class="reader-main">
+    <div class="eyebrow" id="readerGenre"></div>
+    <h1 id="readerTitle"></h1>
     <p class="reader-synopsis" id="readerSynopsis"></p>
-    <div class="reader-text" id="readerText"></div>
-    <div class="reader-question" id="readerQuestion"></div>
-    <div class="reader-actions">
-      <button onclick="shareStory()">↗ Share story</button>
-      <button onclick="toggleBookmark()" id="readerSaveButton">♡ Add to reading list</button>
+
+    <div class="story-meta" id="readerMeta"></div>
+
+    <div class="reader-settings">
+      <button id="decreaseFont" aria-label="Decrease text size">A−</button>
+      <button id="increaseFont" aria-label="Increase text size">A+</button>
+      <button id="bookmarkButton">♡ Bookmark</button>
+      <button id="shareButton">↗ Share story</button>
     </div>
-    <div class="reader-navigation">
-      <button onclick="previousStory()"><small>← PREVIOUS</small><span id="previousTitle">Explore stories</span></button>
-      <button onclick="nextStory()"><small>NEXT STORY →</small><span id="nextTitle">Continue reading</span></button>
+
+    <div id="readerText"></div>
+
+    <div class="reader-end">
+      <div class="eyebrow">Before you go</div>
+      <h3>Let the story linger.</h3>
+      <p id="discussionQuestion">Which moment stayed with you the longest?</p>
+      <button class="btn btn-primary" id="backToStories">Discover another story ↗</button>
     </div>
   </article>
 </div>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
 <script>
 "use strict";
 
-/* The seven genre worlds have individual images, colours and descriptions.
-   Replace image URLs with your own licensed images when available. */
+/*
+  THE PAPER LANTERNS
+  Single-file interactive edition.
+
+  Genre images are intentionally different:
+  Mystery: foggy lake
+  Romance: warm sunset landscape
+  Psychological thriller: unsettling architecture
+  Science fiction: space and distant worlds
+  Fantasy: enchanted forest
+  Horror: abandoned, shadowed house
+  Crime thriller: rainy city at night
+*/
+
 const genres = [
- {id:"mystery",name:"Mystery",number:"01",description:"Quiet towns. Unanswered questions. Nothing is quite what it seems.",colour:"#c7aa73",image:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=85"},
- {id:"romance",name:"Romance",number:"02",description:"Almost-meetings, impossible timing, and the courage to stay.",colour:"#e9a6a0",image:"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=85"},
- {id:"psychological-thriller",name:"Psychological Thriller",number:"03",description:"Memory shifts. Trust fractures. Your mind may be the unreliable witness.",colour:"#9da7cf",image:"https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=85"},
- {id:"science-fiction",name:"Science Fiction",number:"04",description:"Tomorrow's inventions. Strange new worlds. Humanity at the edge.",colour:"#83d4d1",image:"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&q=85"},
- {id:"fantasy",name:"Fantasy & Magical Realism",number:"05",description:"Old magic in ordinary places, where the impossible feels close.",colour:"#c7a5eb",image:"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85"},
- {id:"horror",name:"Horror",number:"06",description:"The lights are on. The house is quiet. Then something answers.",colour:"#d38a76",image:"https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=900&q=85"},
- {id:"crime-thriller",name:"Crime Thriller & Investigation",number:"07",description:"Evidence, motives, and the one detail everyone else overlooked.",colour:"#d2b46c",image:"https://images.unsplash.com/photo-1453873531674-2151bcd01707?auto=format&fit=crop&w=900&q=85"}
+  {
+    id: "mystery",
+    name: "Mystery",
+    number: "01",
+    tagline: "Every answer hides another question.",
+    accent: "#e8cf9a",
+    tint: "#273d48",
+    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1100&q=85"
+  },
+  {
+    id: "romance",
+    name: "Romance",
+    number: "02",
+    tagline: "Some meetings change everything.",
+    accent: "#f3b8a8",
+    tint: "#753f50",
+    image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1100&q=85"
+  },
+  {
+    id: "psychological-thriller",
+    name: "Psychological Thriller",
+    number: "03",
+    tagline: "Can you trust your own memory?",
+    accent: "#c9b8ef",
+    tint: "#30264d",
+    image: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1100&q=85"
+  },
+  {
+    id: "science-fiction",
+    name: "Science Fiction",
+    number: "04",
+    tagline: "Tomorrow is stranger than you think.",
+    accent: "#8edce8",
+    tint: "#123a58",
+    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1100&q=85"
+  },
+  {
+    id: "fantasy",
+    name: "Fantasy & Magical Realism",
+    number: "05",
+    tagline: "The impossible feels almost familiar.",
+    accent: "#b9e1a5",
+    tint: "#234d34",
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1100&q=85"
+  },
+  {
+    id: "horror",
+    name: "Horror",
+    number: "06",
+    tagline: "Some doors should stay closed.",
+    accent: "#e9a5a5",
+    tint: "#4d171c",
+    image: "https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?auto=format&fit=crop&w=1100&q=85"
+  },
+  {
+    id: "crime-thriller",
+    name: "Crime Thriller",
+    number: "07",
+    tagline: "Every secret leaves evidence.",
+    accent: "#f0c18b",
+    tint: "#493022",
+    image: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1100&q=85"
+  }
 ];
+
+/* Original launch stories. Replace or extend the story data without
+   changing the design. Full-length episodes can be entered in body. */
 
 const stories = [
- {id:"lanterns",genre:"mystery",title:"The Lantern at the End of the Lake",episode:1,minutes:8,image:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1500&q=90",synopsis:"Every night at 11:17, a light appears across the lake. Nobody in the village admits to seeing it. Tonight, a letter arrives at Mara's door.",question:"If a mystery could reveal one truth about your own life, would you want to solve it?",body:[
- ["The Light","At exactly 11:17 every night, a lantern appeared on the far shore of Bellweather Lake. It glowed amber through the mist, held perfectly still above the black water. Then, at 11:23, it vanished.\n\nMara Vale had watched it for seventeen nights. On the eighteenth, she found an envelope tucked beneath her door.\n\nHer name was written in her father's handwriting.\n\nThat was impossible. Her father had been missing for twelve years."],
- ["The Letter","Mara opened the envelope with the small kitchen knife she had inherited from him. Inside was a photograph of the lake, taken from the opposite shore. A figure stood beside a lantern. The figure was her father, older than the last photograph she owned, his hair silver at the temples.\n\nOn the back, in the same careful handwriting, were seven words: You remember the summer incorrectly.\n\nMara sat down. She had been ten when her father disappeared. The official story was simple: a boat accident during a storm, no body recovered. Her mother had never spoken of him again.\n\nYet Mara remembered the summer in extraordinary detail. The orange bicycle he repaired. The blackberry pie cooling on the windowsill. The night he promised that if she ever felt lost, she should look for the lantern on the lake.\n\nShe had thought it was a game.\n\nShe called the village constable. He told her not to go near the water. Then he asked, very quietly, whether she still had the blue tin box.\n\nMara had never mentioned the box to anyone."],
- ["Across the Water","At 11:10, Mara put on her father's old coat and walked to the boathouse. The mist had thickened, swallowing the village lights one by one. She took the narrow wooden boat and rowed toward the amber glow.\n\nHalfway across, she heard another oar strike the water.\n\nA second boat emerged from the fog. At its stern sat Constable Reed, his uniform replaced by a grey wool sweater. He looked less like a policeman than a tired man who had waited far too long.\n\n\"You knew,\" Mara said.\n\n\"I knew your father didn't drown. I didn't know he would ever contact you.\"\n\n\"Where is he?\"\n\nReed looked toward the light. \"That depends on what you remember.\"\n\nThe lantern was hanging from a post beside an abandoned boathouse. Beneath it lay a wooden hatch, its handle polished by years of use. Mara lifted it and found stairs descending into darkness.\n\nAt the bottom was a room lit by dozens of candles. On the walls hung photographs: Mara at five, Mara at seven, Mara at ten. In each, a different person stood just outside the frame, their face scratched away.\n\nOn a table sat a blue tin box.\n\nShe opened it. Inside was a child's drawing of three people beside a lake. Her father. Her mother. A little girl.\n\nBut the little girl had another name written beneath her feet.\n\nElise."],
- ["What the Water Kept","Mara heard footsteps on the stairs. An elderly woman entered, carrying the lantern. It was her mother, though twenty years older than the woman in Mara's memories.\n\n\"Your name was Elise,\" her mother said. \"Mara was your sister.\"\n\nThe room seemed to tilt. A second childhood surfaced, bright and terrible. Two girls on a bicycle. A summer storm. One child slipping from the dock. A father diving into water too cold to breathe in. A mother making a bargain with grief that no child should have to understand.\n\nMara had survived the accident. Her sister had not. For years afterward, her parents had called her by her sister's name in their sleep. Eventually, her father had left, unable to live inside the mistake. Her mother had built a new life around the surviving child, carefully sealing away the name that hurt them all.\n\n\"Why send me the letter now?\" Mara whispered.\n\nHer mother raised the lantern. Behind her, a man stood in the stairwell, older, thinner, but unmistakable.\n\nHer father.\n\n\"Because,\" he said, \"you are finally old enough to remember both of you.\"\n\nAt 11:23, the lantern went out. For the first time in twelve years, Mara did not look for it on the water. She had found what it was keeping safe."]
- ]},
- {id:"between-stops",genre:"romance",title:"Between the Last Two Stops",episode:1,minutes:7,image:"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=85",synopsis:"Two strangers take the same late train every Thursday. Neither realises the other has been keeping the empty seat beside them for a reason.",question:"Can a person become familiar before they become known?",body:[
- ["The Empty Seat","Every Thursday, Leela took the 9:40 train home and sat beside the window. Every Thursday, a man with a battered blue notebook boarded three stops later and chose the seat opposite her.\n\nFor six weeks they said nothing. He wrote in the notebook. She read novels with the covers folded back. Sometimes, when the train rounded the river bend, they looked up at the same time and almost smiled.\n\nOn the seventh Thursday, the train stopped between stations. The lights flickered. Someone at the far end laughed nervously.\n\nThe man closed his notebook. \"I think,\" he said, \"this is the part where people introduce themselves.\"\n\nLeela looked at him over the top of her book. \"Is that in your notebook?\"\n\n\"It will be.\""],
- ["A Small Geography","His name was Arjun. He restored old maps for a museum, which explained the notebook and the way he studied stations as if each were a puzzle. Leela taught music to children who believed scales were a form of punishment.\n\nTheir conversations grew by inches. A favourite tea stall. A song neither could remember the title of. The best window in a city full of bad views. They discovered that they had lived in the same neighbourhood for three years without ever meeting, which seemed to Leela both ridiculous and somehow inevitable.\n\nOne evening, Arjun did not arrive. The seat opposite her stayed empty all the way to the final stop. The following week, it was empty again.\n\nOn the third Thursday, she found a folded note tucked into the train's seat pocket. It contained a hand-drawn map of the route, with a tiny star marked beside a station she had never visited.\n\nUnderneath, he had written: I think you'd like the place where this line ends."],
- ["Where the Line Ends","The station was smaller than she expected, a single platform beside a field of yellow grass. Arjun waited beneath a clock that had stopped at 4:12. He looked relieved when she stepped off the train.\n\n\"I was going to tell you about my job,\" he said. \"Instead, I got offered one in another city. I leave next month.\"\n\nLeela looked at the map in her hand. \"So this is a goodbye?\"\n\n\"I was hoping it might be a beginning. I just don't know what kind.\"\n\nFor a while, they walked beside the railway fence. The evening wind moved through the grass. There was no grand confession, no sudden certainty, only the quiet realisation that the weeks of small conversations had become the shape of something neither wanted to lose.\n\nAt the platform, the return train approached with a distant metallic hum.\n\nLeela took his blue notebook and drew a new line on the map, connecting his future city to hers.\n\n\"You restore old maps,\" she said. \"Surely you know they can be changed.\"\n\nHe laughed, and this time neither of them looked away.\n\nWhen the train arrived, they boarded together. They still didn't know how the story would end. For once, neither needed to."]
- ]},
- {id:"second-memory",genre:"psychological-thriller",title:"The Room That Remembered",episode:1,minutes:8,image:"https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=85",synopsis:"A sleep researcher wakes to find notes written in her own handwriting describing a patient she has never met, in a room that does not exist.",question:"If you could no longer trust your memories, what would you use to recognise yourself?",body:[
- ["The Note","Dr. Nisha Rao found the first note inside her freezer. It was folded twice, written in her handwriting, and dated three days in the future.\n\nSTOP THE EXPERIMENT.\n\nUnderneath, in smaller letters: Patient Seven is not asleep.\n\nNisha worked in a sleep clinic where Patient Seven did not exist. She checked the records twice, then a third time, because the precision of the handwriting disturbed her more than the words. The long-tailed R. The tiny gap before the full stop. Her own habits, reproduced perfectly.\n\nShe photographed the note and sent it to herself. By morning, the photograph had disappeared from her phone, and a new note waited on the kitchen table.\n\nYOU HAVE ALREADY MET HER."],
- ["The Missing Hour","Nisha began recording every minute of her day. She set cameras in the apartment and slept with a digital clock facing the bed. For four nights, nothing unusual happened. On the fifth, the footage showed her waking at 3:06 a.m., walking into the hall, and standing motionless before a blank wall for exactly eleven minutes.\n\nAt 3:17, she turned toward the camera and smiled.\n\nNisha watched the recording with the sound muted. She had no memory of waking. No memory of the smile. She replayed it until her own face seemed like a stranger's mask.\n\nAt work, she searched the archived clinic files. Six years earlier, a research assistant named Mira Sen had disappeared during a sleep deprivation study. The report said she had resigned. There was no photograph, no exit interview, no final payment record.\n\nBut there was a handwritten entry in the oldest laboratory notebook: Patient Seven, female, age twenty-eight. Subject displays memory partitioning under prolonged sensory disruption.\n\nThe entry was signed by Nisha. Six years earlier, Nisha had not worked at the clinic."],
- ["The Other Room","She returned after midnight, using an old access card she found taped beneath her desk. In the basement, behind a storage cabinet, was a door with no handle on the public side. Inside stood a bed, a camera, and a monitor displaying a live feed of Nisha's apartment.\n\nA woman sat on the bed. She looked exactly like Nisha, except for the thin scar crossing her left eyebrow.\n\n\"You're late,\" the woman said.\n\nNisha couldn't move. The woman's voice was her own voice, stripped of hesitation.\n\n\"Who are you?\"\n\n\"The part that remembers.\"\n\nThe room's monitor flashed. A video appeared: Nisha, six years younger, signing consent forms. Another: Mira Sen entering the laboratory. Another: a door closing. Each clip ended a second before something important happened.\n\nThe woman stood. \"You asked me to forget because you couldn't live with knowing what happened in this room. But you didn't erase the memory. You gave it a room of its own.\"\n\nNisha felt something shift behind her eyes, a recollection without pictures: a hand reaching through glass, a voice calling her name, an alarm that nobody stopped.\n\n\"What happened to Mira?\"\n\nThe woman looked at the camera. \"That's the one thing you still haven't let yourself remember.\""],
- ["The Recording","Nisha went to the control desk and opened the original study footage. The final recording had been marked corrupted. The file was intact.\n\nOn screen, Mira was strapped to a monitoring bed, awake and frightened. Nisha stood beside the machine. The protocol had gone wrong. The alarm sounded. Mira asked her to stop the experiment. Nisha hesitated, staring at the data, believing another minute would produce the result that would justify months of work.\n\nWhen she finally reached for the switch, the screen went dark.\n\nThe woman in the other room was crying. Nisha could feel the memory returning now, not as a story but as a weight in the body.\n\nShe copied the recording to an external drive. She wrote a confession, then paused before signing it. Somewhere upstairs, a printer started by itself.\n\nA page slid into the tray. It was dated tomorrow.\n\nThis time, the handwriting was different.\n\nMIRA IS ALIVE.\n\nBehind Nisha, the laboratory door clicked open. Someone stepped inside and said her name."]
- ]},
- {id:"blue-earth",genre:"science-fiction",title:"The Last Signal from Earth",episode:1,minutes:7,image:"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=85",synopsis:"On a lonely research station beyond Saturn, an engineer receives a transmission from Earth dated fifty years after the planet went silent.",question:"Would you answer a message from a future you might never reach?",body:[
- ["A Voice in the Static","The transmission arrived at 04:22 station time, buried beneath a burst of solar noise. Engineer Imani Okafor nearly deleted it. Deep-space receivers caught millions of meaningless fragments every day, and the station's old processor had begun labelling routine interference as conversation.\n\nThen she heard her name.\n\nThe voice was unmistakably human, rough with static and a strange, familiar laugh. It said: Imani, if you're receiving this, don't turn the ship around.\n\nThe signal carried an Earth timestamp fifty years in the future. Earth itself had gone silent seventeen years earlier, after the last orbital network failed. No one knew whether the planet still had a functioning transmitter. No one knew whether anyone remained to use it.\n\nImani replayed the message. At the end, another sentence emerged: You haven't met the person who sends this yet."],
- ["The Empty Orbit","Station Halcyon orbited a small moon of Saturn, far from the nearest human settlement. Imani had chosen the assignment because distance made grief easier to manage. Her brother had been on Earth when the networks went dark. She had spent seventeen years refusing to calculate the probability of his survival.\n\nShe woke the station's dormant navigation system and plotted a return trajectory. The computer refused the command. Someone had installed a restriction in the system's oldest layer, signed with her own identification key.\n\nThe transmission repeated. This time, the speaker mentioned a childhood memory: a cracked yellow cup, a rooftop garden, the summer Imani learned to repair a radio. These were not public records. They were hers.\n\nShe asked the ship's intelligence, ORA, to identify the signal origin. The response took six minutes.\n\n\"Source is Halcyon,\" ORA said.\n\n\"That's impossible.\"\n\n\"The signal's final relay point is this station. Its first transmission is scheduled for fifty years from now.\""],
- ["A Future Machine","Imani opened the maintenance logs and discovered an unregistered system beneath the navigation core. It was a compact array of gravitational sensors, built from components not manufactured on Halcyon. The array was designed to bend the station's communications signal through a narrow distortion in spacetime.\n\nNot travel through time, the technical notes insisted. Exchange information across two points that would ordinarily be separated by decades.\n\nThe machine could send a message forward. It could receive a message backward. But it needed a human operator at both ends, and the future operator had left one final instruction: do not turn the ship around.\n\nImani understood why the restriction bore her name. She had built the machine before leaving Earth, in a future she had not yet lived. The station wasn't a refuge from history. It was the place where her own history would begin again.\n\nShe recorded a reply. She told the future voice that she was frightened. She told it that she missed her brother. Then she asked the question she had been avoiding for seventeen years.\n\n\"Is Earth still there?\"\n\nThe machine hummed. A reply arrived in a voice older than her own.\n\n\"Look out of the window.\"\n\nImani turned. Across the dark curve of Saturn's rings, a small blue point had appeared on the navigation display. A planet, broadcasting a signal. A planet that had been waiting for her to listen."]
- ]},
- {id:"the-unwritten",genre:"fantasy",title:"The Bookshop That Sold Tomorrows",episode:1,minutes:7,image:"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=85",synopsis:"A bookshop appears only when it rains. Inside, a young archivist discovers books containing events that have not happened yet.",question:"Would knowing your future help you live, or stop you from living?",body:[
- ["A Shop in the Rain","The bookshop appeared on a Tuesday, between a bakery and a tailor that had occupied the same street for forty years. Its green door had no sign. Rain fell only on that side of the road, though the rest of the city remained bright and dry.\n\nAnika went inside to escape the weather. The shop smelled of cedarwood and old paper. Shelves reached a ceiling crowded with small brass bells, each chiming at a different pitch. Behind the counter sat an old woman with silver spectacles.\n\n\"Looking for something in particular?\" she asked.\n\n\"A book, I suppose.\"\n\n\"Everyone says that. Very few mean it.\"\n\nThe woman handed Anika a thin volume bound in blue cloth. Its cover bore her full name, including the middle name she had never used. Inside was a description of tomorrow: the train she would miss, the stranger she would meet, and the sentence she would wish she had said differently."],
- ["The Price of Knowing","Anika returned the next day. The bookshop was gone, replaced by a narrow alley and a bicycle chained to a drainpipe. For a week she searched the street. On the eighth day, rain fell over the green door again.\n\nThis time, she brought the blue book. The old woman looked pleased.\n\n\"You read it.\"\n\n\"It was accurate.\"\n\n\"Of course. It was your tomorrow.\"\n\nAnika wanted a book containing the rest of her life. She wanted to know whether she would become an archivist, whether the man from the train would return, whether her mother would forgive the daughter who had left home after an argument neither remembered correctly.\n\nThe old woman led her to a staircase. The shelves upstairs held books with thousands of different names. Some were thick as dictionaries. Others were a few pages long. A few sat empty, their covers warm to the touch.\n\n\"Every possible future is written here,\" the woman said. \"But the price isn't money. You surrender one possibility each time you choose to read ahead. The more you know, the fewer things can surprise you.\"\n\nAnika looked at the empty books. One had her name on it."],
- ["The Unwritten Page","For three weeks, Anika read nothing beyond the blue book. She met the stranger from the train and learned that his name was Dev. She apologised to her mother for a conversation that had lasted seven minutes and damaged seven months. The book had predicted both, down to the weather.\n\nBut the more accurately tomorrow unfolded, the less she felt present inside it. Every choice seemed borrowed from a page she had already read. When Dev asked whether she wanted to take a trip to the coast, she remembered the book's description of the hotel, the road, the argument they would have on the second evening. She almost refused simply to avoid the argument.\n\nInstead, she went.\n\nThe argument happened, but not as described. Dev was angry about a different thing. Anika said a different sentence. They made up under a sky full of stars the book had never mentioned.\n\nWhen she returned to the shop, she placed the blue book on the counter.\n\n\"It was wrong,\" she said.\n\nThe old woman smiled. \"No. You became more interesting than it was.\"\n\nAnika walked upstairs and found the empty book with her name. She opened it. On the first page, a single line appeared as she watched: Tomorrow, you will choose without asking me.\n\nShe closed the cover. Outside, the rain stopped. The green door remained, but for the first time, Anika did not need to know what waited beyond it."]
- ]},
- {id:"the-house-breathes",genre:"horror",title:"The House That Breathed at Night",episode:1,minutes:7,image:"https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=1200&q=85",synopsis:"A family inherits a beautiful old house with one condition: the bedroom door at the end of the corridor must remain closed after midnight.",question:"Would you stay in a house that seemed to know you better than you knew yourself?",body:[
- ["The Rule","The house was larger than it appeared in the photographs. Its windows caught the afternoon sun, its wooden floors shone like dark honey, and a garden of white flowers surrounded the front steps. When the solicitor handed Mira the keys, he mentioned only one unusual condition.\n\n\"Don't open the last bedroom after midnight.\"\n\nMira laughed. She assumed the previous owner had been eccentric. The house was free of debt, the garden was beautiful, and the city was only twenty minutes away. She signed the papers.\n\nOn the first night, she heard the house breathe.\n\nA long, slow inhalation travelled through the walls. The bedroom curtains lifted though the windows were closed. Somewhere down the corridor, a floorboard creaked under a weight that moved from one side of the room to the other.\n\nMira checked the locks. The last bedroom door was shut. A thin line of warm light showed beneath it."],
- ["The Footsteps","For six nights, the breathing began at 12:03. Mira tried earplugs, music, and sleeping in the living room. The sound followed her. On the seventh night, she placed a glass of water beside the last bedroom door and watched from the staircase.\n\nAt midnight, nothing happened. At 12:03, the water trembled. At 12:04, the glass slid several centimetres toward the door.\n\nMira took photographs. She called the solicitor, who asked whether she had found the brass key hidden beneath the pantry tiles. She had not known about a key. He advised her not to look for it.\n\nThe following morning, she found a child's drawing taped to the inside of her front door. It showed the house, seven windows, and a black figure standing in the final room. Beneath it, in a child's careful handwriting, were the words: Mummy says it only breathes when someone is alone.\n\nMira had no children. The previous owner had never mentioned any."],
- ["The Last Bedroom","She found the key behind a loose pantry tile. Its teeth were worn smooth. She waited until 11:59, then stood before the last bedroom with the key in her palm. The breathing had begun early tonight. The walls moved so slightly she might have imagined it.\n\nThe key turned without resistance.\n\nInside was a perfectly ordinary bedroom: a narrow bed, a wardrobe, a little desk facing the garden. A photograph stood on the desk. Mira recognised the woman immediately. It was herself, older by perhaps thirty years, sitting beside a child with dark hair.\n\nBehind the child stood the solicitor. His face was blurred, scratched away by something sharp.\n\nThe wardrobe door opened an inch. From inside came the sound of a child whispering a name Mira had not heard since she was five.\n\nHer mother's name.\n\nMira stepped back. The breathing stopped. For the first time since she had moved in, the house was silent.\n\nThen, from somewhere below the floor, came a second sound: the unmistakable click of a front door locking from the outside.\n\nThe photograph on the desk changed. The older Mira was no longer sitting beside the child. She was standing in the corridor, holding a key, staring directly at the camera.\n\nOn the back, fresh ink appeared.\n\nYou have opened it before."],
- ["The Quiet","Mira ran downstairs. Every exit was locked. She called emergency services, but her phone showed no signal. The house had returned to silence, and the silence felt worse than the breathing.\n\nIn the hallway mirror, she saw a child standing behind her. The child wore a yellow raincoat and held a brass key. Mira turned. The corridor was empty.\n\nShe looked into the mirror again. The child lifted one finger to her lips.\n\nThen Mira remembered a garden, a storm, a door that should have stayed shut, and a small hand reaching for hers. She remembered being the child in the yellow coat. She remembered her mother promising that the house would keep her safe.\n\nThe breathing returned, soft and patient, from inside the walls.\n\nMira sat on the stairs until dawn. In the morning, the front door opened easily. She left the key on the kitchen table and drove away without looking back.\n\nThat night, in a hotel room forty miles away, she woke at 12:03 to the sound of slow breathing.\n\nHer suitcase stood open beside the bed. At the bottom, beneath her clothes, lay the brass key.\n\nThe house had not followed her.\n\nIt had simply never let her leave."]
- ]},
- {id:"the-blue-file",genre:"crime-thriller",title:"The Blue File",episode:1,minutes:8,image:"https://images.unsplash.com/photo-1453873531674-2151bcd01707?auto=format&fit=crop&w=1200&q=85",synopsis:"A detective receives an anonymous file that solves a five-year-old murder, then discovers that every piece of evidence points toward the investigator who closed it.",question:"When evidence contradicts the person you trust most, which one do you follow?",body:[
- ["A File Without a Name","Detective Inspector Kabir Sen found the blue file on his desk at 6:12 a.m. The office was locked, the night guard swore nobody had entered, and the file contained no fingerprints worth lifting.\n\nInside were three photographs, a train ticket, and a typed statement about the murder of journalist Devika Rao. The case had been closed five years earlier. The official conclusion was robbery. No suspect had been charged.\n\nThe first photograph showed Devika outside a railway station on the evening she died. The second showed a man standing behind her. The third was a close-up of the station clock. Its hands showed 8:46.\n\nKabir opened the original case record. Devika's death had been reported at 8:39. The station clock in the crime-scene photographs showed 8:46 too. Someone had altered the timeline by seven minutes.\n\nThe file contained one final sentence: Find out who changed the clock."],
- ["Seven Minutes","Kabir requested the original station maintenance logs. The clock had been disconnected for repairs that week. Its displayed time had been set manually by the officer who documented the scene: Inspector D'Souza, now Kabir's supervisor.\n\nKabir took the file to the evidence room and compared the photographs with the originals. One image had been cropped. In the uncropped version, a reflection in the station window showed a second figure standing near the platform stairs.\n\nHe found the man in a commuter's video taken that night. The figure was a railway porter named Joseph, who had died two years later in an unrelated accident. Before his death, Joseph had filed a complaint alleging that a senior officer had pressured him to change his statement.\n\nThe complaint had been dismissed as unreliable. The officer named in it was D'Souza.\n\nKabir requested an internal review. His supervisor refused it and ordered him to return the file. That afternoon, someone searched Kabir's locker. Nothing was stolen. The blue file had been placed on top of his coat, open to the page bearing D'Souza's name."],
- ["The Witness","Kabir found Devika's sister, Anjali, living above a pharmacy on the other side of the city. She had spent five years collecting newspaper clippings and filing requests for the investigation records. When Kabir showed her the photograph, she did not look surprised.\n\n\"Devika was going to publish a story about police contracts,\" Anjali said. \"She told me somebody inside the department was selling information to a private security company. She said she had evidence.\"\n\n\"Did she tell you who?\"\n\n\"No. She said names were dangerous until she could prove them.\"\n\nAnjali produced a sealed envelope Devika had left with a solicitor. Inside was a list of payment references, each linked to a contract that had been awarded shortly after confidential investigation details appeared in the press. One payment had been made the day after Devika's death.\n\nKabir recognised the account number. It belonged to a company used by the department for covert operational expenses.\n\nHe called his supervisor. D'Souza listened without interrupting, then said, \"You should stop. The person who sent you that file wants you looking at me.\"\n\nIt was the first sensible thing D'Souza had said all day. Kabir began to wonder whether the blue file was a trap."],
- ["The Last Copy","Kabir copied every document to an independent evidence archive and arranged a meeting with the internal oversight unit. Before he could attend, he received a text from an unknown number: The file is not complete. Check the back of photograph three.\n\nHe removed the photograph from its sleeve. A thin strip of paper had been taped to the back. It contained a time, a platform number, and a name: Kabir Sen.\n\nHis own name.\n\nHe searched his old notebooks. Five years earlier, he had been a junior investigator assigned to a different case on the same night Devika died. His notebook showed that he had visited the station at 8:41. He had no memory of seeing her.\n\nThe blue file was not simply accusing D'Souza. It was asking why Kabir's original statement had disappeared from the case record.\n\nHe reopened the archive and searched for the old case number. A deleted attachment appeared in the recovery log: a photograph of Kabir standing beside Devika on the platform, seven minutes before the reported time of death.\n\nHis phone rang. D'Souza's voice was low and urgent.\n\n\"Listen carefully. Don't come to the station. I have the original recording. And if you want to know why your name is in that file, you need to see it before they do.\"\n\nThe call ended.\n\nKabir looked at the photograph once more. Behind his younger self, reflected in the station glass, stood the man who had delivered the blue file.\n\nThe man was wearing Kabir's face."]
- ]}
+  {
+    id: "last-light",
+    title: "The Last Light at Bellweather",
+    genre: "mystery",
+    synopsis: "Every night at 11:17, a lighthouse flashes toward a town that has forgotten why it was built. Mara returns to discover who is sending the signal.",
+    minutes: 8,
+    question: "What would you do if the only witness was someone everyone believed had been dead for twenty years?",
+    body: `The lighthouse had been dark for twenty-three years. At least, that was what the town records said.
+
+Mara Venn knew the records were wrong because she had seen the light herself on the night her father disappeared.
+
+It happened at 11:17, exactly one flash, pale and patient, cutting through the fog above Bellweather Bay. Her father had stood beside her at the kitchen window that evening, one hand resting on her shoulder. When the light appeared, he had gone so still that she could hear the clock behind them.
+
+"Don't ever answer it," he had whispered.
+
+By morning, his coat was hanging by the door, his tea had gone cold, and nobody in Bellweather would admit he had been expected home.
+
+Twenty-three years later, Mara returned with a suitcase, a recorder, and a key she had found inside her mother's sewing box.
+
+The town looked smaller than she remembered. Salt had bleached the harbour railings white. The old bakery had become a property office. The road to the lighthouse was almost swallowed by bracken.
+
+Only the light remained unchanged.
+
+At 11:17 that night, it flashed once.
+
+Mara was already watching.
+
+She took her father's brass key and drove through the fog. The lighthouse door stood unlocked. Inside, dust covered the stairs except for a single trail of wet footprints leading upward.
+
+At the top, the lamp was cold. The great glass lens reflected her face in a hundred small pieces.
+
+On the floor lay a cassette recorder.
+
+Mara pressed PLAY.
+
+Her father's voice filled the room, rougher than she remembered. "If you've come back, it means the light has found you too. I need you to understand something. I didn't leave Bellweather. I followed the signal."
+
+A pause. Wind scratched against the microphone.
+
+"The keeper before me disappeared in 1978. His before that, in 1951. Every twenty-three years, the light calls someone who has heard it. I thought I could stop it by shutting down the lamp."
+
+A click sounded on the recording.
+
+"But the light doesn't come from the lamp."
+
+Mara stopped breathing.
+
+From the narrow window, she could see the sea. Beyond the breakwater, something shone beneath the water, a steady golden point far below the waves.
+
+The recorder clicked again.
+
+"If you can hear this, don't go down to the shore."
+
+Outside, the beam swept across the bay a second time.
+
+Mara looked at the lens. It was turning.
+
+There was no electricity in the building. No generator. No living keeper. Yet the glass began to glow from somewhere deep inside its polished heart.
+
+She backed toward the stairs.
+
+A voice rose from the recorder, so quiet she almost missed it.
+
+"Mara?"
+
+It was her father's voice, but it sounded younger now. Frightened. Close enough to touch.
+
+"I'm at the waterline. I can see you."
+
+She ran down the stairs, out the door, and into the wet grass. The shore lay below, hidden by the fog. She could hear waves striking rock.
+
+Then a figure stepped into the beam.
+
+Her father wore the same dark coat she remembered from childhood. His hair was black, his face untouched by time. He stood where the tide met the stones, looking up at her with a terrible, tender expression.
+
+Mara took one step down the path.
+
+He raised his hand.
+
+Behind him, the sea glowed gold.
+
+For the first time in twenty-three years, the lighthouse flashed twice.
+
+Mara stopped.
+
+She remembered his warning. Don't ever answer it.
+
+The figure smiled, and for a moment she saw not her father but something wearing the shape of the man she had loved.
+
+She turned away.
+
+The beam went dark.
+
+By dawn, the lighthouse door was locked. The recorder had vanished. In the harbour office, a new line had appeared in the keeper's log, written in her own handwriting:
+
+11:17 PM. Signal received. No response.
+
+Mara drove inland before sunrise. She did not look back until the road bent above the bay.
+
+The lighthouse was dark.
+
+On the passenger seat, her father's brass key was wet with seawater.
+
+And somewhere beneath the waves, a light began to turn.`
+  },
+  {
+    id: "letters-in-june",
+    title: "The Letters We Left in June",
+    genre: "romance",
+    synopsis: "Two strangers discover a collection of letters hidden in a seaside bookshop. The letters were never delivered, and one of them contains a name they both know.",
+    minutes: 7,
+    question: "Would you open a letter that was never meant for you?",
+    body: `The first letter fell out of a book at exactly four o'clock, which was the hour when the sea turned silver and the bookshop smelled most strongly of rain.
+
+Nina caught it before it touched the floor.
+
+The envelope was cream-coloured, softened at the edges, with a date written in blue ink: 14 June, twenty years earlier.
+
+There was no stamp. No address. Only two words.
+
+For you.
+
+Nina had worked at the little shop on the promenade for three summers, but she had never seen the envelope before. She turned it over carefully. The seal had been broken and pressed closed again.
+
+"Those aren't for sale," said a voice behind her.
+
+A man stood by the front window, holding a dripping umbrella. He had dark hair, a wool coat, and the uncomfortable expression of someone who had rehearsed a conversation too many times.
+
+"Do you know who wrote this?" Nina asked.
+
+He looked at the date.
+
+"My mother."
+
+His name was Elias. He came back the following afternoon, then the afternoon after that. Together they searched the shelves, finding letters between old travel guides, pressed flowers in poetry books, and photographs tucked inside the covers of novels no one had borrowed in years.
+
+Every letter was addressed to someone named June.
+
+None had been sent.
+
+The letters told the story of two people who had fallen in love in a summer town and planned to leave together. One of them had stayed. The other had disappeared. Neither had explained why.
+
+Nina began to recognise the places mentioned in the letters. The blue bench near the pier. The bakery that closed before sunset. The steps where the tide left tiny shells in the morning.
+
+She also began to recognise Elias's silences.
+
+One evening, as they walked home, she asked him why he had returned to the town after so long.
+
+"My mother died in March," he said. "She kept asking me to find something. I thought she meant a person."
+
+"Maybe she did."
+
+He smiled without looking at her.
+
+They found the last letter in a book of pressed sea plants. The paper was newer than the others. The handwriting was shaky.
+
+June,
+
+I waited at the station until the last train. You never came. I told myself you had changed your mind, that I had misunderstood everything. It was easier than believing someone had stopped you.
+
+I am leaving tomorrow. I will keep the blue ribbon you gave me. If you ever find these letters, know that I loved you. I was afraid, but I loved you.
+
+At the bottom was a signature.
+
+Margaret.
+
+Elias sat down on the shop floor.
+
+"That's my grandmother's name," he said.
+
+Nina placed the letter between them.
+
+Outside, the tide was coming in. The streetlights blinked on one by one, turning the wet pavement into a long ribbon of gold.
+
+"My mother used to say she had a sister she never met," Elias said. "A sister who was given away. Nobody would tell her why."
+
+Nina felt the shape of the story changing.
+
+The letters had not been written by lovers. They had been written by sisters, separated by a family that thought silence was the same thing as protection.
+
+At the bottom of the final envelope, someone had written an address.
+
+The house stood on the hill above the town, with blue shutters and a garden full of rosemary. An elderly woman answered the door.
+
+She looked at Elias for a long time.
+
+Then she said, "You have her eyes."
+
+The reunion took place in a kitchen full of afternoon light. There were apologies, photographs, names, and years of missing details. Nina sat by the window while the sisters spoke, understanding that some kinds of love arrived late and still managed to feel like home.
+
+When they walked back to the bookshop, Elias stopped beside the blue bench.
+
+"I came here looking for an ending," he said.
+
+"And?"
+
+"I think I found a beginning."
+
+He held out his hand. Nina took it.
+
+They did not kiss that evening. They walked along the water until the lamps came on, speaking about books and childhoods and all the ordinary things that become extraordinary when someone truly listens.
+
+The next morning, Nina found a new envelope on the counter.
+
+It had no date, no address, and no stamp.
+
+Inside was a single sheet of paper.
+
+Dear Nina,
+
+Tomorrow, four o'clock. The blue bench. Bring a book you love.
+
+Elias.
+
+She laughed, folded the note, and placed it inside her favourite novel.
+
+Outside, June sunlight moved across the sea.
+
+For the first time in a long while, the future felt like a letter that had finally found its way home.`
+  },
+  {
+    id: "room-without-windows",
+    title: "The Room Without Windows",
+    genre: "psychological-thriller",
+    synopsis: "A therapist begins receiving transcripts of sessions she has no memory of conducting. Each transcript reveals something she has tried to forget.",
+    minutes: 8,
+    question: "How much of your identity depends on the memories you trust?",
+    body: `The first transcript arrived on a Tuesday, slipped beneath Dr. Lena Vale's office door before the building opened.
+
+It contained twelve pages, no letterhead, and a time stamp for a session she had never conducted.
+
+Patient: Unknown.
+
+Therapist: Dr. Vale.
+
+The dialogue began halfway through a sentence.
+
+"You said you would remember this time."
+
+Lena read the line twice. She had worked in the same clinic for eleven years. She kept meticulous notes. Every appointment was logged, every recording encrypted, every patient accounted for.
+
+Yet the transcript carried her signature.
+
+At the bottom, someone had typed: SESSION 04. ROOM B.
+
+The clinic had no Room B.
+
+She asked the administrator about it. He laughed, then stopped when he saw her expression.
+
+"There used to be another floor," he said. "Before the renovation."
+
+Lena went home early. She slept badly, dreaming of a corridor with no doors and a voice asking her to count backward from ten.
+
+The next transcript appeared three days later.
+
+This one described a woman who had lost her sister in a car accident. The therapist asked whether the patient had been driving.
+
+The patient said no.
+
+The therapist asked again.
+
+The patient began to cry.
+
+Lena shut the folder.
+
+She had been in a car accident when she was nineteen. Her younger sister, Anna, had died that night. Lena remembered rain, a broken headlight, and the smell of wet earth. She remembered sitting beside the road while an ambulance carried her sister away.
+
+She had never told anyone about the minutes before the crash.
+
+The third transcript arrived on Friday.
+
+At the end was a line that made her hands go cold.
+
+Patient: You were driving.
+
+Therapist: I know.
+
+Lena searched the clinic archives that night. Old appointment logs had been moved to a storage room in the basement. She found the renovation plans rolled inside a cardboard tube.
+
+There had been a Room B.
+
+It was a small room at the end of the former east corridor. No windows. Soundproof walls. It had been used for intensive sessions before the clinic expanded.
+
+The room was now behind a sealed partition.
+
+Lena stood in front of the wall until the security guard asked whether she needed help.
+
+At home, she opened the transcripts again.
+
+They were not recordings. They were too precise, too polished, as though someone had reconstructed the conversations from memory. Each page carried a tiny mark in the corner: a black square, then a white one, then two black squares.
+
+A sequence.
+
+She laid the pages across the dining table.
+
+When she arranged them by the marks, the first letters of each final sentence spelled a word.
+
+BASEMENT.
+
+At midnight, Lena returned to the clinic.
+
+Behind the storage shelves, she found a maintenance hatch. The lock opened with her office key.
+
+The corridor beyond was narrow and smelled of plaster. At its end was a door with no handle.
+
+Someone had scratched a name into the paint.
+
+ANNA.
+
+Lena pressed her palm against it.
+
+A speaker crackled overhead.
+
+"You're late," said a voice.
+
+It was her own voice, older and tired.
+
+The door clicked open.
+
+Inside stood a desk, two chairs, and a tape recorder. On the wall was a photograph of two girls beside a car on a summer afternoon.
+
+Lena recognised herself.
+
+She recognised Anna.
+
+The tape began playing without her touching it.
+
+"You were driving," said a woman's voice.
+
+"I was," Lena answered on the recording.
+
+"You looked away."
+
+"I looked at the road."
+
+"You looked at me."
+
+Lena gripped the desk.
+
+The memory arrived not as a picture but as a sensation: the steering wheel slick beneath her hands, Anna reaching toward the radio, Lena turning to argue, the sudden white flare of headlights.
+
+She had spent years remembering the impact and forgetting the moment before it.
+
+The tape continued.
+
+"I can't live with this," the recorded Lena said.
+
+"You don't have to erase it," answered the other voice. "You only have to stop making me disappear."
+
+The recorder clicked off.
+
+Lena sat in the chair until morning, the photograph between her hands.
+
+She had never conducted sessions in Room B. The transcripts were not proof of a secret patient or a conspiracy. They were pages she had written years earlier during treatment, after the accident, then buried so thoroughly that even she no longer remembered them.
+
+Someone had returned them to her.
+
+On the desk lay a final sheet.
+
+Patient: Lena Vale.
+
+Therapist: Anna Vale.
+
+The last line was written in blue ink.
+
+You are allowed to remember me and still go on living.
+
+When Lena left the basement, the corridor seemed shorter. The clinic was beginning to wake. Somewhere upstairs, a phone rang.
+
+She carried the transcripts into her office and placed them in a folder with her name on it.
+
+For the first time, she did not lock the drawer.`
+  },
+  {
+    id: "the-orbit-of-us",
+    title: "The Orbit of Us",
+    genre: "science-fiction",
+    synopsis: "On a lonely research station orbiting a distant moon, an engineer receives a transmission from Earth dated thirty years in the future.",
+    minutes: 7,
+    question: "Would you trust a message from your future self?",
+    body: `The transmission arrived at 03:06 station time, when the stars beyond the observation glass looked like pinholes in black velvet.
+
+Engineer Sera Lin almost deleted it.
+
+The signal carried no authorised beacon, no identification code, and no encryption. It consisted of a single audio file, tagged with a date thirty years ahead.
+
+She opened it.
+
+Her own voice filled the station.
+
+"Sera, if you're hearing this, don't launch the return shuttle."
+
+The recording ended.
+
+Sera replayed it. Same breath before the first word. Same faint click at the end of a sentence, a habit she had spent years trying to correct.
+
+She was alone on the research station Kepler Nine, orbiting a moon that had no name in any language spoken on Earth. Her crew had returned home two weeks earlier. She had stayed behind to finish the survey.
+
+A transmission from Earth took eleven minutes to reach them. A message from thirty years in the future should have been impossible.
+
+She checked the metadata. The file had originated inside the station.
+
+At 03:20, the station's navigation system reported a minor orbital deviation. At 03:26, the external camera showed a faint blue light moving along the moon's surface.
+
+Sera put on her suit.
+
+The light was not a beacon. It was a structure, half buried in pale dust, its edges smooth and reflective. She descended toward it in the utility rover and found a panel that opened at her touch.
+
+Inside was a metal disc.
+
+When she brought it back, the station's computer identified its material as an alloy not scheduled to be manufactured for another eighty years.
+
+The disc carried one inscription.
+
+YOU CAME BACK.
+
+Sera did not sleep.
+
+She searched the station logs for anomalies and found a missing block of data in the navigation archive. The missing block was exactly eleven minutes long.
+
+At dawn, another transmission arrived.
+
+"You're going to find the disc," said her future voice. "You're going to think it proves time travel. It doesn't. It proves that something out there knows how to imitate the future."
+
+"Who are you?" Sera whispered to the empty room.
+
+The recording continued.
+
+"The moon isn't empty. We found that out too late."
+
+A low vibration travelled through the station.
+
+On the main display, the moon's surface began to change. Thousands of points of light appeared beneath the dust, arranged in concentric circles around the buried structure.
+
+Sera opened the return-shuttle checklist.
+
+The launch window was six hours away.
+
+The message had said not to launch.
+
+She looked again at the inscription on the disc. YOU CAME BACK.
+
+Perhaps the signal was a warning. Perhaps it was bait. Perhaps the future was only a pattern that something intelligent could calculate.
+
+She had one way to find out.
+
+Instead of launching the shuttle, she sent a pulse toward the moon using the station's emergency beacon. Three short bursts, followed by a pause, then three more.
+
+The lights below answered.
+
+Not in Morse code. Not in any language she knew.
+
+They answered with the exact waveform of her own heartbeat, measured by the suit sensors.
+
+For a moment, Sera could not move.
+
+Then the station received a final transmission.
+
+It contained no voice, only an image: the observation window, the same desk, the same chair. On the chair sat a second version of Sera, older by thirty years, staring into the dark.
+
+The older woman raised her eyes.
+
+She held up a handwritten sign.
+
+DON'T COME HOME YET.
+
+Sera watched the image until it faded.
+
+Outside, the buried lights began to rise from the moon in long, slow columns, like cities waking beneath the sea.
+
+She cancelled the shuttle launch.
+
+Then she opened a new log entry.
+
+Mission status: continuing.
+
+Transmission source: unknown.
+
+One last line appeared on the screen, typed by no human hand.
+
+WE HAVE BEEN WAITING FOR YOU.`
+  },
+  {
+    id: "the-garden-of-small-miracles",
+    title: "The Garden of Small Miracles",
+    genre: "fantasy",
+    synopsis: "A quiet gardener discovers that every flower in her abandoned courtyard grows from a wish someone was afraid to speak aloud.",
+    minutes: 7,
+    question: "If you could grow one impossible thing, what would it be?",
+    body: `The garden had been locked for forty years, but every spring a new flower appeared beneath the iron gate.
+
+Some were blue as the first hour of morning. Some glowed softly after sunset. One year, a small white blossom opened in the shape of a handwritten letter.
+
+Iris Bell had lived next door all her life. She had heard the stories about the garden: that its owner had vanished, that the trees grew backward, that anyone who entered came out carrying a memory that did not belong to them.
+
+She believed none of them.
+
+Then her grandmother died and left her a key.
+
+The key was warm even in winter.
+
+Inside the gate, the courtyard smelled of rain and oranges. A stone fountain stood at its centre, dry except for a single silver fish circling the basin. Vines climbed the walls. Flowers grew between the paving stones in colours Iris had no names for.
+
+A brass plaque beside the fountain read:
+
+PLANT ONLY WHAT YOU ARE PREPARED TO LOSE.
+
+Iris laughed. She had come looking for a place to clear, not a riddle.
+
+She began with the weeds.
+
+By noon, she had found a small packet of seeds beneath a loose stone. There was no label, only a note in her grandmother's handwriting.
+
+For the thing you cannot ask for.
+
+Iris planted one seed.
+
+That night, a tiny green shoot appeared. By morning, it had grown into a flower shaped like a paper boat.
+
+When Iris touched its petals, she heard her mother's voice singing a song she had not heard since childhood.
+
+She drew her hand away.
+
+The voice stopped.
+
+Over the next few weeks, the garden changed. A red flower bloomed where Iris had buried a letter she had never sent. A golden vine climbed the wall where her grandmother used to sit. Near the fountain, a small tree grew with silver leaves that whispered names in the wind.
+
+Iris began to understand.
+
+The garden did not grant wishes. It gave form to the things people carried silently: grief, longing, regret, hope. It made them visible long enough for someone to look at them.
+
+One evening, a boy appeared at the gate. He held a broken watch.
+
+"Can you grow a person?" he asked.
+
+Iris knew what he meant. His father had died the previous winter.
+
+"No," she said gently. "But you can plant something that reminds you of him."
+
+The boy placed the watch beneath the silver-leaved tree. The next morning, a small blue flower had grown beside it. When the wind moved through its petals, the watch began to tick.
+
+Not perfectly. Not forever.
+
+Just long enough for the boy to smile.
+
+Summer arrived. The courtyard filled with colour, and people began to leave small objects by the gate: a recipe card, a faded ribbon, a photograph, a pebble from a distant shore.
+
+Iris did not ask their stories. She watered the flowers and let the garden do what it could.
+
+But one seed remained.
+
+It was black, smooth, and cold. It had been tucked inside her grandmother's key envelope, wrapped in a page torn from an old diary.
+
+If you plant this, the note said, the garden will give you what you have wanted most. It will also ask you to release what has kept you safe.
+
+Iris carried the seed in her pocket for days.
+
+What she wanted most was simple. She wanted one more conversation with her grandmother. One more afternoon in the kitchen. One more chance to ask the questions she had saved for later.
+
+On the first evening of autumn, she planted it beside the fountain.
+
+Nothing happened.
+
+For three days, the soil remained bare.
+
+On the fourth morning, a single leaf appeared. It was the colour of candlelight.
+
+Iris knelt beside it.
+
+A memory rose around her: her grandmother at the kitchen table, folding paper lanterns from old book pages. The room smelled of cinnamon and warm dust. Her grandmother looked up and said, "You don't have to keep every door open to prove that you loved someone."
+
+Iris began to cry.
+
+The memory did not last. It did not need to.
+
+When the light faded, the flower had opened. Inside its petals was a tiny seed, bright as a star.
+
+Iris placed it in a jar.
+
+The garden had not returned her grandmother. It had given her something harder and kinder: permission to let the memory change without losing it.
+
+Years later, when the courtyard had become a place of quiet visits and small offerings, Iris planted that seed by the gate.
+
+Every spring, a new flower appeared.
+
+It was never the same colour twice.
+
+And the garden remained open.`
+  },
+  {
+    id: "the-house-that-breathed",
+    title: "The House That Breathed",
+    genre: "horror",
+    synopsis: "A family inherits a house in which every room seems to inhale after midnight. The youngest daughter discovers the house has been waiting for someone.",
+    minutes: 7,
+    question: "Would you stay in a house that seemed to recognise you?",
+    body: `The house breathed at 12:03 every night.
+
+It began with a long sigh from the walls, a deep intake of air that made the curtains lift and the floorboards tremble. Then came the silence, so complete that the family could hear their own hearts.
+
+Mila noticed it first.
+
+She was eight when her parents brought her to the old house on Briar Lane, a narrow building with dark windows and a garden where nothing grew. Her father called it a bargain. Her mother called it a fresh start.
+
+Mila called it hungry.
+
+The first night, she woke to find the wallpaper rising and falling beside her bed.
+
+She told her mother. Her mother blamed the pipes.
+
+On the second night, Mila heard footsteps moving through the upstairs corridor. They stopped outside her door and remained there until morning.
+
+On the third night, a voice whispered her name through the heating vent.
+
+She did not tell anyone after that.
+
+Weeks passed. The house seemed ordinary during the day. Sunlight fell across the kitchen tiles. The garden birds returned. Her parents painted the sitting room pale yellow.
+
+But every night at 12:03, the house inhaled.
+
+Mila began to mark the times in a notebook.
+
+One night, she woke before midnight and found a small door beneath the staircase. She was certain it had not been there before. It was painted the same colour as the wall, with a brass handle shaped like a closed eye.
+
+The handle was warm.
+
+Behind the door was a narrow stairway descending into darkness.
+
+At the bottom, she found a room with no windows. The walls were covered in children's drawings, thousands of them, layered over one another like fallen leaves.
+
+Every drawing showed the same house.
+
+In some, the windows were black. In others, a tall figure stood in the garden. In the oldest drawing, a little girl stood at the front door, holding a lantern.
+
+Underneath, in careful handwriting, were the words:
+
+SHE CAME HOME.
+
+Mila heard a sound behind her.
+
+A slow breath.
+
+She turned.
+
+The tall figure stood at the far end of the room. It had no face, only a smooth surface that reflected the dim light. Its shoulders rose and fell, as if it were learning how to breathe.
+
+Mila ran.
+
+She climbed the stairs, slammed the little door, and woke her parents. Her father searched the space beneath the staircase. There was no door, no room, only plaster and a shelf of old board games.
+
+They moved out the following morning.
+
+Years later, Mila returned to Briar Lane as an adult. The house had been abandoned for a decade. Its windows were boarded. The garden was full of weeds.
+
+She had come to prove to herself that childhood fear could be explained.
+
+At 12:02, she stood in the hallway with a flashlight.
+
+The wallpaper was still pale yellow.
+
+At 12:03, the house inhaled.
+
+Mila felt the pressure change in her ears. Dust rose from the floor. Somewhere above her, a door clicked open.
+
+She found the little door beneath the stairs.
+
+This time, she did not hesitate.
+
+The room below was empty except for a single drawing on the floor. It showed a woman standing at the front door, holding a lantern. The woman's face had been drawn carefully, with dark hair and a small scar beneath the left eye.
+
+Mila touched her own scar.
+
+Behind her, the house began to breathe faster.
+
+The walls expanded. The ceiling lifted. The doorway narrowed, as though the room were trying to close around her.
+
+She understood then that the house had not been waiting for a victim.
+
+It had been waiting for the child who had first seen it.
+
+Mila raised the flashlight.
+
+"Let me go," she whispered.
+
+For the first time, the house exhaled.
+
+The pressure released. The walls fell still. A thin line of daylight appeared beneath the door.
+
+Mila climbed the stairs and stepped into the garden.
+
+Behind her, the house settled into silence.
+
+At the gate, she turned once.
+
+One upstairs window was no longer boarded. A warm light shone behind the glass.
+
+Then it went dark.
+
+Mila walked away without looking back.
+
+That night, in her own apartment, she woke at 12:03.
+
+The room was quiet.
+
+She waited.
+
+From somewhere deep inside the wall came a soft, patient breath.
+
+And then, in the darkness, a child's voice whispered her name.`
+  },
+  {
+    id: "the-city-kept-score",
+    title: "The City Kept Score",
+    genre: "crime-thriller",
+    synopsis: "A forensic analyst finds the same tiny mark on three unrelated crime scenes. The mark leads her into a case someone has spent years trying to erase.",
+    minutes: 8,
+    question: "How far would you go to expose a truth that powerful people want buried?",
+    body: `The mark was smaller than a grain of rice.
+
+Detective Anika Rao found it on a windowsill in a condemned hotel, pressed into a thin layer of dust. A circle with a line through it. Too deliberate to be a scratch, too simple to mean anything on its own.
+
+The hotel room contained no body, no weapon, and no sign of forced entry. It was the third scene in six weeks where the mark had appeared.
+
+The first was a parking garage. The second was a private office above a jewellery shop. The third was this room, overlooking the city's rain-slicked railway lines.
+
+Three places. Three missing people. No obvious connection.
+
+Anika photographed the mark and sent it to the lab.
+
+The response arrived an hour later.
+
+The mark was made with a precision tool, probably a punch. The dust around it was older than the indentation. Someone had placed it there after the room had been abandoned.
+
+Someone wanted it found.
+
+She returned to the station and searched the missing-person files. The three names led nowhere until she found an old case buried under an incorrect date: a municipal auditor who had vanished twelve years earlier after reporting irregular payments linked to a redevelopment project.
+
+The project had rebuilt half the city's waterfront. Its public records were clean. Its contractors were respectable. Its chairman had become a celebrated philanthropist.
+
+The auditor's name was Dev Malhotra.
+
+His final report was missing.
+
+Anika requested the archive. The file arrived with several pages removed and a note from the records office: Documents unavailable due to water damage.
+
+The paper was perfectly dry.
+
+That evening, an envelope appeared on her desk. Inside was a photocopy of an old city map. Three red circles marked the locations of the missing people. A fourth circle marked a building that had been demolished twelve years earlier.
+
+Under the map was a handwritten line.
+
+THE CITY KEEPS SCORE.
+
+Anika recognised the handwriting from a witness statement filed years ago. It belonged to a retired clerk who had died in an apparent accident.
+
+She drove to the clerk's former apartment.
+
+The building manager refused to let her in until she showed her badge. Inside, the rooms were bare except for a calendar that had stopped on the month of the clerk's death. Behind it, Anika found a small metal box containing a ledger.
+
+The entries were not financial transactions. They were names, dates, and addresses. Beside each name was the same tiny circle with a line through it.
+
+At the back of the ledger was a list of people who had received payments to keep quiet.
+
+One name appeared twice.
+
+The chairman of the waterfront project.
+
+Another name appeared three times.
+
+Anika Rao.
+
+She stared at it until the page blurred.
+
+The dates beside her name went back to her childhood. One entry referred to the year her father had died, officially in a road accident. Another referred to the week she had joined the police.
+
+She called her mother.
+
+There was a long silence.
+
+"Your father wasn't investigating a road accident," her mother finally said. "He was investigating the waterfront accounts. He told me that if anything happened, I should never let you look into it."
+
+Anika felt the old case shift beneath her feet.
+
+The next morning, the chairman announced a press conference. He stood before a wall of cameras and spoke about transparency, community, and public trust.
+
+Anika watched from the back of the room.
+
+When the questions ended, she stepped forward and placed a copy of the ledger on the table.
+
+The chairman's smile disappeared for less than a second.
+
+It was enough.
+
+Security moved toward her. Reporters shouted. Cameras turned. Anika did not raise her voice. She read the names aloud, one after another, until the room became silent.
+
+The chairman was arrested two weeks later, after investigators uncovered the missing auditor's report and a network of payments spanning two decades.
+
+The three missing people were found alive in separate locations. Each had been forced into hiding after discovering fragments of the same scheme.
+
+But the ledger contained one final page, folded into the binding.
+
+It listed a date in the future.
+
+Tomorrow.
+
+Beside it was a new mark.
+
+Anika took the page to the evidence room and locked it away. She told herself the case was over. The city was full of old secrets, and one solved investigation could not uncover them all.
+
+At midnight, her phone vibrated.
+
+A message from an unknown number contained a photograph of her father's old watch, the one that had disappeared after the accident.
+
+Underneath it was a single sentence.
+
+YOU FOUND THE SCORE. NOW FIND THE PLAYER.
+
+Anika looked through the dark station windows at the city below.
+
+Every streetlight seemed to mark a point on an enormous map.
+
+Somewhere, someone was still counting.
+
+And this time, they knew she was watching.`
+  }
 ];
 
-/* Add a new story object to the stories array to expand the library.
-   This starter library contains seven original story openings with complete
-   short-form arcs. Expand individual body sections for longer episodes. */
+/* Data helpers */
 
-const genreById = id => genres.find(g=>g.id===id);
-const storyById = id => stories.find(s=>s.id===id);
+const genreById = id => genres.find(g => g.id === id);
+const storyById = id => stories.find(s => s.id === id);
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function imageFor(story) {
+  return genreById(story.genre)?.image || genres[0].image;
+}
+
+function estimatedMinutes(story) {
+  const words = story.body.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 220));
+}
+
+/* Render the genre cards */
+
+const genreGrid = document.getElementById("genreGrid");
+
+genreGrid.innerHTML = genres.map(g => `
+  <article class="genre-card reveal"
+    data-genre="${g.id}"
+    tabindex="0"
+    role="button"
+    aria-label="Explore ${escapeHTML(g.name)}"
+    style="--genre-image:url('${g.image}');--genre-tint:${g.tint};--genre-accent:${g.accent}">
+    <div class="genre-content">
+      <span class="genre-number">${g.number} / SEVEN WORLDS</span>
+      <h3>${escapeHTML(g.name)}</h3>
+      <p>${escapeHTML(g.tagline)}</p>
+      <span class="genre-explore">Enter this world ↗</span>
+    </div>
+  </article>
+`).join("");
+
+/* Genre filter */
+
+const genreFilter = document.getElementById("genreFilter");
+
+genres.forEach(g => {
+  const option = document.createElement("option");
+  option.value = g.id;
+  option.textContent = g.name;
+  genreFilter.appendChild(option);
+});
+
+/* Story cards */
+
+const storyGrid = document.getElementById("storyGrid");
+const emptyState = document.getElementById("emptyState");
 let currentStory = null;
 let fontSize = 19;
-let lastFocused = null;
-let toastTimer = null;
 
-function safeGet(key,fallback){
- try{
-  const value=localStorage.getItem(key);
-  return value===null?fallback:JSON.parse(value);
- }catch(e){return fallback}
-}
-function safeSet(key,value){
- try{localStorage.setItem(key,JSON.stringify(value));return true}
- catch(e){notify("Your browser could not save this change.");return false}
-}
-function escapeHTML(value){
- return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
+function renderStories() {
+  const query = document.getElementById("storySearch").value.trim().toLowerCase();
+  const genre = genreFilter.value;
+  const sort = document.getElementById("sortStories").value;
 
-function renderGenres(){
- const grid=document.getElementById("genreGrid");
- grid.innerHTML=genres.map(g=>`
-  <article class="genre-card reveal" tabindex="0" role="button" aria-label="Explore ${escapeHTML(g.name)} stories" onclick="exploreGenre('${g.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();exploreGenre('${g.id}')}">
-   <img loading="lazy" src="${g.image}" alt="${escapeHTML(g.name)} cinematic landscape" onerror="this.style.opacity='.2'">
-   <span class="genre-arrow" aria-hidden="true">↗</span>
-   <div class="genre-info">
-    <div class="genre-number" style="color:${g.colour}">WORLD ${g.number}</div>
-    <h3>${escapeHTML(g.name)}</h3>
-    <p>${escapeHTML(g.description)}</p>
-   </div>
-  </article>`).join("");
- observeReveals();
-}
+  let filtered = stories.filter(story => {
+    const g = genreById(story.genre);
+    const text = [
+      story.title,
+      story.synopsis,
+      story.body,
+      g?.name
+    ].join(" ").toLowerCase();
 
-function renderStories(list=stories){
- const grid=document.getElementById("storyGrid");
- if(!list.length){
-  grid.innerHTML='<p class="empty-state">No stories found. Try another genre or search term.</p>';
-  return;
- }
- grid.innerHTML=list.map(s=>{
-  const g=genreById(s.genre);
-  return `<article class="story-card reveal" tabindex="0" role="button" aria-label="Read ${escapeHTML(s.title)}" onclick="openStory('${s.id}')" onkeydown="if(event.key==='Enter'){openStory('${s.id}')}">
-   <div class="story-cover">
-    <img loading="lazy" src="${s.image}" alt="${escapeHTML(s.title)} cover artwork">
-    <span class="tag">${escapeHTML(g.name)}</span>
-   </div>
-   <div class="story-copy">
-    <div class="story-meta">EPISODE ${String(s.episode).padStart(2,"0")} · ${s.minutes} MIN READ</div>
-    <h3>${escapeHTML(s.title)}</h3>
-    <p>${escapeHTML(s.synopsis)}</p>
-   </div>
-  </article>`;
- }).join("");
- observeReveals();
-}
-
-function exploreGenre(id){
- const genre=genreById(id);
- if(!genre)return;
- renderStories(stories.filter(s=>s.genre===id));
- document.querySelector("#stories .section-top h2").textContent=genre.name+".";
- document.querySelector("#stories .section-top .eyebrow").textContent="Your next world";
- document.getElementById("stories").scrollIntoView({behavior:"smooth"});
-}
-function restoreStories(){
- renderStories(stories);
- document.querySelector("#stories .section-top h2").textContent="Stories worth staying for.";
- document.querySelector("#stories .section-top .eyebrow").textContent="Find your next obsession";
-}
-
-function openStory(id){
- const story=storyById(id);
- if(!story){notify("That story isn't available yet.");return}
- currentStory=story;
- lastFocused=document.activeElement;
- const genre=genreById(story.genre);
- document.getElementById("readerImage").src=story.image;
- document.getElementById("readerImage").alt=story.title+" cinematic artwork";
- document.getElementById("readerGenre").textContent=genre.name+" · Episode "+String(story.episode).padStart(2,"0");
- document.getElementById("readerTitle").textContent=story.title;
- document.getElementById("readerMeta").textContent=story.minutes+" min read · Original fiction";
- document.getElementById("readerSynopsis").textContent=story.synopsis;
- document.getElementById("readerText").innerHTML=story.body.map(([heading,paragraphs])=>`
-  <h2>${escapeHTML(heading)}</h2>${paragraphs.split("\n\n").map(p=>`<p>${escapeHTML(p)}</p>`).join("")}`).join("");
- document.getElementById("readerQuestion").innerHTML="<strong>Stay a little longer.</strong><br>"+escapeHTML(story.question);
- const index=stories.findIndex(s=>s.id===id);
- document.getElementById("previousTitle").textContent=stories[(index-1+stories.length)%stories.length].title;
- document.getElementById("nextTitle").textContent=stories[(index+1)%stories.length].title;
- updateBookmarkButton();
- const reader=document.getElementById("reader");
- reader.classList.add("open");
- reader.scrollTop=0;
- document.body.style.overflow="hidden";
- document.getElementById("progressBar").style.width="0";
- const history=safeGet("tpl-history",[]);
- safeSet("tpl-history",[id,...history.filter(x=>x!==id)].slice(0,50));
-}
-function closeReader(){
- document.getElementById("reader").classList.remove("open");
- document.body.style.overflow="";
- if(lastFocused&&lastFocused.focus)lastFocused.focus();
-}
-function previousStory(){
- if(!currentStory)return;
- const i=stories.findIndex(s=>s.id===currentStory.id);
- openStory(stories[(i-1+stories.length)%stories.length].id);
-}
-function nextStory(){
- if(!currentStory)return;
- const i=stories.findIndex(s=>s.id===currentStory.id);
- openStory(stories[(i+1)%stories.length].id);
-}
-function changeFont(delta){
- fontSize=Math.max(15,Math.min(27,fontSize+delta));
- document.getElementById("readerText").style.fontSize=fontSize+"px";
-}
-function toggleBookmark(){
- if(!currentStory)return;
- let bookmarks=safeGet("tpl-bookmarks",[]);
- if(bookmarks.includes(currentStory.id)){
-  bookmarks=bookmarks.filter(id=>id!==currentStory.id);
-  notify("Removed from your reading list.");
- }else{
-  bookmarks.push(currentStory.id);
-  notify("Saved to your reading list.");
- }
- safeSet("tpl-bookmarks",bookmarks);
- updateBookmarkButton();
-}
-function updateBookmarkButton(){
- if(!currentStory)return;
- const saved=safeGet("tpl-bookmarks",[]).includes(currentStory.id);
- document.getElementById("bookmarkButton").textContent=saved?"♥ Saved":"♡ Save";
- document.getElementById("readerSaveButton").textContent=saved?"♥ Saved to reading list":"♡ Add to reading list";
-}
-async function shareStory(){
- if(!currentStory)return;
- const url=location.href.split("#")[0]+"#story="+encodeURIComponent(currentStory.id);
- try{
-  if(navigator.share)await navigator.share({title:currentStory.title,text:currentStory.synopsis,url});
-  else if(navigator.clipboard){await navigator.clipboard.writeText(url);notify("Story link copied.");}
-  else notify("Copy this story's title to share it: "+currentStory.title);
- }catch(e){if(e.name!=="AbortError")notify("Sharing isn't available here.");}
-}
-
-function openSearch(){
- lastFocused=document.activeElement;
- document.getElementById("searchOverlay").classList.add("open");
- document.body.style.overflow="hidden";
- setTimeout(()=>document.getElementById("searchInput").focus(),50);
- searchStories("");
-}
-function closeSearch(){
- document.getElementById("searchOverlay").classList.remove("open");
- if(!document.getElementById("reader").classList.contains("open"))document.body.style.overflow="";
- if(lastFocused&&lastFocused.focus)lastFocused.focus();
-}
-function searchStories(query){
- const q=query.trim().toLowerCase();
- const results=stories.filter(s=>{
-  const g=genreById(s.genre);
-  return !q||[s.title,s.synopsis,s.genre,g.name,...s.body.map(x=>x.join(" "))].join(" ").toLowerCase().includes(q);
- });
- const container=document.getElementById("searchResults");
- container.innerHTML=results.length?results.map(s=>`
-  <article class="search-result" tabindex="0" role="button" onclick="closeSearch();openStory('${s.id}')" onkeydown="if(event.key==='Enter'){closeSearch();openStory('${s.id}')}">
-   <div class="tag">${escapeHTML(genreById(s.genre).name)}</div>
-   <h3>${escapeHTML(s.title)}</h3>
-   <p>${escapeHTML(s.synopsis)}</p>
-  </article>`).join(""):'<p class="empty-state">No stories found. Try a different title, genre, or keyword.</p>';
-}
-function toggleMenu(){document.getElementById("navigation").classList.toggle("open")}
-function closeMenu(){document.getElementById("navigation").classList.remove("open")}
-
-function notify(message){
- const el=document.getElementById("toast");
- el.textContent=message;
- el.classList.add("show");
- clearTimeout(toastTimer);
- toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
-}
-function showLegal(type){
- const message=type==="privacy"
-  ?"Privacy notice: this starter website stores reading-list and history preferences in your browser. No server-side account or newsletter service is configured. Do not enter sensitive information."
-  :"Terms: stories on this site are original editorial content. This starter version does not yet provide accounts, paid subscriptions, or server-side publishing.";
- notify(message);
-}
-function observeReveals(){
- const items=document.querySelectorAll(".reveal:not(.visible)");
- if(!("IntersectionObserver" in window)){
-  items.forEach(el=>el.classList.add("visible"));return;
- }
- const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-   if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target);}
+    return (genre === "all" || story.genre === genre) && text.includes(query);
   });
- },{threshold:.08});
- items.forEach(el=>observer.observe(el));
-}
 
-document.getElementById("reader").addEventListener("scroll",function(){
- const max=this.scrollHeight-this.clientHeight;
- const progress=max>0?this.scrollTop/max*100:0;
- document.getElementById("progressBar").style.width=progress+"%";
-},{passive:true});
-
-document.getElementById("searchInput").addEventListener("input",e=>searchStories(e.target.value));
-document.getElementById("newsletterForm").addEventListener("submit",e=>{
- e.preventDefault();
- const message=document.getElementById("newsletterMessage");
- message.textContent="Thanks for your interest. Email subscriptions are not connected yet, so your address has not been submitted or stored.";
-});
-document.getElementById("newsletterEmail").addEventListener("input",()=>{
- document.getElementById("newsletterMessage").textContent="";
-});
-
-document.addEventListener("keydown",e=>{
- if(e.key==="Escape"){
-  closeSearch();
-  if(document.getElementById("reader").classList.contains("open"))closeReader();
-  closeMenu();
- }
-});
-document.getElementById("year").textContent=new Date().getFullYear();
-
-/* Cinematic hero parallax: disabled for reduced-motion users and touch-first devices. */
-if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&matchMedia("(hover: hover) and (pointer: fine)").matches){
- const bg=document.getElementById("heroBg");
- let ticking=false;
- window.addEventListener("scroll",()=>{
-  if(!ticking){
-   requestAnimationFrame(()=>{
-    const y=Math.min(window.scrollY,850);
-    bg.style.transform=`scale(1.05) translate3d(0,${y*.075}px,0)`;
-    ticking=false;
-   });
-   ticking=true;
+  if (sort === "title") {
+    filtered.sort((a, b) => a.title.localeCompare(b.title));
   }
- },{passive:true});
+
+  storyGrid.innerHTML = filtered.map(story => {
+    const g = genreById(story.genre);
+    const minutes = estimatedMinutes(story);
+
+    return `
+      <article class="story-card reveal">
+        <div class="story-cover">
+          <img src="${imageFor(story)}"
+               alt="${escapeHTML(g.name)} atmosphere for ${escapeHTML(story.title)}"
+               loading="lazy">
+        </div>
+        <div class="story-card-body">
+          <div class="story-meta">${escapeHTML(g.name.toUpperCase())} · ${minutes} MIN READ</div>
+          <h3>${escapeHTML(story.title)}</h3>
+          <p>${escapeHTML(story.synopsis)}</p>
+          <div class="story-card-footer">
+            <span>${story.body.trim().split(/\s+/).length.toLocaleString()} words</span>
+            <button class="read-link" data-open-story="${story.id}">Read story ↗</button>
+          </div>
+        </div>
+      </article>`;
+  }).join("");
+
+  emptyState.style.display = filtered.length ? "none" : "block";
+  observeReveals();
 }
 
-renderGenres();
-renderStories();
+document.getElementById("storySearch").addEventListener("input", renderStories);
+genreFilter.addEventListener("change", renderStories);
+document.getElementById("sortStories").addEventListener("change", renderStories);
+
+/* Featured story */
+
+const featuredStory = stories[0];
+
+document.getElementById("featuredImage").style.backgroundImage =
+  `linear-gradient(0deg,#10171035,transparent),url("${imageFor(featuredStory)}")`;
+
+document.getElementById("featuredTitle").textContent = featuredStory.title;
+document.getElementById("featuredMeta").textContent =
+  `${genreById(featuredStory.genre).name.toUpperCase()} · ${estimatedMinutes(featuredStory)} MIN READ`;
+document.getElementById("featuredSynopsis").textContent = featuredStory.synopsis;
+
+document.getElementById("featuredRead").addEventListener("click", () => {
+  openStory(featuredStory.id);
+});
+
+document.getElementById("todayButton").addEventListener("click", () => {
+  openStory(featuredStory.id);
+});
+
+/* Story reader */
+
+const reader = document.getElementById("reader");
+const readerBackdrop = document.getElementById("readerBackdrop");
+const readerText = document.getElementById("readerText");
+const progressTrack = document.getElementById("progressTrack");
+const bookmarkButton = document.getElementById("bookmarkButton");
+
+function getBookmarks() {
+  try {
+    return JSON.parse(localStorage.getItem("paperLanternBookmarks") || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function setBookmarks(items) {
+  try {
+    localStorage.setItem("paperLanternBookmarks", JSON.stringify(items));
+  } catch {
+    // The reader remains usable if browser storage is unavailable.
+  }
+}
+
+function openStory(id) {
+  const story = storyById(id);
+  if (!story) return;
+
+  currentStory = story;
+  const genre = genreById(story.genre);
+
+  readerBackdrop.style.backgroundImage =
+    `linear-gradient(0deg,#10171065,transparent),url("${imageFor(story)}")`;
+
+  readerBackdrop.style.backgroundPosition = "center";
+  document.getElementById("readerGenre").textContent = genre.name;
+  document.getElementById("readerTitle").textContent = story.title;
+  document.getElementById("readerSynopsis").textContent = story.synopsis;
+  document.getElementById("readerMeta").textContent =
+    `${estimatedMinutes(story)} MIN READ · ${story.body.trim().split(/\s+/).length.toLocaleString()} WORDS`;
+  document.getElementById("discussionQuestion").textContent = story.question;
+
+  readerText.innerHTML = story.body
+    .trim()
+    .split(/\n\s*\n/)
+    .map(paragraph => `<p>${escapeHTML(paragraph)}</p>`)
+    .join("");
+
+  fontSize = 19;
+  readerText.style.fontSize = `${fontSize}px`;
+
+  updateBookmarkButton();
+
+  reader.classList.add("open");
+  document.body.classList.add("reader-open");
+  reader.scrollTop = 0;
+  progressTrack.style.width = "0%";
+
+  try {
+    history.replaceState(null, "", `#story-${encodeURIComponent(story.id)}`);
+  } catch {}
+}
+
+function closeStory() {
+  reader.classList.remove("open");
+  document.body.classList.remove("reader-open");
+  progressTrack.style.width = "0%";
+
+  try {
+    history.replaceState(null, "", "#stories");
+  } catch {}
+}
+
+function updateBookmarkButton() {
+  if (!currentStory) return;
+  const saved = getBookmarks().includes(currentStory.id);
+  bookmarkButton.textContent = saved ? "♥ Bookmarked" : "♡ Bookmark";
+}
+
+document.getElementById("closeReader").addEventListener("click", closeStory);
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && reader.classList.contains("open")) {
+    closeStory();
+  }
+});
+
+reader.addEventListener("scroll", () => {
+  const scrollable = reader.scrollHeight - reader.clientHeight;
+  const progress = scrollable > 0 ? reader.scrollTop / scrollable * 100 : 0;
+  progressTrack.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+}, { passive: true });
+
+document.getElementById("decreaseFont").addEventListener("click", () => {
+  fontSize = Math.max(15, fontSize - 1);
+  readerText.style.fontSize = `${fontSize}px`;
+});
+
+document.getElementById("increaseFont").addEventListener("click", () => {
+  fontSize = Math.min(28, fontSize + 1);
+  readerText.style.fontSize = `${fontSize}px`;
+});
+
+bookmarkButton.addEventListener("click", () => {
+  if (!currentStory) return;
+
+  let bookmarks = getBookmarks();
+  if (bookmarks.includes(currentStory.id)) {
+    bookmarks = bookmarks.filter(id => id !== currentStory.id);
+  } else {
+    bookmarks.push(currentStory.id);
+  }
+
+  setBookmarks(bookmarks);
+  updateBookmarkButton();
+});
+
+document.getElementById("shareButton").addEventListener("click", async () => {
+  if (!currentStory) return;
+
+  const url = `${location.href.split("#")[0]}#story-${currentStory.id}`;
+
+  try {
+    if (navigator.share) {
+      await navigator.share({ title: currentStory.title, url });
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(url);
+      document.getElementById("shareButton").textContent = "Link copied ✓";
+    } else {
+      window.prompt("Copy this story link:", url);
+    }
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      window.prompt("Copy this story link:", url);
+    }
+  }
+});
+
+document.getElementById("backToStories").addEventListener("click", () => {
+  closeStory();
+  document.getElementById("stories").scrollIntoView({ behavior: "smooth" });
+});
+
+/* Clickable genre cards and story links */
+
+document.addEventListener("click", event => {
+  const genreCard = event.target.closest("[data-genre]");
+  if (genreCard) {
+    genreFilter.value = genreCard.dataset.genre;
+    renderStories();
+    document.getElementById("stories").scrollIntoView({ behavior: "smooth" });
+  }
+
+  const storyButton = event.target.closest("[data-open-story]");
+  if (storyButton) {
+    openStory(storyButton.dataset.openStory);
+  }
+});
+
+document.addEventListener("keydown", event => {
+  const card = event.target.closest?.(".genre-card");
+  if (card && (event.key === "Enter" || event.key === " ")) {
+    event.preventDefault();
+    genreFilter.value = card.dataset.genre;
+    renderStories();
+    document.getElementById("stories").scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+/* Reader experience form.
+   This edition stores submissions in this browser only.
+   Shared community publishing requires a database and server endpoint. */
+
+document.getElementById("experienceForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const input = document.getElementById("experienceInput");
+  const message = document.getElementById("experienceMessage");
+  const value = input.value.trim();
+
+  if (!value) {
+    message.textContent = "Please write a thought before sharing.";
+    return;
+  }
+
+  try {
+    const key = "paperLanternExperiences";
+    const existing = JSON.parse(localStorage.getItem(key) || "[]");
+
+    existing.push({
+      text: value,
+      date: new Date().toISOString()
+    });
+
+    localStorage.setItem(key, JSON.stringify(existing));
+    message.textContent = "Your thought has been saved in this browser. Thank you for sharing.";
+    input.value = "";
+  } catch {
+    message.textContent = "Browser storage is unavailable. Please try again.";
+  }
+});
+
+/* Search shortcut */
+
+document.getElementById("searchJump").addEventListener("click", () => {
+  document.getElementById("stories").scrollIntoView({ behavior: "smooth" });
+  setTimeout(() => document.getElementById("storySearch").focus(), 450);
+});
+
+/* Responsive navigation */
+
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  const open = mainNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.textContent = open ? "✕" : "☰";
+});
+
+mainNav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+  });
+});
+
+/* Scroll reveals */
+
+let revealObserver;
+
+function observeReveals() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+    return;
+  }
+
+  if (revealObserver) revealObserver.disconnect();
+
+  revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal:not(.visible)").forEach(el => {
+    revealObserver.observe(el);
+  });
+}
+
 observeReveals();
+
+/* Subtle mouse-responsive parallax */
+
+const heroImage = document.getElementById("heroImage");
+let pointerX = 0;
+let pointerY = 0;
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  window.addEventListener("pointermove", event => {
+    pointerX = (event.clientX / window.innerWidth - 0.5) * 7;
+    pointerY = (event.clientY / window.innerHeight - 0.5) * 5;
+
+    if (heroImage && !reader.classList.contains("open")) {
+      heroImage.style.backgroundPosition =
+        `calc(50% + ${pointerX}px) calc(53% + ${pointerY}px)`;
+    }
+  }, { passive: true });
+}
+
+/* Fireflies follow the cursor, with a gentle glowing trail */
+
+const ambientLayer = document.getElementById("ambientLayer");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fireflies = [];
+const FIRE_COUNT = 18;
+
+if (!reducedMotion && matchMedia("(pointer: fine)").matches) {
+  for (let i = 0; i < FIRE_COUNT; i++) {
+    const dot = document.createElement("span");
+    dot.className = "firefly";
+    dot.style.setProperty("--size", `${2 + Math.random() * 4}px`);
+    dot.style.transition = `opacity .5s ease, transform ${0.18 + i * 0.025}s ease-out`;
+    ambientLayer.appendChild(dot);
+
+    fireflies.push({
+      el: dot,
+      x: -100,
+      y: -100,
+      delay: i
+    });
+  }
+
+  let lastPointerMove = 0;
+
+  window.addEventListener("pointermove", event => {
+    const now = performance.now();
+    if (now - lastPointerMove < 18) return;
+    lastPointerMove = now;
+
+    fireflies.forEach((fly, index) => {
+      const angle = index * 2.399;
+      const distance = index * 8 + Math.random() * 8;
+      const x = event.clientX + Math.cos(angle) * distance;
+      const y = event.clientY + Math.sin(angle) * distance;
+
+      fly.el.style.transform =
+        `translate(${x}px, ${y}px)`;
+      fly.el.style.opacity = String(Math.max(.15, 1 - index / FIRE_COUNT));
+      fly.el.classList.add("active");
+    });
+  }, { passive: true });
+
+  window.addEventListener("pointerleave", () => {
+    fireflies.forEach(fly => {
+      fly.el.style.opacity = "0";
+    });
+  });
+}
+
+/* Tiny lanterns occasionally drift upward in the background */
+
+function makeLantern() {
+  if (reducedMotion || document.hidden) return;
+
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("viewBox", "0 0 48 58");
+  svg.classList.add("floating-lantern");
+  svg.style.left = `${8 + Math.random() * 84}%`;
+  svg.style.bottom = "-45px";
+  svg.style.animationDuration = `${12 + Math.random() * 10}s`;
+
+  svg.innerHTML = `
+    <path d="M24 2 C20 7 20 10 24 13 C28 10 28 7 24 2Z" fill="#FFE8A7"/>
+    <path d="M24 12V17" stroke="#E9C783" stroke-width="1.5"/>
+    <path d="M13 17 Q24 11 35 17 L32 43 Q24 50 16 43Z"
+      fill="#D99D50" stroke="#FFE4A1" stroke-width="1.5"/>
+    <path d="M17 19 Q24 15 31 19 L29 40 Q24 44 19 40Z" fill="#FFF0BC"/>
+    <path d="M21 20 L21 41 M27 20 L27 41" stroke="#E9C783"/>
+  `;
+
+  ambientLayer.appendChild(svg);
+
+  setTimeout(() => svg.remove(), 24000);
+}
+
+if (!reducedMotion) {
+  setInterval(makeLantern, 6500);
+}
+
+/* Optional direct story links */
+
+function openStoryFromHash() {
+  const match = location.hash.match(/^#story-(.+)$/);
+  if (match) {
+    const id = decodeURIComponent(match[1]);
+    if (storyById(id)) openStory(id);
+  }
+}
+
+window.addEventListener("hashchange", openStoryFromHash);
+renderStories();
+openStoryFromHash();
 </script>
+
 </body>
 </html>
