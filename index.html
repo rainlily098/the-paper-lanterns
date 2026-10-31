@@ -478,7 +478,7 @@ function playSound(kind){
  if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)()}
  if(audioCtx.state==="suspended")audioCtx.resume();
  if(master){try{master.disconnect()}catch{}}
- master=audioCtx.createGain();master.gain.value=.40;master.connect(audioCtx.destination);
+ master=audioCtx.createGain();master.gain.value=0.8;master.connect(audioCtx.destination);
  const profiles={
  mystery:{label:"Mysterious piano and distant bells",notes:[146.83,174.61,220,261.63,196],wave:"sine",interval:2700},
  romance:{label:"Warm romantic melody",notes:[261.63,329.63,392,329.63,293.66,349.23],wave:"sine",interval:1800},
