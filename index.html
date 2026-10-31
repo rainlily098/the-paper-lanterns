@@ -3,494 +3,917 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10130f">
-<title>The Paper Lanterns | Stories You Can See, Hear and Feel</title>
-<meta name="description" content="Enter seven cinematic worlds of original mystery, romance, psychological thriller, science fiction, fantasy, horror and crime fiction.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Paper Lanterns</title>
+<meta name="description" content="Enter seven cinematic worlds of original storytelling.">
 <link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --ink:#121711;
-  --cream:#f6f0e5;
-  --gold:#eac783;
-  --muted:#bdb9ac;
-  --panel:#1b211b;
+  --gold:#f1cb83;
+  --cream:#f5efe3;
+  --ink:#10140f;
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',Arial,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--sans);overflow-x:hidden}
-body,button,input{font-family:var(--sans)}
-button,a{ -webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--sans)}
+button,input,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
 a{color:inherit;text-decoration:none}
-button{color:inherit;cursor:pointer}
-::selection{background:var(--gold);color:var(--ink)}
-img{display:block;max-width:100%}
-button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
-section{position:relative}
-.wrap{width:min(1240px,90%);margin:auto}
-.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700}
-.section-heading{font:500 clamp(36px,5vw,58px)/1.05 var(--serif);margin:12px 0}
-.section-copy{color:#c4c1b7;max-width:560px;line-height:1.8;font-size:14px}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+img{max-width:100%;display:block}
+.wrap{width:min(1200px,90%);margin:auto}
 .gold{color:var(--gold)}
-/* Floating lantern brand */
-header{height:78px;position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;background:rgba(14,18,14,.83);backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:12px;font:600 24px var(--serif);white-space:nowrap}
-.lantern{width:38px;height:44px;overflow:visible;animation:lanternFlight 4s ease-in-out infinite;filter:drop-shadow(0 0 8px #eac78370)}
-.lantern .glow{animation:lanternGlow 2s ease-in-out infinite alternate}
-@keyframes lanternFlight{0%,100%{transform:translateY(1px) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
-@keyframes lanternGlow{from{opacity:.55}to{opacity:1}}
-.navlinks{display:flex;align-items:center;gap:27px;font-size:12px;color:#dedbd2}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--serif);font-weight:500}
+header{height:76px;position:fixed;z-index:30;inset:0 0 auto;background:#10140fdf;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff16}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font:600 24px var(--serif);white-space:nowrap}
+.lantern-logo{width:42px;height:49px;overflow:visible;filter:drop-shadow(0 0 9px #ffcb6470);animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(1px) rotate(-3deg)}50%{transform:translateY(-7px) rotate(4deg)}}
+.navlinks{display:flex;gap:25px;font-size:12px;color:#e0ddd2}
 .navlinks a:hover{color:var(--gold)}
-.nav-actions{display:flex;gap:10px;align-items:center}
-.icon-btn,.menu-btn{background:transparent;border:1px solid #ffffff25;padding:10px 13px;border-radius:3px}
-.menu-btn{display:none}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;border:1px solid #eac78370;padding:14px 20px;background:var(--gold);color:#191810;font-size:11px;font-weight:700;letter-spacing:.5px;transition:transform .3s,background .3s}
-.btn:hover{transform:translateY(-3px);background:#f6dba6}
-.btn-outline{background:transparent;color:var(--cream);border-color:#ffffff50}
-.btn-outline:hover{color:var(--ink);background:var(--cream)}
-/* Cinematic hero */
-.hero{min-height:760px;height:100svh;max-height:1050px;display:flex;align-items:center;isolation:isolate;overflow:hidden}
-.hero-bg{position:absolute;inset:-4%;z-index:-3;background-size:cover;background-position:center 52%;animation:heroDrift 25s ease-in-out infinite alternate;will-change:transform}
-@keyframes heroDrift{from{transform:scale(1)}to{transform:scale(1.09) translate3d(-.6%,.4%,0)}}
-.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(9,15,12,.94) 0%,rgba(9,15,12,.65) 44%,rgba(9,15,12,.08) 100%),linear-gradient(0deg,var(--ink),transparent 27%,#0b0e0b28)}
-.hero-content{padding-top:60px;max-width:700px;animation:rise .9s ease both}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.hero h1{font:500 clamp(60px,9.4vw,112px)/.87 var(--serif);letter-spacing:-3px;margin:28px 0}
-.hero h1 span{display:block}
-.hero p{max-width:430px;font-size:14px;line-height:1.9;color:#e0ded7}
-.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.hero-foot{display:flex;gap:14px;align-items:center;margin-top:48px;color:#d4cdbd;font-size:9px;letter-spacing:2px;text-transform:uppercase}
-.hero-foot i{width:3px;height:3px;background:var(--gold);border-radius:50%}
-.scroll-cue{position:absolute;right:5%;bottom:60px;writing-mode:vertical-rl;font-size:9px;letter-spacing:3px;color:#ddd4c4}
-.scroll-cue:after{content:"";display:inline-block;width:1px;height:60px;background:var(--gold);margin-top:12px;align-self:center}
-/* Reveal */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.menu{display:none;background:none;border:1px solid #ffffff40;padding:9px;color:white}
+.hero{min-height:750px;height:100svh;max-height:1000px;position:relative;display:flex;align-items:center;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:-3%;z-index:-2;background:center 55%/cover no-repeat;animation:slowZoom 25s ease-in-out infinite alternate}
+@keyframes slowZoom{to{transform:scale(1.09)}}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0c120ff2,#0c120f9c 47%,#0c120f12),linear-gradient(0deg,var(--ink),transparent 30%)}
+.hero-copy{max-width:710px;padding-top:60px;animation:rise 1s both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-size:clamp(58px,9vw,108px);line-height:.88;letter-spacing:-2px;margin:26px 0}
+.hero p,.copy{font-size:14px;line-height:1.9;color:#d2d0c5;max-width:480px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 19px;background:var(--gold);border:1px solid var(--gold);color:#171810;font-size:11px;font-weight:600;transition:.25s}
+.btn:hover{transform:translateY(-3px);background:#ffe1a8}
+.btn.secondary{background:transparent;color:var(--cream);border-color:#ffffff65}
+.btn.secondary:hover{background:var(--cream);color:var(--ink)}
+.hero-foot{margin-top:42px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#ddd3bf}
+.section{padding:95px 0}
+.section-title{font-size:clamp(39px,6vw,61px);line-height:1;margin:14px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:32px}
+.reveal{opacity:0;transform:translateY(25px);transition:.8s}
 .reveal.visible{opacity:1;transform:translateY(0)}
-/* Genres */
-.genres-section{padding:110px 0 100px;background:radial-gradient(ellipse at 80% 30%,#33332440,transparent 50%),#141914}
-.section-top{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:38px}
-.genre-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
-.genre-card{position:relative;min-height:310px;aspect-ratio:3/4;overflow:hidden;background:#242820;border:1px solid #ffffff12;isolation:isolate;cursor:pointer;transform-style:preserve-3d}
-.genre-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(9,12,10,.94),transparent 72%)}
-.genre-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s,filter .6s}
-.genre-card:hover img{transform:scale(1.09);filter:saturate(1.15)}
-.genre-card:hover{border-color:#eac78375}
-.genre-card .genre-number{position:absolute;top:18px;left:18px;font-size:10px;letter-spacing:2px;color:#f5dba7}
-.genre-card .genre-info{position:absolute;bottom:0;padding:23px;width:100%}
-.genre-card h3{font:500 clamp(23px,2.3vw,31px)/1 var(--serif);margin:0 0 9px;color:#fff}
-.genre-card p{font-size:11px;line-height:1.6;color:#dedbd1;margin:0 0 13px}
-.genre-link{font-size:10px;letter-spacing:1px;color:var(--gold);text-transform:uppercase}
-/* Stories */
-.stories-section{padding:105px 0;background:#ece5d7;color:#20241d}
-.stories-section .section-copy{color:#5e6056}
-.stories-section .eyebrow{color:#80602b}
-.story-tools{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0}
-.story-tools input,.story-tools select{padding:12px 14px;background:#fffaf0;border:1px solid #d3c8b4;color:#25271f;font-size:12px;min-width:160px}
-.story-tools input{flex:1}
-.story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.story-card{background:#f8f2e8;border:1px solid #ded5c5;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer}
-.story-card:hover{transform:translateY(-5px);box-shadow:0 16px 35px #30281818}
-.story-image{height:245px;position:relative;overflow:hidden;background:#333}
-.story-image img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
-.story-card:hover .story-image img{transform:scale(1.06)}
-.story-image:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#10140c42,transparent)}
-.story-content{padding:23px}
-.story-meta{display:flex;justify-content:space-between;gap:8px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#816536}
-.story-content h3{font:600 30px/1 var(--serif);margin:13px 0;color:#20241d}
-.story-content p{font-size:12px;line-height:1.8;color:#66675c}
-.story-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid #e1d8c9;font-size:10px;color:#554a35}
-.bookmark{border:1px solid #d4c8b5;background:transparent;color:#4a412f;padding:8px 10px}
-.bookmark.saved{background:#e9d3a4}
-/* Featured cinematic band */
-.feature-band{min-height:490px;display:flex;align-items:center;overflow:hidden;isolation:isolate;padding:80px 0}
-.feature-band:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,#10150feF 0%,#10150fa8 50%,#10150f22),url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85') center/cover;transition:transform 1s}
-.feature-band:hover:before{transform:scale(1.025)}
-.feature-copy{max-width:570px}
-.feature-copy h2{font:500 clamp(42px,6vw,70px)/.95 var(--serif);margin:20px 0}
-.feature-copy p{max-width:470px;line-height:1.9;color:#d5d2c8;font-size:13px}
-/* About/footer */
-.about-section{padding:95px 0;background:#171d17}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about-photo{height:410px;overflow:hidden;position:relative}
+#genres{background:radial-gradient(ellipse at 80% 30%,#48402a36,transparent 50%),#171c16}
+.genre-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.genre{position:relative;min-height:300px;aspect-ratio:3/4;overflow:hidden;isolation:isolate;background:#242820;border:1px solid #ffffff17;cursor:pointer}
+.genre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}
+.genre:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#090d0bf2,transparent 75%)}
+.genre:hover img{transform:scale(1.08)}
+.genre-info{position:absolute;bottom:0;padding:19px}
+.genre h3{font-size:28px;line-height:1;margin:10px 0}
+.genre p{font-size:11px;line-height:1.7;color:#e0ded4}
+.genre-num{font-size:10px;letter-spacing:2px;color:var(--gold)}
+.genre-enter{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+#stories{background:#eee6d7;color:#24271f}
+#stories .eyebrow{color:#80602d}
+#stories .copy{color:#656458}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
+.tools input,.tools select{padding:12px;background:#fffaf0;color:#28271f;border:1px solid #d1c7b4;font-size:12px;min-width:155px}
+.tools input{flex:1}
+.story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.story{background:#faf4e9;border:1px solid #ddd3c1;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.story:hover{transform:translateY(-5px);box-shadow:0 15px 32px #29251a20}
+.story-img{height:245px;overflow:hidden;background:#252a22}
+.story-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.story:hover img{transform:scale(1.06)}
+.story-body{padding:22px}
+.story-meta{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#80602d}
+.story h3{font-size:31px;line-height:1;margin:12px 0}
+.story p{font-size:12px;line-height:1.8;color:#66665a}
+.story-bottom{border-top:1px solid #e1d8c9;padding-top:13px;display:flex;justify-content:space-between;gap:10px;font-size:11px}
+.story-bottom button{background:transparent;border:1px solid #cfc2ad;color:#54442b;padding:7px}
+#about{background:#171c16}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-photo{height:380px;overflow:hidden}
 .about-photo img{width:100%;height:100%;object-fit:cover}
-.about-photo:after{content:"";position:absolute;inset:0;border:1px solid #eac78350;pointer-events:none}
 .about-copy p{font-size:13px;line-height:2;color:#c6c6ba}
-footer{padding:42px 0;border-top:1px solid #ffffff16;background:#10130f}
-.footer-row{display:flex;justify-content:space-between;align-items:center;gap:25px;flex-wrap:wrap}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap;color:#bbb9af;font-size:11px}
-footer small{display:block;color:#85877b;font-size:10px;margin-top:25px}
-/* Story reader: each genre has its own immersive photograph */
-.reader{position:fixed;inset:0;z-index:100;background:#11150f;overflow-y:auto;visibility:hidden;opacity:0;transform:translateY(15px);transition:opacity .45s,transform .45s,visibility .45s}
-.reader.open{visibility:visible;opacity:1;transform:translateY(0)}
-.reader-hero{min-height:430px;height:62vh;max-height:680px;position:relative;display:flex;align-items:end;padding:clamp(25px,7vw,90px);isolation:isolate;overflow:hidden}
-.reader-bg{position:absolute;inset:-2%;z-index:-2;background-size:cover;background-position:center;animation:readerDrift 20s ease-in-out infinite alternate}
-@keyframes readerDrift{to{transform:scale(1.08)}}
-.reader-hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#11150f 0%,#11150f60 55%,#11150f15),linear-gradient(90deg,#11150f75,transparent)}
-.reader-heading{max-width:900px}
-.reader-heading h2{font:500 clamp(48px,8vw,94px)/.9 var(--serif);margin:18px 0}
-.reader-heading p{max-width:580px;color:#e1dfd6;line-height:1.8;font-size:13px}
-.close-reader{position:fixed;right:22px;top:20px;z-index:105;background:#11150fcc;border:1px solid #ffffff40;padding:13px 18px}
-.reader-content{max-width:740px;margin:0 auto;padding:35px 25px 100px}
-.reader-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 0 22px;border-bottom:1px solid #ffffff25;color:#c8c5ba;font-size:11px}
-.reader-controls button{border:1px solid #ffffff35;background:transparent;padding:8px 11px}
-.reader-text{font:400 20px/1.95 var(--serif);color:#e9e2d5;white-space:pre-line}
+footer{padding:35px 0;background:#0c100c;border-top:1px solid #ffffff18}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.footer-links{display:flex;gap:17px;flex-wrap:wrap;font-size:11px;color:#c6c1b4}
+footer small{display:block;color:#89897e;margin-top:20px;font-size:10px}
+/* Immersive story reader */
+.reader{position:fixed;inset:0;z-index:100;background:#10140f;overflow-y:auto;visibility:hidden;opacity:0;transition:opacity .4s,visibility .4s}
+.reader.open{visibility:visible;opacity:1}
+.reader-hero{position:relative;isolation:isolate;min-height:480px;height:65vh;max-height:750px;display:flex;align-items:end;padding:clamp(24px,7vw,85px);overflow:hidden}
+.reader-bg{position:absolute;inset:-3%;z-index:-3;background:center/cover no-repeat;animation:slowZoom 24s ease-in-out infinite alternate}
+.reader-hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(0deg,#10140f 0%,#10140f60 53%,#10140f1c),linear-gradient(90deg,#10140f90,transparent)}
+.reader-hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.25;pointer-events:none;background:radial-gradient(ellipse at 65% 30%,var(--genre-glow,#eac783),transparent 60%);mix-blend-mode:screen}
+.reader-heading{max-width:850px}
+.reader-heading h2{font-size:clamp(48px,8vw,92px);line-height:.9;margin:18px 0}
+.reader-heading p{font-size:13px;line-height:1.8;max-width:570px;color:#e3dfd4}
+.close{position:fixed;z-index:110;right:18px;top:16px;background:#11150fe8;border:1px solid #ffffff50;color:white;padding:12px 16px}
+.reader-content{max-width:740px;margin:auto;padding:25px 24px 90px}
+.reader-tools{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:1px solid #ffffff26;padding-bottom:18px;color:#ccc6b7;font-size:11px}
+.reader-tools button{background:transparent;border:1px solid #ffffff45;padding:8px 10px;color:white}
+.sound-toggle.active{background:#4d482f;border-color:var(--gold);color:var(--gold)}
+.sound-note{color:#b9b3a4;font-size:10px;line-height:1.7;margin:13px 0}
+.reader-text{font:400 21px/1.95 var(--serif);color:#e9e1d4;white-space:pre-line}
 .reader-text p{margin:0 0 1.5em}
-.reader-text p:first-child:first-letter{float:left;font-size:4.3em;line-height:.8;padding:9px 9px 0 0;color:var(--gold)}
-.reader-end{padding:24px 0;border-top:1px solid #ffffff22;margin-top:45px}
-.reader-end h3{font:500 34px var(--serif)}
-.reader-end p{color:#c7c3b6;line-height:1.8;font-size:13px}
-.progress-track{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:120}
-/* Fireflies */
-#fireflies{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:90}
-.firefly{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffe9a3;box-shadow:0 0 7px 2px #ffdd7d90,0 0 18px 5px #ffcf5a35;animation:fireflyFade 1.4s ease-out forwards}
-@keyframes fireflyFade{0%{opacity:0;transform:scale(.3)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.1)}}
+.reader-text p:first-child:first-letter{float:left;font-size:4em;line-height:.8;padding:9px 9px 0 0;color:var(--gold)}
+.reader-end{border-top:1px solid #ffffff25;margin-top:40px;padding-top:22px}
+.reader-end h3{font-size:35px}
+.reader-end p{font-size:13px;color:#ccc6b7;line-height:1.8}
+#fireflies{position:fixed;inset:0;pointer-events:none;z-index:90;overflow:hidden}
+.firefly{position:absolute;border-radius:50%;background:#ffe8a3;box-shadow:0 0 8px 3px #ffe29c9c,0 0 20px 6px #ffce6340;animation:spark 1.3s ease-out forwards}
+@keyframes spark{0%{opacity:0;transform:scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.1)}}
+.image-fallback{background:radial-gradient(ellipse at 70% 35%,#66502c,#26372b 45%,#10140f 100%)!important}
 @media(pointer:coarse){#fireflies{display:none}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
-@media(max-width:900px){
- .navlinks{gap:14px}
- .navlinks a{font-size:11px}
- .genre-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .story-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .hero{min-height:700px}
- .about-grid{gap:30px}
-}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media(max-width:900px){.genre-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.story-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{gap:13px}.about-grid{gap:25px}}
 @media(max-width:620px){
- header{height:68px}
- .brand{font-size:21px}
- .lantern{width:31px;height:37px}
- .menu-btn{display:block}
- .navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:22px 5%;background:#11150f;flex-direction:column;align-items:flex-start;border-bottom:1px solid #ffffff20}
- .navlinks.show{display:flex}
- .navlinks a{font-size:13px;padding:5px 0}
- .nav-actions .icon-btn{display:none}
- .hero{min-height:710px;height:94svh}
- .hero-bg{background-position:58% center}
- .hero h1{letter-spacing:-1.5px;font-size:clamp(56px,13vw,80px)}
- .hero-content{padding-top:55px}
- .hero-foot{gap:8px;letter-spacing:1px;font-size:8px;flex-wrap:wrap}
- .scroll-cue{bottom:30px}
- .genres-section,.stories-section{padding:75px 0}
- .section-top{align-items:flex-start;flex-direction:column}
- .genre-grid{gap:10px}
- .genre-card{min-height:255px}
- .genre-card .genre-info{padding:15px}
- .genre-card h3{font-size:24px}
- .genre-card p{font-size:10px}
- .story-grid{grid-template-columns:1fr}
- .story-image{height:245px}
- .feature-band{min-height:440px}
- .about-grid{grid-template-columns:1fr}
- .about-photo{height:300px}
- .reader-hero{height:65vh;min-height:430px;padding:28px 22px}
- .reader-heading h2{font-size:54px}
- .reader-text{font-size:19px}
- .close-reader{right:10px;top:10px}
+ header{height:68px}.brand{font-size:20px}.lantern-logo{width:34px;height:40px}
+ .menu{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;background:#10140f;padding:20px 5%;flex-direction:column;border-bottom:1px solid #ffffff20}
+ .navlinks.show{display:flex}.navlinks a{padding:6px 0}
+ .hero{min-height:690px;height:94svh}.hero h1{font-size:clamp(55px,13vw,78px)}
+ .section{padding:72px 0}.section-head{align-items:start;flex-direction:column}
+ .genre-grid{gap:10px}.genre{min-height:245px}.genre-info{padding:13px}.genre h3{font-size:23px}
+ .story-grid{grid-template-columns:1fr}.story-img{height:235px}
+ .about-grid{grid-template-columns:1fr}.about-photo{height:270px}
+ .reader-hero{min-height:460px;height:64vh;padding:25px 20px}.reader-heading h2{font-size:55px}
+ .reader-text{font-size:19px}.close{right:8px;top:8px}
 }
 </style>
 </head>
 <body>
-
-<div class="progress-track" id="progressTrack"></div>
 <div id="fireflies" aria-hidden="true"></div>
 
 <header>
-  <div class="wrap nav">
-    <a class="brand" href="#home" aria-label="The Paper Lanterns home">
-      <svg class="lantern" viewBox="0 0 50 60" role="img" aria-label="Flying paper lantern">
-        <defs>
-          <linearGradient id="lanternPaper" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#fff0b7"/>
-            <stop offset="55%" stop-color="#e9b75e"/>
-            <stop offset="100%" stop-color="#bd7938"/>
-          </linearGradient>
-          <radialGradient id="lanternLight">
-            <stop offset="0%" stop-color="#fff9c7"/>
-            <stop offset="100%" stop-color="#efb64e" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <ellipse class="glow" cx="25" cy="28" rx="22" ry="27" fill="url(#lanternLight)"/>
-        <path d="M14 11 Q25 3 36 11 L40 35 Q25 44 10 35 Z" fill="url(#lanternPaper)" stroke="#f8d89b" stroke-width="1"/>
-        <path d="M14 11 Q25 16 36 11 M10 35 Q25 40 40 35 M25 8 L25 39" fill="none" stroke="#98652f" stroke-width="1.1" opacity=".8"/>
-        <path d="M10 35 L14 42 L36 42 L40 35" fill="#b97839" stroke="#f2cf88" stroke-width="1"/>
-        <path d="M18 42 L21 47 M32 42 L29 47" stroke="#eac783" stroke-width="1.2"/>
-        <path d="M21 48 Q25 54 29 48" fill="none" stroke="#eac783" stroke-width="1.4"/>
-        <circle cx="25" cy="27" r="10" fill="url(#lanternLight)" class="glow"/>
-      </svg>
-      The Paper Lanterns
-    </a>
-    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#genres">Genres</a><a href="#stories">Stories</a><a href="#experiences">Experiences</a><a href="#about">About</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="icon-btn" onclick="document.getElementById('search').focus()" aria-label="Search stories">⌕</button>
-      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
-    </div>
-  </div>
+ <div class="wrap nav">
+  <a href="#home" class="brand" aria-label="The Paper Lanterns home">
+   <svg class="lantern-logo" viewBox="0 0 60 72" aria-hidden="true">
+    <defs>
+     <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff6c9"/><stop offset=".48" stop-color="#efbd64"/><stop offset="1" stop-color="#a96328"/>
+     </linearGradient>
+     <radialGradient id="light">
+      <stop stop-color="#fff3b0" stop-opacity=".95"/><stop offset="1" stop-color="#efb64e" stop-opacity="0"/>
+     </radialGradient>
+    </defs>
+    <ellipse cx="30" cy="34" rx="28" ry="32" fill="url(#light)"/>
+    <path d="M18 12 Q30 2 42 12 L47 43 Q30 52 13 43 Z" fill="url(#paper)" stroke="#ffe7a6" stroke-width="1.5"/>
+    <path d="M18 12 Q30 19 42 12 M13 43 Q30 49 47 43 M30 8 L30 47" fill="none" stroke="#9b642f" stroke-width="1.5"/>
+    <path d="M13 43 L19 50 L41 50 L47 43" fill="#ad6c34" stroke="#f4d28d" stroke-width="1.5"/>
+    <path d="M22 50 Q30 57 38 50 M30 52 L30 62" stroke="#f1cf8a" stroke-width="1.5" fill="none"/>
+    <path d="M24 62 Q30 68 36 62" stroke="#f1cf8a" stroke-width="1.5" fill="none"/>
+    <circle cx="11" cy="23" r="1.6" fill="#fff0ad"/><circle cx="49" cy="16" r="1.3" fill="#fff0ad"/>
+   </svg>
+   The Paper Lanterns
+  </a>
+  <nav class="navlinks" id="navlinks">
+   <a href="#home">Home</a><a href="#genres">Genres</a><a href="#stories">Stories</a><a href="#about">About</a>
+  </nav>
+  <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+ </div>
 </header>
 
 <main>
 <section class="hero" id="home">
-  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90')"></div>
-  <div class="wrap">
-    <div class="hero-content">
-      <div class="eyebrow">An independent storytelling universe</div>
-      <h1>Stories you can<br>see, hear and <span class="gold">feel.</span></h1>
-      <p>Some stories stay on the page. Others follow you into the night. Step into new worlds, meet unforgettable characters, and find a reason to return tomorrow.</p>
-      <div class="hero-buttons">
-        <a class="btn" href="#genres">Explore stories <span>↗</span></a>
-        <a class="btn btn-outline" href="#stories">Read today's episode ↓</a>
-      </div>
-      <div class="hero-foot"><span>Seven worlds</span><i></i><span>Original fiction</span><i></i><span>A new adventure every day</span></div>
-    </div>
+ <div class="hero-bg" data-bg="hero"></div>
+ <div class="wrap">
+  <div class="hero-copy">
+   <div class="eyebrow">An independent storytelling universe</div>
+   <h1>Stories you can<br>see, hear and <span class="gold">feel.</span></h1>
+   <p>Some stories stay on the page. Others follow you into the night. Enter a world of secrets, impossible love, distant stars and things that move in the dark.</p>
+   <div class="actions"><a class="btn" href="#genres">Explore stories ↗</a><a class="btn secondary" href="#stories">Read today's episode ↓</a></div>
+   <div class="hero-foot">Seven worlds · Original fiction · Endless possibilities</div>
   </div>
-  <div class="scroll-cue">SCROLL TO DISCOVER</div>
+ </div>
 </section>
 
-<section class="genres-section" id="genres">
-  <div class="wrap">
-    <div class="section-top reveal">
-      <div><div class="eyebrow">Choose your world</div><h2 class="section-heading">Seven ways to <span class="gold">disappear.</span></h2></div>
-      <p class="section-copy">A different atmosphere behind every story. Find the world that calls to you, then follow it somewhere unexpected.</p>
-    </div>
-    <div class="genre-grid" id="genreGrid"></div>
-  </div>
+<section class="section" id="genres">
+ <div class="wrap">
+  <div class="section-head reveal"><div><div class="eyebrow">Choose your world</div><h2 class="section-title">Seven ways to <span class="gold">disappear.</span></h2></div><p class="copy">Every genre has its own atmosphere. Choose a world and follow it somewhere unexpected.</p></div>
+  <div class="genre-grid" id="genreGrid"></div>
+ </div>
 </section>
 
-<section class="stories-section" id="stories">
-  <div class="wrap">
-    <div class="reveal"><div class="eyebrow">The story library</div><h2 class="section-heading">Your next <span style="font-style:italic">obsession.</span></h2><p class="section-copy">Find a new world to step into. Choose a genre, follow a mystery, or discover a story by its title.</p></div>
-    <div class="story-tools reveal">
-      <input id="search" type="search" placeholder="Search titles, genres and stories…" aria-label="Search stories">
-      <select id="genreFilter" aria-label="Filter by genre"><option value="">All seven genres</option></select>
-      <select id="sortStories" aria-label="Sort stories"><option value="featured">Featured first</option><option value="title">Title A–Z</option><option value="genre">Genre</option></select>
-    </div>
-    <div class="story-grid" id="storyGrid"></div>
-    <p id="emptyState" hidden>No stories match your search. Try another title or genre.</p>
-  </div>
+<section class="section" id="stories">
+ <div class="wrap">
+  <div class="reveal"><div class="eyebrow">The story library</div><h2 class="section-title">Your next obsession.</h2><p class="copy">Discover a story, open its world and turn on its atmospheric soundtrack.</p></div>
+  <div class="tools"><input id="search" type="search" placeholder="Search stories and genres…" aria-label="Search stories"><select id="filter" aria-label="Filter genres"><option value="">All genres</option></select></div>
+  <div class="story-grid" id="storyGrid"></div>
+  <p id="empty" hidden>No stories found. Try a different search.</p>
+ </div>
 </section>
 
-<section class="feature-band" id="experiences">
-  <div class="wrap feature-copy reveal">
-    <div class="eyebrow">Beyond the last page</div>
-    <h2>Some worlds are<br>hard to leave.</h2>
-    <p>Keep a story close. Save it for later, return to the moments that stayed with you, and explore a different world whenever you're ready.</p>
-    <a class="btn" href="#stories">Find your next story ↗</a>
-  </div>
-</section>
-
-<section class="about-section" id="about">
-  <div class="wrap about-grid">
-    <div class="about-photo reveal">
-      <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=85" alt="A quiet, misty forest illuminated by soft natural light" loading="lazy">
-    </div>
-    <div class="about-copy reveal">
-      <div class="eyebrow">A little about us</div>
-      <h2 class="section-heading">Every lantern<br>holds a <span class="gold">world.</span></h2>
-      <p>The Paper Lanterns is a home for original storytelling, where each genre has its own atmosphere and every page is an invitation to imagine.</p>
-      <p>Follow a clue through a rain-soaked city. Fall in love beneath unfamiliar stars. Wander into a forest where the rules of reality have quietly changed.</p>
-      <p>There is always another story waiting to be found.</p>
-    </div>
-  </div>
+<section class="section" id="about">
+ <div class="wrap about-grid">
+  <img class="about-photo" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85" alt="Sunlight falling through a quiet forest" loading="lazy">
+  <div class="about-copy reveal"><div class="eyebrow">Every lantern holds a world</div><h2 class="section-title">Stay for the story.<br><span class="gold">Return for the feeling.</span></h2><p class="copy">The Paper Lanterns is a home for cinematic storytelling. Each world has its own scenery, mood and sound. Follow a clue through a rainy city, fall in love beneath unfamiliar stars, or wander into a forest where reality has changed.</p><a class="btn" href="#stories">Find a story ↗</a></div>
+ </div>
 </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-row">
-      <a class="brand" href="#home"><span class="gold">✧</span> The Paper Lanterns</a>
-      <div class="footer-links"><a href="#about">About</a><a href="mailto:hello@thepaperlanterns.example">Contact</a><a href="#about">Privacy</a><a href="#about">Terms</a><a href="#stories">Stories</a></div>
-    </div>
-    <small>Original worlds. Unforgettable journeys. © <span id="year"></span> The Paper Lanterns.</small>
-  </div>
-</footer>
+<footer><div class="wrap footer-row"><a class="brand" href="#home">✧ The Paper Lanterns</a><div class="footer-links"><a href="#about">About</a><a href="mailto:hello@thepaperlanterns.example">Contact</a><a href="#about">Privacy</a><a href="#about">Terms</a></div><small>© <span id="year"></span> The Paper Lanterns</small></div></footer>
 
 <div class="reader" id="reader" role="dialog" aria-modal="true" aria-label="Story reader">
-  <button class="close-reader" id="closeReader">✕ &nbsp; Close story</button>
-  <div class="reader-hero">
-    <div class="reader-bg" id="readerBg"></div>
-    <div class="reader-heading">
-      <div class="eyebrow" id="readerGenre"></div>
-      <h2 id="readerTitle"></h2>
-      <p id="readerSynopsis"></p>
-    </div>
-  </div>
-  <article class="reader-content">
-    <div class="reader-controls">
-      <span id="readerMeta"></span>
-      <div><button id="fontDown" aria-label="Decrease text size">A−</button> <button id="fontUp" aria-label="Increase text size">A+</button> <button id="readerBookmark">♡ Save</button></div>
-    </div>
-    <div class="reader-text" id="readerText"></div>
-    <div class="reader-end"><div class="eyebrow">The last page, for now</div><h3>Where will your imagination take you next?</h3><p>There are six other worlds waiting to be explored.</p><a class="btn" href="#stories" id="moreStories">Explore more stories ↗</a></div>
-  </article>
+ <button class="close" id="close">✕ Close story</button>
+ <div class="reader-hero" id="readerHero">
+  <div class="reader-bg" id="readerBg"></div>
+  <div class="reader-heading"><div class="eyebrow" id="readerGenre"></div><h2 id="readerTitle"></h2><p id="readerSynopsis"></p></div>
+ </div>
+ <article class="reader-content">
+  <div class="reader-tools"><span id="readerMeta"></span><div><button id="smaller">A−</button> <button id="larger">A+</button> <button id="save">♡ Save</button> <button id="sound" class="sound-toggle">♫ Enable sound</button></div></div>
+  <p class="sound-note" id="soundNote">Sound is off. Choose Enable sound to hear this story's atmosphere.</p>
+  <div class="reader-text" id="readerText"></div>
+  <div class="reader-end"><div class="eyebrow">Until the next story</div><h3>There is another world waiting.</h3><p>Return to the library and choose a new adventure.</p><button class="btn" id="backToStories">Explore stories ↗</button></div>
+ </article>
 </div>
 
 <script>
-const image = (id, width=1000) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=85`;
+/* Separate, genre-matched photographic backgrounds.
+   These are externally hosted Unsplash images and require internet access. */
+const photos={
+ hero:"photo-1470770841072-f978cf4d019e",
+ mystery:"photo-1519608487953-e999c86e7455",
+ romance:"photo-1516589178581-6cd7833ae3b2",
+ psychological:"photo-1500530855697-b586d89ba3ee",
+ scifi:"photo-1451187580459-43490279c0fa",
+ fantasy:"photo-1511497584788-876760111969",
+ horror:"photo-1509248961158-e54f6934749c",
+ crime:"photo-1480714378408-67cf0d13bc1b"
+};
+const photoURL=(id,w=1500)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
 
-const genres = [
-  {name:"Mystery",slug:"mystery",number:"01",tag:"Every clue changes everything.",color:"#a6b6a1",image:image("photo-1519608487953-e999c86e7455"),description:"Secrets hide in plain sight. Look closer."},
-  {name:"Romance",slug:"romance",number:"02",tag:"Some meetings change a lifetime.",color:"#d99c9c",image:image("photo-1516589178581-6cd7833ae3b2"),description:"Tender moments, impossible choices and love worth risking everything for."},
-  {name:"Psychological Thriller",slug:"psychological-thriller",number:"03",tag:"Can you trust your own mind?",color:"#a5a4c5",image:image("photo-1519608487953-e999c86e7455"),description:"Memories shift. Motives blur. Nothing is quite what it seems."},
-  {name:"Science Fiction",slug:"science-fiction",number:"04",tag:"Tomorrow is closer than you think.",color:"#83c6d5",image:image("photo-1451187580459-43490279c0fa"),description:"Distant galaxies, strange futures and the human heart among the stars."},
-  {name:"Fantasy & Magical Realism",slug:"fantasy",number:"05",tag:"Magic lives just beyond the ordinary.",color:"#b4a0d8",image:image("photo-1511497584788-876760111969"),description:"Enchanted forests, old promises and wonders hiding in familiar places."},
-  {name:"Horror",slug:"horror",number:"06",tag:"Some things should stay unseen.",color:"#bb8c7f",image:image("photo-1509248961158-e54f6934749c"),description:"Unease in the silence. A shadow where no shadow belongs."},
-  {name:"Crime Thriller & Investigation",slug:"crime",number:"07",tag:"Every crime leaves a trace.",color:"#d4b17d",image:image("photo-1519608487953-e999c86e7455"),description:"Follow the evidence through a city full of secrets and lies."}
+document.querySelector(".hero-bg").style.backgroundImage=`url("${photoURL(photos.hero,2200)}")`;
+document.querySelector(".about-photo").src=photoURL("photo-1448375240586-882707db888b",1200);
+
+const genres=[
+ {name:"Mystery",key:"mystery",n:"01",tag:"Every clue changes everything.",desc:"Secrets hide in plain sight.",photo:photos.mystery,glow:"#a2b99e"},
+ {name:"Romance",key:"romance",n:"02",tag:"Some meetings change a lifetime.",desc:"Love, longing and second chances.",photo:photos.romance,glow:"#e5a0b1"},
+ {name:"Psychological Thriller",key:"psychological",n:"03",tag:"Can you trust your own mind?",desc:"Memories shift. Nothing is certain.",photo:photos.psychological,glow:"#9995ce"},
+ {name:"Science Fiction",key:"scifi",n:"04",tag:"Tomorrow is closer than you think.",desc:"Humanity among the stars.",photo:photos.scifi,glow:"#5bc8ed"},
+ {name:"Fantasy & Magical Realism",key:"fantasy",n:"05",tag:"Magic hides in ordinary places.",desc:"Enchanted woods and impossible wonders.",photo:photos.fantasy,glow:"#b5a0e9"},
+ {name:"Horror",key:"horror",n:"06",tag:"Some things should stay unseen.",desc:"The silence is never quite silent.",photo:photos.horror,glow:"#a65c48"},
+ {name:"Crime Thriller & Investigation",key:"crime",n:"07",tag:"Every crime leaves a trace.",desc:"Follow the evidence. Question everyone.",photo:photos.crime,glow:"#d3b078"}
 ];
 
-/* Unique genre-specific images for the library and reader.
-   Unsplash source IDs can be replaced with your own licensed images. */
-genres[0].image=image("photo-1519608487953-e999c86e7455");
-genres[1].image=image("photo-1516589178581-6cd7833ae3b2");
-genres[2].image=image("photo-1500530855697-b586d89ba3ee");
-genres[3].image=image("photo-1451187580459-43490279c0fa");
-genres[4].image=image("photo-1511497584788-876760111969");
-genres[5].image=image("photo-1509248961158-e54f6934749c");
-genres[6].image=image("photo-1480714378408-67cf0d13bc1b");
+const stories=[
+ {id:"m1",genre:"Mystery",key:"mystery",title:"The House at Mile Thirteen",minutes:8,synopsis:"A courier receives a letter in her own handwriting, dated three days in the future.",text:`The letter arrived at 11:47 p.m., just as the last train pulled away.
 
-const stories = [
- {id:"m1",genre:"Mystery",title:"The House at Mile Thirteen",minutes:8,synopsis:"A night courier receives a letter addressed in her own handwriting, dated three days into the future.",image:genres[0].image,opening:"The letter arrived at 11:47 p.m., just as the last train pulled away.\n\nMara knew the handwriting before she turned the envelope over. The narrow capitals, the stubborn slant, the tiny ink blot where the pen always caught on the paper. It was hers. Not almost hers. Not someone imitating her. Hers, down to the little scar where the nib had scratched through the word tomorrow.\n\nThere was no stamp. No return address. Only a sentence on the front.\n\nOPEN THIS BEFORE YOU REACH MILE THIRTEEN.\n\nMara worked the night shift delivering parcels along the old coastal road. Mile thirteen had been closed since a landslide swallowed half the hillside and left the abandoned Vale house leaning over the sea. She had never been there. At least, she was fairly sure she had never been there.\n\nInside the envelope was a brass key, a photograph of a dark hallway, and a second note.\n\nIf the porch light is on, do not knock.\n\nHer phone buzzed. An unknown number.\n\nYou have six minutes, the message read.\n\nMara looked up. Across the empty platform, the station clock ticked past 11:48.\n\nShe should have called the police. She should have thrown the letter away. Instead, she climbed into her van and drove toward the coast, because there was one thing the letter had gotten wrong. It had said she would reach Mile Thirteen before midnight.\n\nMara had no intention of going anywhere near the place.\n\nAt 11:59, every streetlight on the road went out at once.\n\nA single porch light glowed ahead."},
- {id:"r1",genre:"Romance",title:"The Last Train to June",minutes:9,synopsis:"Two strangers miss the same connection and discover that a delayed night can become a second chance.",image:genres[1].image,opening:"At 9:12 p.m., the station announced that the last train to June had been cancelled.\n\nElena stared at the departure board. She had crossed three cities to avoid one conversation, and now the universe had apparently decided she needed to sit still and think about it.\n\nBeside her, a man folded a paper ticket into smaller and smaller squares.\n\n\"Bad night?\" he asked.\n\n\"I was hoping for a different one.\"\n\n\"Those are usually the expensive kind.\"\n\nShe laughed despite herself. He introduced himself as Daniel, though he said it like a detail he might later retract. His coat smelled faintly of rain and cedar. On the bench between them sat a paper bag containing two untouched pastries.\n\n\"You bought two,\" Elena said.\n\n\"I thought someone might show up.\"\n\n\"Did they?\"\n\nHe looked at the empty platform. \"Not yet.\"\n\nThe station emptied around them. A cleaner pushed a mop past the ticket machines. Rain tapped against the glass roof. Elena's phone lit up with the message she had travelled all this way to answer, then went dark again.\n\nDaniel offered her a pastry. She accepted the one with the broken corner.\n\nThey talked about small things first: the terrible coffee, the town beyond the station, the peculiar loneliness of a city at night. Slowly, without planning to, they talked about the things they had left behind.\n\nAt midnight, the station clock stopped.\n\nDaniel noticed first. His smile disappeared.\n\n\"That's impossible,\" he whispered.\n\nElena followed his gaze to the departure board. Every destination had vanished except one.\n\nJUNE — DEPARTURE 12:01 A.M.\n\nShe had never heard of a town called June. Daniel, however, had gone very pale.\n\n\"I promised myself I'd never take that train again,\" he said.\n\nThen the platform lights flickered, and somewhere beyond the tracks, a whistle sounded."},
- {id:"p1",genre:"Psychological Thriller",title:"The Room That Remembered",minutes:9,synopsis:"A restoration architect discovers a room in her new apartment that appears to remember things she has forgotten.",image:genres[2].image,opening:"The room was not on the floor plan.\n\nIris checked twice. The apartment had been measured, scanned and inspected before she bought it. Every wall had a number. Every doorway had a width. Yet behind the wardrobe in the spare bedroom, a narrow door had appeared where yesterday there had been plaster.\n\nShe put her hand on the brass knob.\n\nFrom the other side came the sound of someone humming.\n\nThe tune was familiar in the way a half-remembered dream was familiar. Iris had spent twelve years restoring old buildings. She knew how houses settled, how pipes knocked, how wind found its way through a badly sealed window. She knew that walls could make noises that sounded remarkably like human voices.\n\nShe also knew the tune.\n\nHer mother used to hum it while brushing Iris's hair before school. She had not thought about that morning in years. Not since the accident, not since the hospital, not since the strange silence that followed when relatives decided it was kinder not to ask what she remembered.\n\nThe humming stopped.\n\nIris stepped away from the door.\n\nOn the hallway table, her phone lit up with a calendar notification. It was a reminder she had never created.\n\nDON'T OPEN IT AGAIN.\n\nShe checked the time. 8:16 p.m. She checked the message history. No sender. No number. The reminder had no details and no option to dismiss it.\n\nBehind her, the wardrobe door creaked.\n\nIris turned.\n\nThe narrow door stood open by an inch. Warm light slipped through the gap, and the smell of lemon soap filled the hallway. Her childhood home had smelled exactly like that.\n\nThen a child's voice said her name.\n\nNot Iris.\n\nThe name she had been called before the accident."},
- {id:"s1",genre:"Science Fiction",title:"The Ocean Above Europa",minutes:8,synopsis:"A deep-space engineer hears a transmission from beneath an alien ocean, and it knows her name.",image:genres[3].image,opening:"The first voice came through the ice at 04:03 ship time.\n\nDr. Nia Solis was alone in the listening chamber when the signal arrived. Jupiter filled the observation window beyond her shoulder, striped with storms wide enough to swallow Earth. Europa turned slowly below, its frozen surface catching the light like a polished bone.\n\nThe signal repeated every seventeen seconds.\n\nThree short pulses. One long. Two short.\n\nNia ran the pattern through the translation suite. Nothing. She tried natural seismic activity, equipment interference, a compression artifact from the relay satellites. Every explanation collapsed under the same inconvenient fact: the pulses were changing to match her tests.\n\nWhen she tapped the console twice, the signal answered twice.\n\nWhen she stopped, it waited.\n\nNia called the mission commander. No answer. She checked the crew monitor and found all six sleeping quarters occupied, each life sign steady. The station's automated log insisted she had entered the chamber alone.\n\nThe signal changed again.\n\nHer name appeared on the screen in plain English.\n\nNIA.\n\nShe leaned toward the display. The system had no linguistic basis for choosing English. It had no way to know which crew member was at the console.\n\nA second line appeared.\n\nWE FOUND YOUR MESSAGE.\n\nNia felt the room tilt, though the station's artificial gravity remained steady. Twenty years earlier, as a child, she had recorded a message into a school science experiment and sent it toward the stars. A harmless greeting. A little story about the sea on Earth.\n\nNo one had ever told her the recording had left the planet.\n\nThe signal paused for seventeen seconds.\n\nThen the screen displayed a final sentence.\n\nWE ARE COMING UP."},
- {id:"f1",genre:"Fantasy & Magical Realism",title:"The Mapmaker of Lost Things",minutes:8,synopsis:"A mapmaker discovers that every forgotten object in her shop leads to a place that has vanished from the world.",image:genres[4].image,opening:"The compass arrived without a needle.\n\nIt was wrapped in blue silk and left on the counter of Amara Bell's shop just before dawn. No customer had entered. The front door was locked, the bell above it silent. Yet the compass lay there, cold and heavy, as though someone had carried it a very long way.\n\nAmara opened its brass lid.\n\nInside, instead of a needle, a tiny golden moth beat its wings against the glass.\n\nShe had seen stranger things. In her shop, forgotten objects arrived with the regularity of rain: gloves whose owners had vanished, keys to houses that no longer stood, postcards addressed to streets removed from every map. She catalogued each item and waited for someone to remember it.\n\nThe compass was different. When Amara held it, a road appeared on the paper map spread across her worktable. The road ran east, through the market square, past the river and into the forest beyond the last village.\n\nThere was no forest on any modern map.\n\nAmara packed bread, a lantern and her father's old walking stick. Before leaving, she pinned a note to the shop door.\n\nBack before sunset.\n\nThe forest began where the river forgot its name. Trees leaned over the path, their branches stitched with ribbons of blue cloth. Somewhere ahead, bells rang beneath the earth.\n\nThe compass warmed in her hand.\n\nAt the clearing's centre stood a small stone house with its windows lit. A girl sat on the doorstep, holding a red mitten.\n\n\"You're late,\" the girl said.\n\nAmara stopped breathing.\n\nThe mitten was the one her little brother had been wearing on the day he disappeared, twenty-three years earlier.\n\nThe girl looked up.\n\n\"He says you mustn't bring the compass inside.\""},
- {id:"h1",genre:"Horror",title:"When the House Breathes",minutes:8,synopsis:"During a storm, a caretaker learns the abandoned house on the hill has a rhythm of its own, and it has begun to imitate hers.",image:genres[5].image,opening:"At night, the house breathed.\n\nMiriam first noticed it during her second week as caretaker. The walls drew inward with a slow wooden sigh, then expanded again, pushing a thin ribbon of dust from the ceiling. She blamed the storm, the old timber, the settling foundation. By morning, the sound had become ordinary enough to ignore.\n\nThen she noticed it followed her.\n\nWhen Miriam held her breath, the house went still. When she exhaled, the floorboards creaked in answer. She tested it with a kettle, a song, a sudden cough. Every time, the building waited a moment and repeated the rhythm.\n\nOn the third night, she woke to find the bedroom door open.\n\nShe remembered locking it. She remembered checking the latch twice. The hallway beyond was black except for a pale square of moonlight at the far end, where the staircase turned toward the cellar.\n\nFrom below came a sound like someone drawing air through clenched teeth.\n\nMiriam sat up and reached for the bedside lamp. The bulb flickered once, twice, then glowed weakly. In its light she saw damp fingerprints on the inside of her bedroom door. They began at shoulder height and continued down to the floor, as if someone had crawled away.\n\nHer phone showed no signal. The nearest village was four miles away, beyond a flooded bridge. She could leave at dawn.\n\nSomething tapped the wall behind her bed.\n\nThree taps. A pause. Three more.\n\nMiriam tapped back before she could stop herself.\n\nThe house went quiet.\n\nThen, from somewhere inside the wall, came the sound of a woman laughing in Miriam's own voice.\n\nShe had heard that laugh only once before, on a recording made the day her sister died.\n\nThe cellar door opened downstairs."},
- {id:"c1",genre:"Crime Thriller & Investigation",title:"Evidence Number Zero",minutes:9,synopsis:"A homicide investigator finds an evidence bag logged before the murder, containing an item nobody has reported missing.",image:genres[6].image,opening:"Evidence number zero was not supposed to exist.\n\nDetective Arun Dev found the bag at 6:20 a.m., wedged between two sealed boxes in the precinct's evidence room. It had no case number, no chain-of-custody signature, and no date of collection. The label contained three words written in black marker.\n\nDO NOT LOG THIS.\n\nInside lay a silver cufflink, a folded receipt and a photograph of a man standing outside the central courthouse. Arun recognised the man immediately. Judge Prakash Menon had been found dead in his office less than four hours earlier.\n\nThe cufflink was still warm.\n\nArun called the duty officer and requested the room's access log. The system showed no entry between midnight and six. The security camera footage showed a brief distortion at 3:14 a.m., followed by six seconds of an empty room that looked subtly wrong, as if the shelves had been moved a few inches to the left.\n\nThe receipt was from a café demolished two years earlier. On its back, someone had written a case number. Arun knew that number, too. It belonged to an investigation he had been ordered to close after the only witness withdrew her statement.\n\nHe had never told anyone that he still kept a copy of her original testimony.\n\nThe photograph was dated tomorrow.\n\nArun turned it over. A message had been written across the back.\n\nYOU MISSED THE FIRST BODY.\n\nHis phone rang. The forensic pathologist was calling from the courthouse.\n\n\"Detective,\" she said, her voice thin with exhaustion. \"We have a problem with the time of death.\"\n\n\"What kind of problem?\"\n\n\"The judge was dead before he was murdered.\"\n\nBehind Arun, the evidence-room door clicked shut."}
+Mara knew the handwriting before she turned the envelope over. The narrow capitals, the stubborn slant, the tiny ink blot where the pen always caught on the paper. It was hers.
+
+There was no stamp. No return address. Only a sentence on the front.
+
+OPEN THIS BEFORE YOU REACH MILE THIRTEEN.
+
+Inside lay a brass key, a photograph of a dark hallway, and a second note.
+
+If the porch light is on, do not knock.
+
+Mara delivered parcels along the old coastal road. Mile thirteen had been closed since a landslide swallowed half the hillside and left the abandoned Vale house leaning over the sea.
+
+She should have called the police. Instead, she drove toward the coast, because there was one thing the letter had gotten wrong. It said she would reach Mile Thirteen before midnight.
+
+At 11:59, every streetlight went out at once.
+
+A single porch light glowed ahead.
+
+The house stood at the end of a narrow track, its windows dark except for the one above the front door. Mara parked with the engine running. Rain ticked against the windshield. She checked her phone. No signal.
+
+Then the brass key grew warm in her palm.
+
+The front door opened.
+
+No one stood behind it.
+
+Mara stepped inside. The hallway smelled of salt and old roses. The photograph from the envelope showed the same corridor, except in the picture there was a mirror at the far end. Now the wall was bare.
+
+A clock ticked somewhere upstairs.
+
+On the hall table sat a second envelope. Her name was written on it in the same handwriting. Inside was a photograph of Mara standing in the hallway, taken from behind.
+
+She turned sharply. The doorway was empty.
+
+From the upper floor came three measured knocks.
+
+Her phone vibrated. One message appeared.
+
+DO NOT GO UPSTAIRS.
+
+Mara stared at it, then at the staircase. The steps were wet. Each footprint led upward, but none came back down.
+
+She called out. Her voice travelled through the house and returned a moment later in a whisper.
+
+Mara.
+
+She climbed two steps. The clock stopped.
+
+At the landing, she found a bedroom door standing open. Inside, an old desk faced the window. On it lay a notebook, its pages filled with dates and short descriptions. Every entry described a delivery she had made. The last page carried tomorrow's date.
+
+Mara read the words.
+
+At 11:47 p.m., Mara receives the letter. At 12:04 a.m., she opens the bedroom door. At 12:06 a.m., she remembers who sent her.
+
+Behind her, the floor creaked.
+
+She turned.
+
+A woman stood at the top of the stairs. Same dark coat. Same rain-soaked hair. Same small scar across the left eyebrow.
+
+Mara raised a shaking hand to her own face.
+
+The woman held out an envelope.
+
+"You were supposed to leave it at the station," she said.
+
+Mara could not speak.
+
+"You keep coming back," the woman whispered. "Every time you forget."
+
+The clock began ticking again. The woman stepped backward into the dark, and the house seemed to draw a long, relieved breath.
+
+Mara looked at the envelope.
+
+On the front, in her own handwriting, were the words:
+
+OPEN THIS BEFORE YOU REACH MILE THIRTEEN.`},
+ {id:"r1",genre:"Romance",key:"romance",title:"The Last Train to June",minutes:8,synopsis:"Two strangers miss the same connection and find a second chance in a town that should not exist.",text:`At 9:12 p.m., the station announced that the last train to June had been cancelled.
+
+Elena stared at the departure board. She had crossed three cities to avoid one conversation, and now the universe had apparently decided she needed to sit still and think about it.
+
+Beside her, a man folded a paper ticket into smaller and smaller squares.
+
+"Bad night?" he asked.
+
+"I was hoping for a different one."
+
+"Those are usually the expensive kind."
+
+She laughed despite herself. His name was Daniel. His coat smelled faintly of rain and cedar. On the bench between them sat a paper bag containing two untouched pastries.
+
+"You bought two," Elena said.
+
+"I thought someone might show up."
+
+"Did they?"
+
+He looked at the empty platform. "Not yet."
+
+The station emptied around them. Rain tapped against the glass roof. Elena's phone lit up with the message she had travelled all this way to answer, then went dark again.
+
+Daniel offered her a pastry. She accepted the one with the broken corner.
+
+They talked about small things first: terrible coffee, the town beyond the station, the peculiar loneliness of cities at night. Slowly, without planning to, they talked about the things they had left behind.
+
+At midnight, the station clock stopped.
+
+Daniel noticed first. His smile disappeared.
+
+"That's impossible," he whispered.
+
+Every destination vanished from the board except one.
+
+JUNE — DEPARTURE 12:01 A.M.
+
+Elena had never heard of a town called June. Daniel had gone very pale.
+
+"I promised myself I'd never take that train again," he said.
+
+A whistle sounded beyond the tracks. A train glided into the station without a sound. Its windows glowed amber. On the side, the word JUNE shone in gold lettering.
+
+Daniel stood. Elena saw the fear in his face, but also a strange, fragile hope.
+
+"What happened the last time?" she asked.
+
+"I met someone. I was meant to ask her to stay. I didn't."
+
+"Can you go back?"
+
+"I don't know. I have been trying to find this platform for eleven years."
+
+The doors opened.
+
+Inside, the seats were covered in faded blue fabric. A conductor waited at the far end, holding a pocket watch. Daniel stepped aboard. Then he turned and held out his hand.
+
+Elena looked at her phone. The message she had been avoiding was still there. She had travelled to end a relationship that had already ended in everything but words. The person she was afraid to disappoint was herself.
+
+She took Daniel's hand.
+
+The train rolled through a landscape of dark fields and silver rivers. Neither of them spoke for a while. Their shoulders touched. It felt less like meeting someone and more like finding a sentence they had both been trying to finish.
+
+At the next stop, Daniel rose.
+
+"This is where I got off last time."
+
+Outside, a small station stood beneath a flowering tree. Beneath it waited a woman in a yellow scarf.
+
+Daniel's breath caught.
+
+Elena squeezed his fingers. "Go."
+
+He stepped onto the platform. The woman turned. For a moment, they simply stared at one another. Then she smiled, and Daniel looked younger than he had all evening.
+
+He turned back to Elena.
+
+"I don't know what happens now."
+
+"Neither do I," she said. "That's the good part."
+
+The doors began to close. Daniel leaned in and kissed her forehead, softly, like a promise that did not need to own the future.
+
+Elena watched the train pull away.
+
+In her pocket, her phone buzzed. She opened the message she had travelled so far to answer, typed the truth, and pressed send.
+
+For the first time in months, the night ahead felt like hers.
+
+On the seat beside her lay a fresh paper ticket.
+
+Destination: Tomorrow.`},
+ {id:"p1",genre:"Psychological Thriller",key:"psychological",title:"The Room That Remembered",minutes:8,synopsis:"A restoration architect finds a room that remembers the childhood she has tried to forget.",text:`The room was not on the floor plan.
+
+Iris checked twice. The apartment had been measured, scanned and inspected before she bought it. Every wall had a number. Every doorway had a width. Yet behind the wardrobe in the spare bedroom, a narrow door had appeared where yesterday there had been plaster.
+
+She put her hand on the brass knob.
+
+From the other side came the sound of someone humming.
+
+The tune was familiar in the way a half-remembered dream was familiar. Iris had spent twelve years restoring old buildings. She knew how houses settled, how pipes knocked, how wind found its way through a badly sealed window.
+
+She also knew the tune.
+
+Her mother used to hum it while brushing Iris's hair before school. She had not thought about that morning in years. Not since the accident, not since the hospital, not since relatives decided it was kinder not to ask what she remembered.
+
+The humming stopped.
+
+Iris stepped away from the door. Her phone lit up with a calendar notification she had never created.
+
+DON'T OPEN IT AGAIN.
+
+Behind her, the wardrobe door creaked. The narrow door stood open by an inch. Warm light slipped through the gap, and the smell of lemon soap filled the hallway. Her childhood home had smelled exactly like that.
+
+A child's voice said her name. Not Iris. The name she had been called before the accident.
+
+She opened the door.
+
+Beyond it was a bedroom with yellow curtains, a small desk, and two paper stars hanging above the bed. Iris recognised every object. She remembered the room now, or thought she did. The details returned too quickly, like a film being projected onto a wall.
+
+On the desk sat a cassette recorder.
+
+She pressed play.
+
+Her own childhood voice filled the room. "If I forget, tell me what happened."
+
+A second voice answered. Her mother's.
+
+"You were in the car, darling. You saw the whole thing."
+
+Iris gripped the edge of the desk. She remembered rain on the windscreen. A sharp turn. Her mother shouting her name. Then a blankness that had lasted years.
+
+The tape continued.
+
+"You mustn't tell your father," the voice said.
+
+A sound followed: a door slamming, footsteps running down a hall, a glass breaking.
+
+The recording stopped.
+
+Iris checked the cassette. There was no label, no date. She turned it over and found a note in her own adult handwriting.
+
+YOU ASKED ME TO HIDE THIS.
+
+Someone moved in the hallway outside the room.
+
+Iris switched off the recorder. A shadow crossed the yellow curtains, though the window looked onto a brick wall.
+
+She stepped back through the door and called the police. As she gave her address, the apartment seemed ordinary again. The wardrobe stood against the wall. No door. No strange smell. No humming.
+
+The officer arrived and inspected the room. He found no hidden space, no cassette, no sign of a second doorway.
+
+After he left, Iris sat at her desk and opened the building plans. There was a small discrepancy in the measurements, a gap of exactly one metre and twelve centimetres behind the wardrobe.
+
+She moved the furniture.
+
+The door returned.
+
+This time, a mirror hung inside the room. Iris stood before it and saw herself as a child, sitting in the back seat of a car.
+
+The child raised one hand to the glass.
+
+Behind the child, in the reflection, her mother was driving.
+
+And someone sat in the passenger seat whom Iris had spent her whole life insisting had never been there.`},
+ {id:"s1",genre:"Science Fiction",key:"scifi",title:"The Ocean Above Europa",minutes:8,synopsis:"An engineer receives a signal from beneath an alien ocean, and it knows her name.",text:`The first voice came through the ice at 04:03 ship time.
+
+Dr. Nia Solis was alone in the listening chamber when the signal arrived. Jupiter filled the observation window beyond her shoulder, striped with storms wide enough to swallow Earth. Europa turned slowly below, its frozen surface catching the light like polished bone.
+
+The signal repeated every seventeen seconds.
+
+Three short pulses. One long. Two short.
+
+Nia ran the pattern through the translation suite. Nothing. She tried natural seismic activity, equipment interference, a compression artifact from the relay satellites. Every explanation collapsed under the same inconvenient fact: the pulses were changing to match her tests.
+
+When she tapped the console twice, the signal answered twice.
+
+When she stopped, it waited.
+
+Nia called the mission commander. No answer. The crew monitors showed six sleeping astronauts. The station's automated log insisted she had entered the chamber alone.
+
+The signal changed again.
+
+Her name appeared on the screen in plain English.
+
+NIA.
+
+A second line appeared.
+
+WE FOUND YOUR MESSAGE.
+
+Twenty years earlier, as a child, she had recorded a greeting for a school science project and sent it toward the stars. A harmless message about Earth's oceans. No one had told her the recording had left the planet.
+
+The signal paused for seventeen seconds.
+
+WE ARE COMING UP.
+
+Nia alerted mission control. The reply took forty minutes to arrive. They instructed her to shut down the receiver and wait for a diagnostic team. She began the shutdown sequence.
+
+The signal became a voice.
+
+Not a voice in the speakers. A voice in her headset, close enough that she felt someone standing behind her.
+
+"We remember the water."
+
+Nia froze. The words were spoken in her childhood language, with the soft coastal accent of her grandmother.
+
+"Who are you?" she whispered.
+
+The answer came in pulses. Her software rendered them as a moving image: a dark ocean beneath a ceiling of ice, luminous organisms drifting in vast spirals, and a structure rising from the seabed like a city grown from bone.
+
+Then the image changed.
+
+It showed the listening chamber.
+
+It showed Nia at the console.
+
+Behind her stood a figure made of moving light.
+
+She spun around. Nothing was there.
+
+The station shook. A low vibration travelled through the floor. On the external camera, a narrow fracture opened across the ice. Beneath it, something vast moved upward through the dark water.
+
+The crew alarms sounded. One by one, the sleeping quarters registered movement. The mission commander appeared on the intercom, asking what had happened.
+
+Nia stared at the image.
+
+The signal had not come from Europa's ocean.
+
+It had come from a vessel beneath the ice, carrying a record of Earth's first transmissions. It had been waiting for the answer to a message sent by a little girl who had wanted to know whether anyone was listening.
+
+A final line appeared.
+
+WE HAVE BROUGHT SOMETHING BACK.
+
+The ice split open.
+
+Below the station, an ocean full of lights began to rise.`},
+ {id:"f1",genre:"Fantasy & Magical Realism",key:"fantasy",title:"The Mapmaker of Lost Things",minutes:8,synopsis:"A compass with no needle leads a mapmaker to a forest that no longer appears on any map.",text:`The compass arrived without a needle.
+
+It was wrapped in blue silk and left on the counter of Amara Bell's shop just before dawn. No customer had entered. The front door was locked, the bell above it silent. Yet the compass lay there, cold and heavy, as though someone had carried it a very long way.
+
+Amara opened its brass lid.
+
+Inside, instead of a needle, a tiny golden moth beat its wings against the glass.
+
+In her shop, forgotten objects arrived with the regularity of rain: gloves whose owners had vanished, keys to houses that no longer stood, postcards addressed to streets removed from every map. She catalogued each item and waited for someone to remember it.
+
+The compass was different. When Amara held it, a road appeared on the map spread across her worktable. It ran east, through the market square, past the river and into the forest beyond the last village.
+
+There was no forest on any modern map.
+
+Amara packed bread, a lantern and her father's walking stick. Before leaving, she pinned a note to the shop door.
+
+Back before sunset.
+
+The forest began where the river forgot its name. Trees leaned over the path, their branches stitched with blue ribbons. Somewhere ahead, bells rang beneath the earth.
+
+The compass warmed in her hand.
+
+At the clearing's centre stood a stone house with its windows lit. A girl sat on the doorstep, holding a red mitten.
+
+"You're late," the girl said.
+
+Amara stopped breathing. The mitten was the one her little brother had worn on the day he disappeared, twenty-three years earlier.
+
+"He says you mustn't bring the compass inside."
+
+The girl led her around the house to a well covered by a wooden lid. Beneath it, Amara heard the sound of a crowded street: footsteps, laughter, carts rattling over cobbles. A city had been buried there, not in earth but in forgetting.
+
+Every person who had vanished from the world's memory lived in that hidden place. Their houses, streets and names were safe, but the door between worlds was closing.
+
+Amara understood why the compass had come to her. She had spent her life preserving the forgotten objects of strangers. Now the map wanted something in return.
+
+A voice rose from the well.
+
+"Amara?"
+
+Her brother sounded exactly as he had when he was twelve.
+
+She opened the lid.
+
+Golden light rose through the opening, and the moth inside the compass began beating its wings faster. Amara could step down into the city and find him. But if she did, the path would close behind her. No one would remember the mapmaker, or her shop, or the people she had helped find their way home.
+
+The girl held out the red mitten.
+
+"He remembers you," she said. "But he doesn't want you to disappear."
+
+Amara knelt beside the well and placed the mitten on its edge.
+
+For a long moment, she listened to the city beneath the earth. Then she closed the lid.
+
+The sound faded, but it did not vanish.
+
+When she returned to her shop, a new road had appeared on every map in the room. It led to a little house beside a river, where a boy was waiting at the door.
+
+Amara smiled.
+
+Some things could be found without being taken back.`},
+ {id:"h1",genre:"Horror",key:"horror",title:"When the House Breathes",minutes:8,synopsis:"A caretaker learns the abandoned house on the hill has begun to imitate her breathing.",text:`At night, the house breathed.
+
+Miriam first noticed it during her second week as caretaker. The walls drew inward with a slow wooden sigh, then expanded again, pushing dust from the ceiling. She blamed the storm, the old timber, the settling foundation.
+
+Then she noticed it followed her.
+
+When Miriam held her breath, the house went still. When she exhaled, the floorboards creaked in answer. She tested it with a kettle, a song, a sudden cough. Every time, the building waited a moment and repeated the rhythm.
+
+On the third night, she woke to find the bedroom door open.
+
+She remembered locking it. The hallway beyond was black except for a pale square of moonlight at the far end, where the staircase turned toward the cellar.
+
+From below came a sound like someone drawing air through clenched teeth.
+
+Miriam reached for the bedside lamp. The bulb flickered, then glowed weakly. Damp fingerprints marked the inside of her bedroom door. They began at shoulder height and continued down to the floor, as if someone had crawled away.
+
+Her phone showed no signal. The nearest village was four miles away, beyond a flooded bridge. She could leave at dawn.
+
+Something tapped the wall behind her bed.
+
+Three taps. A pause. Three more.
+
+Miriam tapped back before she could stop herself.
+
+The house went quiet.
+
+Then, from inside the wall, came a woman laughing in Miriam's own voice. She had heard that laugh only once before, on a recording made the day her sister died.
+
+The cellar door opened downstairs.
+
+Miriam took a torch and went down. The air grew colder with every step. At the bottom, she found a corridor that could not fit beneath the house. Its walls were damp and pale, and the floor sloped gently downward.
+
+At the end stood a wooden chair. On it lay a cassette recorder.
+
+She pressed play.
+
+Her sister's voice filled the corridor. "Miriam, if you hear this, don't answer when it calls you."
+
+A long silence followed. Then came Miriam's voice, younger, crying.
+
+"Please come back."
+
+The tape clicked off.
+
+Behind her, something inhaled.
+
+Miriam turned the torch. At the far end of the corridor stood a figure with her sister's face. Water dripped from its hair. Its hands were pressed flat against its sides.
+
+"You left me here," it said.
+
+Miriam backed away. She remembered the storm, the car, the argument that had split the night in two. She remembered running from the house while her sister stayed behind.
+
+But the house was not the place where her sister had died. It was the place where Miriam had refused to remember.
+
+The figure stepped closer.
+
+The corridor contracted around them. The walls flexed like ribs. Miriam ran upstairs, burst through the front door and stumbled into the rain.
+
+Behind her, the house exhaled.
+
+At dawn, the caretaker's cottage stood empty. The village searched the hill, but found no cellar, no hidden corridor, no cassette recorder.
+
+Only a damp handprint on the inside of Miriam's bedroom door.
+
+That night, the house breathed again.
+
+And someone inside it began to laugh.`},
+ {id:"c1",genre:"Crime Thriller & Investigation",key:"crime",title:"Evidence Number Zero",minutes:8,synopsis:"A detective finds evidence logged before a murder, connected to a case he was ordered to forget.",text:`Evidence number zero was not supposed to exist.
+
+Detective Arun Dev found the bag at 6:20 a.m., wedged between two sealed boxes in the precinct's evidence room. It had no case number, no chain-of-custody signature, and no date of collection. The label contained three words.
+
+DO NOT LOG THIS.
+
+Inside lay a silver cufflink, a folded receipt and a photograph of a man standing outside the central courthouse. Arun recognised him immediately. Judge Prakash Menon had been found dead in his office less than four hours earlier.
+
+The cufflink was still warm.
+
+Arun called the duty officer and requested the room's access log. The system showed no entry between midnight and six. The security camera footage showed a brief distortion at 3:14 a.m., followed by six seconds of an empty room that looked subtly wrong, as if the shelves had shifted.
+
+The receipt was from a café demolished two years earlier. On its back, someone had written a case number. Arun knew it. It belonged to an investigation he had been ordered to close after the only witness withdrew her statement.
+
+He had never told anyone that he still kept a copy of her original testimony.
+
+The photograph was dated tomorrow.
+
+Arun turned it over. A message had been written across the back.
+
+YOU MISSED THE FIRST BODY.
+
+His phone rang. The forensic pathologist was calling from the courthouse.
+
+"We have a problem with the time of death."
+
+"What kind of problem?"
+
+"The judge was dead before he was murdered."
+
+Arun went to the courthouse. The judge's office was sealed, the corridor crowded with officers and reporters. On the desk, beside a cold cup of tea, lay a second cufflink. The judge had been wearing a pair when his body was found. One was missing.
+
+Arun looked at the photograph again. The man outside the courthouse was not the judge.
+
+It was Arun himself.
+
+He checked the timestamp. The picture had been taken at 3:14 that morning, from a camera angle above the evidence room door.
+
+The witness from the old case had been named Leela. She had disappeared after withdrawing her statement. The case file said she had left the country. Arun had never believed it.
+
+He reopened the file and found a handwritten note tucked behind the final report.
+
+IF THE FIRST BODY IS FOUND, ASK WHO BENEFITS FROM THE SECOND.
+
+The pathologist called again. A second body had been discovered beneath the courthouse foundations, sealed inside a maintenance chamber. It had been there for at least two years.
+
+Arun descended with the forensic team. The chamber smelled of wet concrete and old paper. Beside the body was a small envelope, sealed with black wax.
+
+Inside was a photograph of Leela.
+
+On the back she had written: You were right not to believe the report.
+
+Arun heard footsteps above him. Someone was leaving the courthouse in a hurry.
+
+He ran up the stairs, through the lobby and into the rain. A figure crossed the street and disappeared into a waiting car. The number plate was registered to the judge.
+
+Arun's phone buzzed.
+
+A new photograph appeared. This time, it showed him standing in the evidence room, holding the cufflink.
+
+Below it were five words.
+
+NOW THEY WILL BELIEVE YOU.
+
+He looked back at the courthouse. Every light on the upper floors went dark, one by one.
+
+For the first time, Arun understood that the evidence had not been planted to solve a murder.
+
+It had been planted to make him the next suspect.`}
 ];
 
-const grid=document.getElementById("genreGrid");
+const genreGrid=document.getElementById("genreGrid");
 const storyGrid=document.getElementById("storyGrid");
-const filter=document.getElementById("genreFilter");
+const filter=document.getElementById("filter");
 const search=document.getElementById("search");
-const sort=document.getElementById("sortStories");
 const reader=document.getElementById("reader");
 const readerText=document.getElementById("readerText");
-let activeStory=null;
-let fontSize=20;
+let current=null,fontSize=21,audio=null,soundEnabled=false;
 
-function saved(id){
- try{return JSON.parse(localStorage.getItem("paperLanternBookmarks")||"[]").includes(id)}catch{return false}
-}
-function toggleSaved(id){
- let list=[];
- try{list=JSON.parse(localStorage.getItem("paperLanternBookmarks")||"[]")}catch{}
- list=list.includes(id)?list.filter(x=>x!==id):[...list,id];
- try{localStorage.setItem("paperLanternBookmarks",JSON.stringify(list))}catch{}
- renderStories();
- if(activeStory&&activeStory.id===id)updateReaderBookmark();
-}
-function updateReaderBookmark(){
- const b=document.getElementById("readerBookmark");
- if(activeStory){b.textContent=saved(activeStory.id)?"♥ Saved":"♡ Save";b.style.color=saved(activeStory.id)?"#eac783":""}
-}
 function renderGenres(){
- grid.innerHTML="";
  genres.forEach(g=>{
-  const el=document.createElement("article");
-  el.className="genre-card reveal";
-  el.tabIndex=0;
-  el.setAttribute("aria-label","Explore "+g.name);
-  el.innerHTML=`<img src="${g.image}" alt="${g.name} atmosphere" loading="lazy"><span class="genre-number">${g.number} / 07</span><div class="genre-info"><h3>${g.name}</h3><p>${g.tag}</p><span class="genre-link">Enter this world ↗</span></div>`;
-  el.addEventListener("click",()=>{filter.value=g.name;renderStories();document.getElementById("stories").scrollIntoView({behavior:"smooth"})});
-  el.addEventListener("keydown",e=>{if(e.key==="Enter")el.click()});
-  grid.appendChild(el);
-  const option=document.createElement("option");option.value=g.name;option.textContent=g.name;filter.appendChild(option);
+  const card=document.createElement("article");card.className="genre reveal";card.tabIndex=0;
+  card.innerHTML=`<img src="${photoURL(g.photo,900)}" alt="${g.name} cinematic scenery" loading="lazy"><div class="genre-info"><span class="genre-num">${g.n} / 07</span><h3>${g.name}</h3><p>${g.tag}</p><span class="genre-enter">Enter this world ↗</span></div>`;
+  card.onclick=()=>{filter.value=g.name;renderStories();document.getElementById("stories").scrollIntoView({behavior:"smooth"})};
+  card.onkeydown=e=>{if(e.key==="Enter")card.click()};
+  card.querySelector("img").onerror=()=>card.querySelector("img").style.display="none";
+  genreGrid.appendChild(card);
+  const o=document.createElement("option");o.value=g.name;o.textContent=g.name;filter.appendChild(o);
  });
 }
+function isSaved(id){try{return JSON.parse(localStorage.getItem("paperLanternSaved")||"[]").includes(id)}catch{return false}}
+function saveStory(id){
+ let list=[];try{list=JSON.parse(localStorage.getItem("paperLanternSaved")||"[]")}catch{}
+ list=list.includes(id)?list.filter(x=>x!==id):[...list,id];
+ try{localStorage.setItem("paperLanternSaved",JSON.stringify(list))}catch{}
+ renderStories();updateSaveButton();
+}
+function updateSaveButton(){document.getElementById("save").textContent=current&&isSaved(current.id)?"♥ Saved":"♡ Save"}
 function renderStories(){
  const q=search.value.trim().toLowerCase();
- let list=stories.filter(s=>(!filter.value||s.genre===filter.value)&&(!q||(s.title+" "+s.genre+" "+s.synopsis+" "+s.opening).toLowerCase().includes(q)));
- if(sort.value==="title")list.sort((a,b)=>a.title.localeCompare(b.title));
- if(sort.value==="genre")list.sort((a,b)=>a.genre.localeCompare(b.genre));
+ const list=stories.filter(s=>(!filter.value||s.genre===filter.value)&&(!q||(s.title+" "+s.genre+" "+s.synopsis+" "+s.text).toLowerCase().includes(q)));
  storyGrid.innerHTML="";
- document.getElementById("emptyState").hidden=list.length>0;
+ document.getElementById("empty").hidden=list.length>0;
  list.forEach(s=>{
-  const el=document.createElement("article");el.className="story-card reveal";
-  el.innerHTML=`<div class="story-image"><img src="${s.image}" alt="Cinematic scene for ${s.title}" loading="lazy"></div><div class="story-content"><div class="story-meta"><span>${s.genre}</span><span>${s.minutes} min</span></div><h3>${s.title}</h3><p>${s.synopsis}</p><div class="story-bottom"><button class="bookmark ${saved(s.id)?"saved":""}" aria-label="Bookmark ${s.title}">${saved(s.id)?"♥ Saved":"♡ Save"}</button><span>Read story ↗</span></div></div>`;
-  el.querySelector(".story-image").addEventListener("click",()=>openStory(s));
-  el.querySelector("h3").addEventListener("click",()=>openStory(s));
-  el.querySelector(".story-bottom span").addEventListener("click",()=>openStory(s));
-  el.querySelector(".bookmark").addEventListener("click",e=>{e.stopPropagation();toggleSaved(s.id)});
-  storyGrid.appendChild(el);
+  const card=document.createElement("article");card.className="story reveal";
+  card.innerHTML=`<div class="story-img"><img src="${photoURL(photos[s.key],900)}" alt="Scenery for ${s.title}" loading="lazy"></div><div class="story-body"><div class="story-meta">${s.genre} · ${s.minutes} MIN READ</div><h3>${s.title}</h3><p>${s.synopsis}</p><div class="story-bottom"><button>${isSaved(s.id)?"♥ Saved":"♡ Save"}</button><span>Open story ↗</span></div></div>`;
+  card.querySelector(".story-img").onclick=()=>openStory(s);
+  card.querySelector("h3").onclick=()=>openStory(s);
+  card.querySelector(".story-bottom span").onclick=()=>openStory(s);
+  card.querySelector("button").onclick=e=>{e.stopPropagation();saveStory(s.id)};
+  card.querySelector("img").onerror=()=>{card.querySelector(".story-img").classList.add("image-fallback");card.querySelector("img").style.display="none"};
+  storyGrid.appendChild(card);
  });
- observeReveals();
+ watchReveal();
+}
+
+/* Atmospheric sound generated locally with Web Audio.
+   No sound plays until the reader explicitly enables it. */
+function startSound(key){
+ stopSound();
+ const AC=window.AudioContext||window.webkitAudioContext;
+ if(!AC){document.getElementById("soundNote").textContent="Audio is not supported by this browser.";return}
+ try{
+  const ctx=new AC();audio={ctx,nodes:[]};
+  const master=ctx.createGain();master.gain.value=.13;master.connect(ctx.destination);audio.nodes.push(master);
+  const filterNode=ctx.createBiquadFilter();filterNode.type="lowpass";filterNode.frequency.value=key==="scifi"?650:key==="horror"?300:1000;filterNode.connect(master);audio.nodes.push(filterNode);
+  // Soft ambient noise, filtered differently for each story world.
+  const buffer=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate);
+  const data=buffer.getChannelData(0);
+  for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.25;
+  const noise=ctx.createBufferSource();noise.buffer=buffer;noise.loop=true;
+  const noiseGain=ctx.createGain();noiseGain.gain.value=key==="horror"?.23:key==="crime"?.10:.07;
+  noise.connect(noiseGain);noiseGain.connect(filterNode);noise.start();
+  audio.nodes.push(noise,noiseGain);
+  const osc=(freq,type,gain,delay=0)=>{
+   const o=ctx.createOscillator(),v=ctx.createGain();
+   o.type=type;o.frequency.value=freq;v.gain.value=gain;
+   o.connect(v);v.connect(master);o.start(ctx.currentTime+delay);
+   audio.nodes.push(o,v);
+  };
+  if(key==="mystery"){osc(110,"sine",.20);osc(164.8,"sine",.10);osc(440,"sine",.025)}
+  if(key==="romance"){osc(220,"sine",.13);osc(277.2,"sine",.09);osc(330,"sine",.07);osc(440,"sine",.04)}
+  if(key==="psychological"){osc(73.4,"triangle",.18);osc(77,"sine",.12);osc(155,"sine",.04)}
+  if(key==="scifi"){osc(55,"sine",.16);osc(82.4,"sine",.09);osc(220,"sine",.04)}
+  if(key==="fantasy"){osc(261.6,"sine",.11);osc(392,"sine",.06);osc(523.3,"sine",.04)}
+  if(key==="horror"){osc(48,"sawtooth",.045);osc(51,"sine",.17);osc(103,"triangle",.05)}
+  if(key==="crime"){osc(82.4,"triangle",.14);osc(123.5,"sine",.08);osc(164.8,"sine",.035)}
+  ctx.resume();
+  document.getElementById("sound").textContent="♫ Sound on";
+  document.getElementById("sound").classList.add("active");
+  document.getElementById("soundNote").textContent="Atmosphere enabled for "+current.genre+". Select Sound on to turn it off.";
+ }catch(e){document.getElementById("soundNote").textContent="Audio could not start. Try enabling sound again."}
+}
+function stopSound(){
+ if(audio){
+  try{audio.nodes.forEach(n=>{try{if(n.stop)n.stop()}catch{}});audio.ctx.close()}catch{}
+  audio=null;
+ }
+ document.getElementById("sound").textContent="♫ Enable sound";
+ document.getElementById("sound").classList.remove("active");
 }
 function openStory(s){
- activeStory=s;
- const g=genres.find(x=>x.name===s.genre);
- document.getElementById("readerBg").style.backgroundImage=`url("${s.image}")`;
+ current=s;
+ const g=genres.find(x=>x.key===s.key);
+ document.getElementById("readerBg").style.backgroundImage=`url("${photoURL(photos[s.key],1800)}")`;
+ document.getElementById("readerHero").style.setProperty("--genre-glow",g.glow);
  document.getElementById("readerGenre").textContent=s.genre;
  document.getElementById("readerTitle").textContent=s.title;
  document.getElementById("readerSynopsis").textContent=s.synopsis;
- document.getElementById("readerMeta").textContent=`${s.genre}  ·  ${s.minutes} MIN READ`;
+ document.getElementById("readerMeta").textContent=s.genre+" · "+s.minutes+" MIN READ";
  readerText.innerHTML="";
- s.opening.split(/\n\n+/).forEach(p=>{const el=document.createElement("p");el.textContent=p;readerText.appendChild(el)});
- document.getElementById("readerText").style.fontSize=fontSize+"px";
- updateReaderBookmark();
- reader.classList.add("open");
- reader.scrollTop=0;
- document.body.style.overflow="hidden";
+ s.text.split(/\n\n+/).forEach(p=>{const para=document.createElement("p");para.textContent=p;readerText.appendChild(para)});
+ readerText.style.fontSize=fontSize+"px";
+ reader.classList.add("open");reader.scrollTop=0;document.body.style.overflow="hidden";
+ stopSound();updateSaveButton();
+ document.getElementById("soundNote").textContent="Sound is off. Enable sound for this story's atmosphere.";
  history.replaceState(null,"","#story-"+s.id);
 }
 function closeStory(){
- reader.classList.remove("open");
- document.body.style.overflow="";
+ reader.classList.remove("open");document.body.style.overflow="";stopSound();
  if(location.hash.startsWith("#story-"))history.replaceState(null,"",location.pathname+location.search);
 }
-document.getElementById("closeReader").addEventListener("click",closeStory);
-document.getElementById("moreStories").addEventListener("click",closeStory);
-document.getElementById("readerBookmark").addEventListener("click",()=>{if(activeStory)toggleSaved(activeStory.id)});
-document.getElementById("fontUp").addEventListener("click",()=>{fontSize=Math.min(30,fontSize+2);readerText.style.fontSize=fontSize+"px"});
-document.getElementById("fontDown").addEventListener("click",()=>{fontSize=Math.max(16,fontSize-2);readerText.style.fontSize=fontSize+"px"});
+document.getElementById("close").onclick=closeStory;
+document.getElementById("backToStories").onclick=()=>{closeStory();document.getElementById("stories").scrollIntoView({behavior:"smooth"})};
+document.getElementById("sound").onclick=()=>{if(audio){stopSound();document.getElementById("soundNote").textContent="Sound is off."}else if(current)startSound(current.key)};
+document.getElementById("save").onclick=()=>{if(current)saveStory(current.id)};
+document.getElementById("larger").onclick=()=>{fontSize=Math.min(30,fontSize+2);readerText.style.fontSize=fontSize+"px"};
+document.getElementById("smaller").onclick=()=>{fontSize=Math.max(16,fontSize-2);readerText.style.fontSize=fontSize+"px"};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&reader.classList.contains("open"))closeStory()});
-[search,filter,sort].forEach(el=>el.addEventListener(el===search?"input":"change",renderStories));
+search.addEventListener("input",renderStories);filter.addEventListener("change",renderStories);
 
-document.getElementById("menuBtn").addEventListener("click",()=>{
- const nav=document.getElementById("navlinks");
- nav.classList.toggle("show");
- document.getElementById("menuBtn").setAttribute("aria-expanded",nav.classList.contains("show"));
-});
+document.getElementById("menu").onclick=()=>document.getElementById("navlinks").classList.toggle("show");
 document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("show")));
+document.getElementById("year").textContent=new Date().getFullYear();
 
 /* Mouse-following fireflies */
 const flyLayer=document.getElementById("fireflies");
-let lastFly=0;
+let lastSpark=0;
 document.addEventListener("pointermove",e=>{
- if(e.pointerType==="touch")return;
- const now=performance.now();
- if(now-lastFly<38)return;
- lastFly=now;
- const dot=document.createElement("span");
- dot.className="firefly";
- dot.style.left=e.clientX+"px";
- dot.style.top=e.clientY+"px";
- dot.style.setProperty("--dx",(Math.random()*54-27)+"px");
- dot.style.setProperty("--dy",(Math.random()*-65-12)+"px");
- const size=2+Math.random()*3;
- dot.style.width=size+"px";dot.style.height=size+"px";
- flyLayer.appendChild(dot);
- setTimeout(()=>dot.remove(),1450);
+ if(e.pointerType==="touch"||performance.now()-lastSpark<45)return;
+ lastSpark=performance.now();
+ const f=document.createElement("span");f.className="firefly";
+ f.style.left=e.clientX+"px";f.style.top=e.clientY+"px";
+ f.style.setProperty("--dx",(Math.random()*55-27)+"px");
+ f.style.setProperty("--dy",(Math.random()*-65-10)+"px");
+ const size=2+Math.random()*3;f.style.width=size+"px";f.style.height=size+"px";
+ flyLayer.appendChild(f);setTimeout(()=>f.remove(),1400);
 },{passive:true});
 
-/* Scroll reveals and cinematic depth */
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}});
-},{threshold:.12});
-function observeReveals(){document.querySelectorAll(".reveal:not(.visible)").forEach(el=>observer.observe(el))}
-window.addEventListener("scroll",()=>{
- const max=document.documentElement.scrollHeight-window.innerHeight;
- document.getElementById("progressTrack").style.width=(max>0?window.scrollY/max*100:0)+"%";
-},{passive:true});
-
-document.getElementById("year").textContent=new Date().getFullYear();
-renderGenres();
-renderStories();
-observeReveals();
+/* Reveal sections as they enter the viewport */
+const revealObserver=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");revealObserver.unobserve(e.target)}});
+},{threshold:.1});
+function watchReveal(){document.querySelectorAll(".reveal:not(.visible)").forEach(el=>revealObserver.observe(el))}
+renderGenres();renderStories();watchReveal();
 </script>
 </body>
 </html>
